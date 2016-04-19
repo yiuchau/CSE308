@@ -3,21 +3,20 @@ package Users;
 
 import java.util.regex.Pattern;
 
-public abstract class User {
-    
+public class User {
     public enum Role {
     MEMBER, ADMINISTRATOR, PUBLISHER
 }
-    
+
     Role role;  //not set yet
-    Long userId; //not set yet
-    String username;
-    String password; //might change later
-    String rePassword;
-    String firstName;
-    String lastName;
-    String email;
-    Address address;
+    private Long userId; //not set yet
+    private String username;
+    private String password; //might change later
+    private String rePassword;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Address address;
     
     public void setUserName(String username){
         this.username=username;
@@ -62,10 +61,5 @@ public abstract class User {
     public int logout()
     {
         return 0;
-    }    
-    
-    
-    
-    
-    
+    }     
 }
