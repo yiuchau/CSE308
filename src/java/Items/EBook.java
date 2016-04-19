@@ -5,12 +5,13 @@
  */
 package Items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author yiulin
  */
-public class EBook extends Item {
-    
+public class EBook extends Item implements Serializable {
     
     //Test bean only, needs to be changed later
      public String[] getList(){

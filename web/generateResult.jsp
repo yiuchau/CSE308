@@ -22,7 +22,7 @@
     <body> 
         <div class="container">
             <div class="row text-center">   
-                <c:forEach items="<%=book.getList() %>" var="item">
+                <c:forEach items="${book.list}" var="item">
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                         <div class="thumbnail"> <a href="Description.html"><img src="${item}" alt="Thumbnail Image 1" class="img-responsive"></a>
                             <div class="caption">
