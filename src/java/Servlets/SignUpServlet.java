@@ -42,7 +42,6 @@ public class SignUpServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             ServletContext sc=this.getServletContext();
-            
             User b=(User) sc.getAttribute("RegisterForm");
             if(b==null){
                 b=new User() {};
@@ -54,6 +53,7 @@ public class SignUpServlet extends HttpServlet {
             b.setPassword(request.getParameter("password"));
             b.setRePassword(request.getParameter("Cpassword"));
             b.setEmail(request.getParameter("email"));
+            //need to call register method
             RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/homePageMember.jsp");
             dispatcher.forward(request, response);
             out.println("</body>");

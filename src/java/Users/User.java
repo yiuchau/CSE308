@@ -9,8 +9,8 @@ public abstract class User {
     MEMBER, ADMINISTRATOR, PUBLISHER
 }
     
-    Role role;
-    Long userId;
+    Role role;  //not set yet
+    Long userId; //not set yet
     String username;
     String password; //might change later
     String rePassword;
