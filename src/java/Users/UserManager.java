@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Users;
 
-/**
- *
- * @author yiulin
- */
 public class UserManager {
+    User user;
     
+    public int login(String username, String password){
+        return 0;
+    }
+    
+    public int register(){
+        return 0;
+    }
 }

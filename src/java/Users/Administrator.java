@@ -3,22 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Items;
+package Users;
 
 /**
  *
  * @author yiulin
  */
-public abstract class Item {
-    
-    public enum Type {
-        Ebook, AudioBook, Movie
-    }
-    
-    Type type;
-    Long itemId;
-    double averageRating;
-    int totalCopies;
-    int availableCopies;
+public class Administrator {
     
 }

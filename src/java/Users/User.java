@@ -1,14 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Users;
 
-/**
- *
- * @author yiulin
- */
-public class User {
+public abstract class User {
+    
+    public enum Role {
+    MEMBER, ADMINISTRATOR, PUBLISHER
+}
+    
+    Role role;
+    Long userId;
+    String username;
+    Byte[] password;
+    String firstName;
+    String lastName;
+    Address address;
+    
+    public int deleteAccount() {
+        return 0;
+    }
+    
+    public int sendMessage() {
+        return 0;
+    }
+    
+    public int logout()
+    {
+        return 0;
+    }    
+    
+    
+    
+    
     
 }
