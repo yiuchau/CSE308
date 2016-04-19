@@ -4,7 +4,8 @@ public class UserManager {
     User user;
     
     public int login(String username, String password){
-        return 0;
+        int test = 2 + 2;  
+        return test;
     }
     
     public int register(){
