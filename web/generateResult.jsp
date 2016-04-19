@@ -2,7 +2,7 @@
     Document   : body
     Created on : Apr 18, 2016, 10:32:17 PM
     Author     : yixxie
-    Page that dynamically generate book image, description (not complete, make changes accoreding to Item class)
+    (Test only) Page that dynamically generate book image, description (not complete, make changes accoreding to Item class and database)
 --%>
 
 <<%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,7 +22,7 @@
     <body> 
         <div class="container">
             <div class="row text-center">   
-                <c:forEach items="<%= book.getList() %>" var="item">
+                <c:forEach items="<%=book.getList() %>" var="item">
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
                         <div class="thumbnail"> <a href="Description.html"><img src="${item}" alt="Thumbnail Image 1" class="img-responsive"></a>
                             <div class="caption">
