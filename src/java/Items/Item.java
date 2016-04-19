@@ -20,5 +20,5 @@ public abstract class Item {
     double averageRating;
     int totalCopies;
     int availableCopies;
-    
+       
 }
