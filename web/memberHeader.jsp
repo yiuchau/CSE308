@@ -58,7 +58,7 @@
       <ul class="nav navbar-nav navbar-right hidden-sm">
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${loggedInUser.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="./accountPage.html">Account settings</a> </li>
+            <li><a href="./accountPage.jsp">Account settings</a> </li>
             <li><a href="./listPage.html">View my collection</a> </li>
             <li><a href="./listPage.html">View my downloads</a> </li>
              <li><a href="./unreadPage.html">View announcements</a> </li>
