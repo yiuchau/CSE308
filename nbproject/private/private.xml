@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/xieyi/Desktop/308code/src/java/Users/User.java</file>
-            <file>file:/Users/xieyi/Desktop/308code/src/java/Servlets/SignUpServlet.java</file>
-            <file>file:/Users/xieyi/Desktop/308code/src/java/Users/UserManager.java</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/src/java/Servlets/NewServlet.java</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/src/java/Items/EBook.java</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/nbproject/private/private.properties</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/web/sign/signIn.html</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/web/sign/signUp.html</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/src/java/Items/ItemManager.java</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/src/java/Items/Item.java</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/src/java/Servlets/SignUpServlet.java</file>
+            <file>file:/C:/Users/Brian%20Lee/Desktop/CSE%20308%20Project/308code/web/memberHeader.jsp</file>
         </group>
     </open-files>
 </project-private>
