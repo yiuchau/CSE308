@@ -13,11 +13,7 @@ import javax.persistence.Table;
 @Table
 
 public class User implements Serializable {
-    /**
-    public enum Role {
-    MEMBER, ADMINISTRATOR, PUBLISHER
-}
-*/
+ 
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
     private String username;
@@ -41,15 +37,6 @@ public class User implements Serializable {
     public String getPassword(){
         return password;
     }
-    /**
-    public void setRePassword(String rePassword){
-        this.rePassword=rePassword;
-    }
-    public String getRePassword(){
-        return rePassword;
-    }
-     * @param firstName
-    */
     public void setFirstName(String firstName){
         this.firstName=firstName;
     }

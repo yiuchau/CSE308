@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         ServletContext sc = this.getServletContext();
+        ServletContext sc = this.getServletContext();
         UserManager userManager = (UserManager) sc.getAttribute("userManager");
         userManager.login(request.getParameter("inputEmail"), request.getParameter("inputPassword"));
         //error check, invalid info
