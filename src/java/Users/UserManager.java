@@ -7,15 +7,20 @@ import javax.persistence.Persistence;
 
 public class UserManager {
     User user;
+    private EntityManagerFactory emfactory;
+    private EntityManager entitymanager;
     
+    public UserManager(){
+        emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
+        entitymanager = emfactory.createEntityManager( );
+    }
     public void login(String username, String password){
         //query database, return success or error?
     }
     
     public  boolean register(String firstName,String lastName,String password,String email,int role,String userName){
         boolean success=false;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
-        EntityManager entitymanager = emfactory.createEntityManager( );
+       
         if(userExist(userName)==false){
             User newUser = new User();
             entitymanager.getTransaction().begin( );
@@ -40,8 +45,6 @@ public class UserManager {
     
     //check if userName is already taken
     public boolean userExist(String userName){
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "308ProjectPU1" );
-        EntityManager entitymanager = emfactory.createEntityManager();
         User u= entitymanager.find( User.class, userName );
         return u != null;
     }
