@@ -1,29 +1,33 @@
 
 package Users;
 
+import Items.Item;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 
 @Entity
-@Table
-
+@Table(name = "USER_TABLE")
 public class User implements Serializable {
  
-   @Id
-   @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    //@GeneratedValue(strategy = GenerationType.AUTO)
     private String username;
     private String password; //might change later
     //private String rePassword;
     private String firstName;
     private String lastName;
     private String email;
-    private int role; //1:member, 2:admin,3:publisher
+    private int role; //1:member,2:admin,3:publisher
     //private Address address;
+    @ManyToMany(targetEntity=Item.class)
+    private Set<Item> borrowedItems;
     
     public void setUserName(String username){
         this.username=username;
@@ -61,12 +65,6 @@ public class User implements Serializable {
     public int getRole(){
         return role;
     }
-    public int sendMessage() {
-        return 0;
-    }
-    
-    public int logout()
-    {
-        return 0;
-    }     
+    public void sendMessage() {
+    }  
 }

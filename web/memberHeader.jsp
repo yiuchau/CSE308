@@ -24,7 +24,9 @@
     <![endif]-->
 </head>
 <body>
-<jsp:useBean id="loggedInUserBean" class="Users.User" scope="session" />
+<jsp:useBean id="loggedInUser" class="Users.User" scope="application" />
+
+<jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
 <nav>
   <div class="container"> 
     
@@ -32,7 +34,7 @@
    <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <blockquote>
-        <p><strong><a href="./homePageMember.jsp">Cedar Library</a></strong></p>
+        <p><strong><a href="./homePageMember.jsp">Cedar Library: <%= userManager.getUser().getUserName() %></a></strong></p>
       </blockquote>
     </div>
     

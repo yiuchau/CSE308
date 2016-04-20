@@ -7,63 +7,58 @@ import javax.persistence.Persistence;
 
 public class UserManager {
     User user;
-    /**
-    private EntityManagerFactory emfactory;
-    private EntityManager entitymanager;
     
     public UserManager(){
-        emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
-        entitymanager = emfactory.createEntityManager( );
+        System.out.println("UserManager instantiated");
     }
-    */
-    
-    /**
-     * private EntityManagerFactory emfactory;
-    private EntityManager entitymanager;
-    
-    public UserManager(){
-        emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
-        entitymanager = emfactory.createEntityManager( );
-    }
+     /*
      * @param username
      * @param password
      */
     public String login(String username, String password){
-        String value;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
-        EntityManager entitymanager = emfactory.createEntityManager( );
-        User u= entitymanager.find( User.class, username );
-        if(u==null){
-            value="User Name doesn't exist. Please register first";
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
+        EntityManager em = emf.createEntityManager();
+        
+        String retValue;
+        User user = em.find( User.class, username );
+        if(user ==null){
+            retValue ="User Name doesn't exist. Please register first";
         }
         else{
-            if(u.getPassword().equals(password)){
-                value="success";
+            if(user.getPassword().equals(password)){
+                retValue="success";
             }
             else{
-                value="Incorrect password";
+                retValue="Incorrect password";
             }
         }
-        return value;
+        em.close();
+        emf.close();
+        return retValue;
     }
     
-    public  boolean register(String firstName,String lastName,String email,String password,int role,String userName){
-        boolean success=true;
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
-        EntityManager entitymanager = emfactory.createEntityManager( );
-        if(userExist(userName)==false){
+    public  boolean register(String userName, String password, int role, 
+            String firstName,String lastName,String email){
+        boolean success = false;
+        
+        if(userExist(userName) == false){
+            
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
+        EntityManager em = emf.createEntityManager();
             User newUser = new User();
-            entitymanager.getTransaction().begin( );
+            em.getTransaction().begin( );
             newUser.setFirstName(firstName);
             newUser.setLastName(lastName );
             newUser.setEmail(email);
             newUser.setPassword(password);
+            
             newUser.setRole(role);
             newUser.setUserName(userName);
-            entitymanager.persist( newUser );
-            entitymanager.getTransaction( ).commit( );
-            entitymanager.close( );
-            emfactory.close( );
+            em.persist( newUser );
+            em.getTransaction( ).commit( );
+            em.close( );
+            emf.close( );
             success=true;
         }
         return success;
@@ -73,12 +68,19 @@ public class UserManager {
         return this.user;
     }
     
+    public void setUser(User user) {
+        this.user = user;
+    }
+    
     //check if userName is already taken
     public boolean userExist(String userName){
-        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
-        EntityManager entitymanager = emfactory.createEntityManager( );
-        User u= entitymanager.find( User.class, userName );
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
+        EntityManager em = emf.createEntityManager();
+        User u= em.find( User.class, userName );
+        em.close();
+                emf.close();
         return u != null;
+        
     }
     
 }
