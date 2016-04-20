@@ -7,6 +7,8 @@ package Servlets;
 
 import Items.Item;
 import Items.ItemManager;
+import Users.User;
+import Users.UserManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -44,6 +46,8 @@ public class BookPageServlet extends HttpServlet {
             out.println("<body>");
             ItemManager itemManager = (ItemManager) request.getSession().getAttribute("itemManager");
             // something something get item from item manager to generate book page
+            UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
+            // something something get user from user manager to generate book page
             RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/guestBookPage.jsp");
             dispatcher.forward(request, response);
             out.println("</body>");
