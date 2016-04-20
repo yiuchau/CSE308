@@ -14,13 +14,26 @@ public class UserManager {
         emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
         entitymanager = emfactory.createEntityManager( );
     }
-    public void login(String username, String password){
-        //query database, return success or error?
+    
+    public String login(String username, String password){
+        String value;
+        User u= entitymanager.find( User.class, username );
+        if(u==null){
+            value="User Name doesn't exist. Please register first";
+        }
+        else{
+            if(u.getPassword().equals(password)){
+                value="success";
+            }
+            else{
+                value="Incorrect password";
+            }
+        }
+        return value;
     }
     
-    public  boolean register(String firstName,String lastName,String password,String email,int role,String userName){
+    public  boolean register(String firstName,String lastName,String email,String password,int role,String userName){
         boolean success=false;
-       
         if(userExist(userName)==false){
             User newUser = new User();
             entitymanager.getTransaction().begin( );

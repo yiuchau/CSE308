@@ -35,15 +35,43 @@ public class LoginServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");     
+            out.println("</head>");
+            out.println("<body>");
+            
         ServletContext sc = this.getServletContext();
-        UserManager userManager = (UserManager) sc.getAttribute("userManager");
-        userManager.login(request.getParameter("inputEmail"), request.getParameter("inputPassword"));
+        //UserManager userManager = (UserManager) sc.getAttribute("userManager");
+        User b=(User) sc.getAttribute("loggedInUser");
+            if(b==null){
+                b=new User() {};
+                sc.setAttribute("loggedInUser",b);
+        }
+        b.setUserName(request.getParameter("inputUserName"));
+        UserManager manager=new UserManager();
+        String value=manager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
+        if(value.equals("success")){
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
+            dispatcher.forward(request, response);
+        }
+        else{
+            out.println("<span style='color:red'>"+value+"</span>");
+        }
+ 
+        //userManager.login(request.getParameter("inputEmail"), request.getParameter("inputPassword"));
         //error check, invalid info
-        User user = userManager.getUser();
-        sc.setAttribute("loggedInUser", user);
+        //User user = userManager.getUser();
+        //sc.setAttribute("loggedInUser", user);
         //send to respective 
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
-        dispatcher.forward(request, response);
+        
+        
+        out.println("</body>");
+        out.println("</html>");
+        }
     }
 
 

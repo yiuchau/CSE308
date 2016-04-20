@@ -51,7 +51,6 @@ public class SignUpServlet extends HttpServlet {
             b.setLastName(request.getParameter("LName"));
             b.setUserName(request.getParameter("UserID"));
             b.setPassword(request.getParameter("password"));
-           // b.setRePassword(request.getParameter("Cpassword"));
             b.setEmail(request.getParameter("email"));
             String role=request.getParameter("role");
             switch (role) {
@@ -74,7 +73,6 @@ public class SignUpServlet extends HttpServlet {
             else{
                 out.println("<span style='color:red'>* UserName Exists. Please choose another userName.</span>");
             }
-            
             out.println("</body>");
             out.println("</html>");
         }
