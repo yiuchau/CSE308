@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 <body>
-<jsp:useBean id="loggedInUser" class="Users.User" scope="application" />
+<jsp:useBean id="loggedInUserBean" class="Users.User" scope="session" />
 <nav>
   <div class="container"> 
     
@@ -56,7 +56,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right hidden-sm">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${loggedInUser.userName} <span class="caret"></span></a>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${loggedInUserBean.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="./accountPage.jsp">Account settings</a> </li>
             <li><a href="./listPage.html">View my collection</a> </li>

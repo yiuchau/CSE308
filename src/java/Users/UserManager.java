@@ -48,7 +48,7 @@ public class UserManager {
     }
     
     public  boolean register(String firstName,String lastName,String email,String password,int role,String userName){
-        boolean success=false;
+        boolean success=true;
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
         EntityManager entitymanager = emfactory.createEntityManager( );
         if(userExist(userName)==false){
