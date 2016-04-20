@@ -42,10 +42,10 @@ public class SignUpServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             ServletContext sc=this.getServletContext();
-            User b=(User) sc.getAttribute("RegisterForm");
+            User b=(User) sc.getAttribute("loggedInUser");
             if(b==null){
                 b=new User() {};
-                sc.setAttribute("RegisterForm",b);
+                sc.setAttribute("loggedInUser",b);
             }
             b.setFirstName(request.getParameter("fName"));
             b.setLastName(request.getParameter("LName"));
