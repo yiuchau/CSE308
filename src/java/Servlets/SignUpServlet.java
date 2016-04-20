@@ -68,16 +68,22 @@ public class SignUpServlet extends HttpServlet {
                     break;
             }
             // call register method
+
             //UserManager manager=new UserManager();
             
             UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
             if(userManager.register(b.getUserName(), b.getPassword(), b.getRole(), b.getFirstName(),b.getLastName(),b.getEmail())){
                 RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/homePage.jsp");
+/*
+            UserManager manager=new UserManager();
+            if(manager.register(b.getFirstName(),b.getLastName(),b.getEmail(),b.getPassword(),b.getRole(),b.getUserName())){
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
+*/
                 dispatcher.forward(request, response);
             }
             else{
                 out.println("<span style='color:red'>* UserName Exists. Please choose another userName.</span>");
-            }
+           }
             out.println("</body>");
             out.println("</html>");
         }
