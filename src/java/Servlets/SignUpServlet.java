@@ -82,7 +82,7 @@ public class SignUpServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
             else{
-                out.println("<span style='color:red'>* UserName Exists. Please choose another userName.</span>");
+                out.println("<span style='color:red'>* Username exists or database error. Please choose another username.</span>");
            }
             out.println("</body>");
             out.println("</html>");
