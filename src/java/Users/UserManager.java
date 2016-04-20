@@ -3,12 +3,15 @@ package Users;
 public class UserManager {
     User user;
     
-    public int login(String username, String password){
-        int test = 3 + 3;  
-        return test;
+    public void login(String username, String password){
+        //query database, return success or error?
     }
     
     public int register(){
         return 0;
+    }
+    
+    public User getUser() {
+        return this.user;
     }
 }
