@@ -1,22 +1,34 @@
 
 package Users;
 
-import java.util.regex.Pattern;
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class User {
+
+@Entity
+@Table
+
+public class User implements Serializable {
+    /**
     public enum Role {
     MEMBER, ADMINISTRATOR, PUBLISHER
 }
-
-    Role role;  //not set yet
-    private Long userId; //not set yet
+*/
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
+    //Role role;  //not set yet
+    //private Long userId; //not set yet
     private String username;
     private String password; //might change later
     private String rePassword;
     private String firstName;
     private String lastName;
     private String email;
-    private Address address;
+    //private Address address;
     
     public void setUserName(String username){
         this.username=username;
