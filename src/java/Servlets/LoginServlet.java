@@ -45,12 +45,15 @@ public class LoginServlet extends HttpServlet {
             out.println("<body>");
             
         ServletContext sc = this.getServletContext();
+        
+        //Not sure how userManager bean works, the following code can be changed later
+        
         //UserManager userManager = (UserManager) sc.getAttribute("userManager");
         User b=(User) sc.getAttribute("loggedInUser");
             if(b==null){
                 b=new User() {};
                 sc.setAttribute("loggedInUser",b);
-        }
+            }
         b.setUserName(request.getParameter("inputUserName"));
         UserManager manager=new UserManager();
         String value=manager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
