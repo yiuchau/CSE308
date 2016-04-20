@@ -3,7 +3,9 @@ package Items;
 
 import java.util.Date;
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,20 +19,17 @@ import javax.persistence.Temporal;
 @Entity
 @Table
 @Inheritance( strategy = InheritanceType.SINGLE_TABLE )
-@DiscriminatorColumn( name="type" )
+@DiscriminatorColumn( name="ITEM_TYPE", discriminatorType = DiscriminatorType.STRING )
 public abstract class Item implements Serializable {
 
-    public enum Type {
-        Ebook, AudioBook, Movie
-    }
-    
     public Item() {
         
     }
     
     @Id
     private Long ISBN;
-    private Type type;
+    @Column(name = "ITEM_TYPE")
+    private String type;
     private String title;
     private String description;
     private String publisher;
@@ -59,14 +58,14 @@ public abstract class Item implements Serializable {
     /**
      * @return the type
      */
-    public Type getType() {
+    public String getType() {
         return type;
     }
 
     /**
      * @param type the type to set
      */
-    public void setType(Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 

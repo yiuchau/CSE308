@@ -22,7 +22,7 @@ public class ItemManager {
     Item findItem(Long ISBN) {
         Item retItem;
         //if item in item collection, set ret
-            //item not in itemCollection
+        //item not in itemCollection
         retItem = em.find( Item.class, ISBN);
         //add item to itemCollection
         return retItem;
