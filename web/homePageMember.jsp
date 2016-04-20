@@ -8,4 +8,8 @@
 <!DOCTYPE html>
 <html>
     
+<jsp:include page="memberHeader.jsp" />
+<jsp:include page="generateResult.jsp" />
+
+<jsp:include page="footer.jsp" />
 </html>

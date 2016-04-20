@@ -27,7 +27,8 @@ public class UserManager {
         if (user == null) {
             retValue = "User Name doesn't exist. Please register first";
         } else if (user.getPassword().equals(password)) {
-            retValue = "success";
+            this.setUser(user);
+            retValue = "Success";
         } else {
             retValue = "Incorrect password";
         }
