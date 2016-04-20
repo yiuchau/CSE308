@@ -32,7 +32,7 @@
         <div class="row">
           <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
             <div>
-               <li> <a>Servics</a> </li>
+               <li> <a>Services</a> </li>
               <ul class="list-unstyled">
                 <li> <a>Free Download</a> </li>
                 <li> <a>Learn a Language</a> </li>
@@ -68,7 +68,7 @@
         <strong>Cedar, Inc.</strong><br>
         Stony Brook<br>
         NY, 11790<br>
-        <abbr title="Phone">P:</abbr> (631) 000-0000
+        <abbr title="Phone">P:</abbr> (631) 420-6969
       </address>
         <address>
         <strong>Cedar</strong><br>
