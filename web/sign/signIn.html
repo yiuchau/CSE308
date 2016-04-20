@@ -42,17 +42,17 @@
 
 
   <div class="container">
-    <div style="font-size: 16px"><a href="../homepage.html">Back to HomePage</a></div>
-    <form class="form-signin" method="post" action="http://localhost:8080/308code/NewServlet" class="ibm-row-form" name="login" id="LoginForm">
+    <div style="font-size: 16px"><a href="../homepage.jsp">Back to HomePage</a></div>
+    <form class="form-signin" method="post" action="http://localhost:8080/308code/NewServlet" class="ibm-row-form" name="login" id="loginform">
         
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input name="inputEmail" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <div>&nbsp;</div>
 <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <input name="inputPassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
       <div style="color: #eee">.</div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="jumpToLogIn()">Sign in<br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in<br>
         </button>
       <div class="checkbox col-md-12">
         <label>
