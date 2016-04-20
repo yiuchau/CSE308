@@ -32,7 +32,7 @@
    <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <blockquote>
-        <p><strong><a href="homepage.html">Cedar Library</a></strong></p>
+        <p><strong><a href="./homePageMember.jsp">Cedar Library</a></strong></p>
       </blockquote>
     </div>
     
@@ -56,7 +56,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right hidden-sm">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${loggedInUser.userName} <span class="caret"></span></a>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${LoginForm.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="./accountPage.html">Account settings</a> </li>
             <li><a href="./listPage.html">View my collection</a> </li>
@@ -129,7 +129,7 @@
       <div class="row">
         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-2"><img class="img-circle" alt="Free Shipping" src="images/smile.jpg"></div>
         <div class="col-lg-6 col-md-9 col-sm-9 col-xs-9">
-          <h4>Free for Everthing</h4>
+          <h4>Free for Everything</h4>
         </div>
       </div>
     </div>
