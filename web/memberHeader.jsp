@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 <body>
-<jsp:useBean id="RegisterForm" class="Users.User" scope="application" />
+<jsp:useBean id="loggedInUser" class="Users.User" scope="application" />
 <nav>
   <div class="container"> 
     
