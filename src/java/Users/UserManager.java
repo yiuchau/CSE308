@@ -12,25 +12,22 @@ public class UserManager {
         //query database, return success or error?
     }
     
-    public  void register(){
-        
+    public  void register(String firstName,String lastName,String password,String email,int role,String userName){
+       
       EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("308ProjectPU1" );
-      
       EntityManager entitymanager = emfactory.createEntityManager( );
-      entitymanager.getTransaction( ).begin( );
-
-      User employee = new User( ); 
-      employee.setFirstName( "Yiiiii" );
-      employee.setLastName( "Xie" );
-      employee.setEmail("anc");
-      employee.setPassword("erer");
-      employee.setRePassword("wewewewe");
-      entitymanager.persist( employee );
+      entitymanager.getTransaction().begin( );
+      User newUser = new User();
+      newUser.setFirstName(firstName);
+      newUser.setLastName(lastName );
+      newUser.setEmail(email);
+      newUser.setPassword(password);
+      newUser.setRole(role);
+      newUser.setUserName(userName);
+      entitymanager.persist( newUser );
       entitymanager.getTransaction( ).commit( );
-
       entitymanager.close( );
       emfactory.close( );
-        //System.out.println("aaaaa");
     }
     
     public User getUser() {

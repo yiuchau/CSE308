@@ -20,14 +20,13 @@ public class User implements Serializable {
 */
    @Id
    @GeneratedValue(strategy = GenerationType.AUTO)
-    //Role role;  //not set yet
-    //private Long userId; //not set yet
     private String username;
     private String password; //might change later
-    private String rePassword;
+    //private String rePassword;
     private String firstName;
     private String lastName;
     private String email;
+    private int role; //1:member, 2:admin,3:publisher
     //private Address address;
     
     public void setUserName(String username){
@@ -42,12 +41,15 @@ public class User implements Serializable {
     public String getPassword(){
         return password;
     }
+    /**
     public void setRePassword(String rePassword){
         this.rePassword=rePassword;
     }
     public String getRePassword(){
         return rePassword;
     }
+     * @param firstName
+    */
     public void setFirstName(String firstName){
         this.firstName=firstName;
     }
@@ -65,6 +67,12 @@ public class User implements Serializable {
     }
     public String getEmail(){
         return email;
+    }
+     public void setRole(int role){
+        this.role=role;
+    }
+    public int getRole(){
+        return role;
     }
     public int sendMessage() {
         return 0;

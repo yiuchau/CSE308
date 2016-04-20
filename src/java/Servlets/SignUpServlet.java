@@ -51,11 +51,23 @@ public class SignUpServlet extends HttpServlet {
             b.setLastName(request.getParameter("LName"));
             b.setUserName(request.getParameter("UserID"));
             b.setPassword(request.getParameter("password"));
-            b.setRePassword(request.getParameter("Cpassword"));
+           // b.setRePassword(request.getParameter("Cpassword"));
             b.setEmail(request.getParameter("email"));
+            String role=request.getParameter("role");
+            switch (role) {
+                case "member":
+                    b.setRole(1);
+                    break;
+                case "admin":
+                    b.setRole(2);
+                    break;
+                default:
+                    b.setRole(3);
+                    break;
+            }
             // call register method
-            UserManager us=new UserManager();
-            us.register();
+            UserManager manager=new UserManager();
+            manager.register(b.getFirstName(),b.getLastName(),b.getEmail(),b.getPassword(),b.getRole(),b.getUserName());
             RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/homePageMember.jsp");
             dispatcher.forward(request, response);
             out.println("</body>");
