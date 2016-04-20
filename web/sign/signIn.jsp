@@ -1,3 +1,10 @@
+<%-- 
+    Document   : signIn
+    Created on : Apr 20, 2016, 3:47:45 AM
+    Author     : yixxie
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -23,14 +30,7 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-    <script>
-    	function jumpToLogIn(){
-			alert("Sign up successfully! (validation will be build later)");
-			window.location = "../homePageMember.jsp";
-	 	}
-  
-  	</script>
-
+    
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -42,12 +42,12 @@
 
 
   <div class="container">
-    <div style="font-size: 16px"><a href="../homepage.jsp">Back to HomePage</a></div>
+    <div style="font-size: 16px"><a href="../homePage.jsp">Back to HomePage</a></div>
     <form class="form-signin" method="post" action="http://localhost:8080/308code/LoginServlet" class="ibm-row-form" name="login" id="loginform">
         
         <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="inputEmail" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputUserName" class="sr-only">Email address</label>
+        <input name="inputUserName" type="name" id="inputEmail" class="form-control" placeholder="UserName" required autofocus>
         <div>&nbsp;</div>
 <label for="inputPassword" class="sr-only">Password</label>
       <input name="inputPassword" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
