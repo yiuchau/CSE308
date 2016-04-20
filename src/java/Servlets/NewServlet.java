@@ -43,10 +43,10 @@ public class NewServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             ServletContext sc=this.getServletContext();
-            User b=(User) sc.getAttribute("LoginForm");
+            User b=(User) sc.getAttribute("loggedInUser");
             if(b==null){
                 b=new User() {};
-                sc.setAttribute("LoginForm",b);
+                sc.setAttribute("loggedInUser",b);
             }
             b.setUserName(request.getParameter("inputEmail"));
             b.setPassword(request.getParameter("inputPassword"));
