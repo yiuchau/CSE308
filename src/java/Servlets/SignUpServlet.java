@@ -6,9 +6,9 @@
 package Servlets;
 
 import Users.User;
+import Users.UserManager;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -53,7 +53,9 @@ public class SignUpServlet extends HttpServlet {
             b.setPassword(request.getParameter("password"));
             b.setRePassword(request.getParameter("Cpassword"));
             b.setEmail(request.getParameter("email"));
-            //need to call register method
+            // call register method
+            UserManager us=new UserManager();
+            us.register();
             RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/homePageMember.jsp");
             dispatcher.forward(request, response);
             out.println("</body>");
