@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 
 /**
  *
@@ -58,6 +59,8 @@ public class LoginServlet extends HttpServlet {
         UserManager manager=new UserManager();
         String value=manager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
         if(value.equals("success")){
+            HttpSession session = request.getSession();
+            session.setAttribute("loggedInUser", b);
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
             dispatcher.forward(request, response);
         }
