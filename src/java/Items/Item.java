@@ -1,8 +1,10 @@
 
 package Items;
 
+import Users.User;
 import java.util.Date;
 import java.io.Serializable;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -12,24 +14,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
 
 @Entity
 @Table
-@Inheritance( strategy = InheritanceType.SINGLE_TABLE )
-@DiscriminatorColumn( name="ITEM_TYPE", discriminatorType = DiscriminatorType.STRING )
-public abstract class Item implements Serializable {
-
-    public Item() {
-        
-    }
-    
+public class Item implements Serializable {
     @Id
     private Long ISBN;
-    @Column(name = "ITEM_TYPE")
-    private String type;
+    private int type; 
+    //0 ebook, 1 audio, 2 movie        
+    String author;
+    int pages;
     private String title;
     private String description;
     private String publisher;
@@ -37,11 +35,20 @@ public abstract class Item implements Serializable {
     private Date releaseDate;
     //URL imageURL;
     //genre
+    //publisher
+    //ratings
     private double averageRating;
     private int totalCopies;
     private int availableCopies;
+    @ManyToMany(targetEntity=User.class)
+    private Set<Item> borrowedByUsers;
     
-        /**
+    
+    public Item() {
+        
+    }
+    
+     /**
      * @return the ISBN
      */
     public Long getISBN() {
@@ -58,14 +65,14 @@ public abstract class Item implements Serializable {
     /**
      * @return the type
      */
-    public String getType() {
+    public int getType() {
         return type;
     }
 
     /**
      * @param type the type to set
      */
-    public void setType(String type) {
+    public void setType(int type) {
         this.type = type;
     }
 

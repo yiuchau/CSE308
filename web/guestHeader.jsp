@@ -56,7 +56,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right hidden-sm">
         <li><a href="sign/signIn.jsp">Login</a></li>
-        <li><a href="sign/signUp.html">Account Registration</a> </li>
+        <li><a href="sign/signUp.jsp">Account Registration</a> </li>
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Advance Search <span class="caret"></span></a>
           <ul class="dropdown-menu">
            <li><a href="./popularest.html">the popularest</a> </li>

@@ -44,11 +44,11 @@ public class LoginServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             
-        ServletContext sc = this.getServletContext();
+        //ServletContext sc = this.getServletContext();
         
         //Not sure how userManager bean works, the following code can be changed later
-        
-        //UserManager userManager = (UserManager) sc.getAttribute("userManager");
+        UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
+        /*
         User b=(User) sc.getAttribute("loggedInUser");
             if(b==null){
                 b=new User() {};
@@ -56,13 +56,16 @@ public class LoginServlet extends HttpServlet {
             }
         b.setUserName(request.getParameter("inputUserName"));
         UserManager manager=new UserManager();
-        String value=manager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
-        if(value.equals("success")){
+        */
+        String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
+        if(retValue.equals("success")){
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
             dispatcher.forward(request, response);
         }
         else{
-            out.println("<span style='color:red'>"+value+"</span>");
+            out.println("<span style='color:red'>"+retValue+"</span>");
+            //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/sign/signIn.jsp");
+            //dispatcher.forward(request, response);
         }
  
         //userManager.login(request.getParameter("inputEmail"), request.getParameter("inputPassword"));
