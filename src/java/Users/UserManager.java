@@ -8,9 +8,8 @@ import javax.persistence.Persistence;
 public class UserManager {
     User user;
     
-    public int login(String username, String password){
-        int test = 3 + 3;  
-        return test;
+    public void login(String username, String password){
+        //query database, return success or error?
     }
     
     public  void register(){
@@ -32,5 +31,9 @@ public class UserManager {
       entitymanager.close( );
       emfactory.close( );
         //System.out.println("aaaaa");
+    }
+    
+    public User getUser() {
+        return this.user;
     }
 }

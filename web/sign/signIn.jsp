@@ -43,7 +43,7 @@
 
   <div class="container">
     <div style="font-size: 16px"><a href="../homepage.jsp">Back to HomePage</a></div>
-    <form class="form-signin" method="post" action="http://localhost:8080/308code/NewServlet" class="ibm-row-form" name="login" id="loginform">
+    <form class="form-signin" method="post" action="http://localhost:8080/308code/LoginServlet" class="ibm-row-form" name="login" id="loginform">
         
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
