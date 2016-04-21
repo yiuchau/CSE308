@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <hr>
-<h2 class="text-center">Your Collection</h2>
+<h2 class="text-center">My Collection</h2>
 <hr>
 <div class="container">
   <div class="row text-center">
