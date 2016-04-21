@@ -48,11 +48,7 @@ public class LoginServlet extends HttpServlet {
             UserManager userManager = (UserManager) session.getAttribute("userManager");
             String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
             if(retValue.equals("Success")){
-                System.out.println("Successfully logged in: " + userManager.getUser().getUserName());
-                
-                User loggedInUser = userManager.getUser(); 
-                session.setAttribute("loggedInUser", loggedInUser);
-                
+                System.out.println("Successfully logged in: " + userManager.getUser().getUserName());   
                 RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
                 dispatcher.forward(request, response);
             }
