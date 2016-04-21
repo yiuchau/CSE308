@@ -44,45 +44,16 @@ public class LoginServlet extends HttpServlet {
             out.println("<head>");     
             out.println("</head>");
             out.println("<body>");
-            
-        //ServletContext sc = this.getServletContext();
-        
-        //Not sure how userManager bean works, the following code can be changed later
         UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
-        /*
-        User b=(User) sc.getAttribute("loggedInUser");
-            if(b==null){
-                b=new User() {};
-                sc.setAttribute("loggedInUser",b);
-            }
-        b.setUserName(request.getParameter("inputUserName"));
-        UserManager manager=new UserManager();
-        */
         String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
-        
-           
-        //String value=manager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
         if(retValue.equals("Success")){
-            //HttpSession session = request.getSession();
             System.out.println("Successfully logged in: " + userManager.getUser().getUserName());
-            //request.getSession().setAttribute("loggedInUser", userManager.getUser());
-
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
             dispatcher.forward(request, response);
         }
         else{
             out.println("<span style='color:red'>"+retValue+"</span>");
-            //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/sign/signIn.jsp");
-            //dispatcher.forward(request, response);
         }
- 
-        //userManager.login(request.getParameter("inputEmail"), request.getParameter("inputPassword"));
-        //error check, invalid info
-        //User user = userManager.getUser();
-        //sc.setAttribute("loggedInUser", user);
-        //send to respective 
-        
-        
         out.println("</body>");
         out.println("</html>");
         }

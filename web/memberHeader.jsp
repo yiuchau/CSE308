@@ -24,7 +24,7 @@
     <![endif]-->
 </head>
 <body>
-<jsp:useBean id="loggedInUser" class="Users.User" scope="application" />
+
 <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
 <nav>
   <div class="container"> 
@@ -33,7 +33,7 @@
    <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <blockquote>
-        <p><strong><a href="./homePageMember.jsp">Cedar Library:</a></strong></p>
+        <p><strong><a href="./homePageMember.jsp">Cedar Library</a></strong></p>
       </blockquote>
     </div>
     
@@ -57,7 +57,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right hidden-sm">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${userManager.getUser().getUserName()} <span class="caret"></span></a>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${userManager.user.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="./accountPage.jsp">Account settings</a> </li>
             <li><a href="./listPage.html">Collection</a> </li>

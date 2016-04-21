@@ -26,8 +26,8 @@ public class User implements Serializable {
     private String email;
     private int role; //1:member,2:admin,3:publisher
     //private Address address;
-    @ManyToMany(targetEntity=Item.class)
-    private Set<Item> borrowedItems;
+  //  @ManyToMany(targetEntity=Item.class)
+   // private Set<Item> borrowedItems;
     
     public void setUserName(String username){
         this.username=username;
