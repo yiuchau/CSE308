@@ -9,6 +9,6 @@
 <html>
     <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />  
     <jsp:include page="memberHeader.jsp" />
-    <jsp:include page="generateMemberBookpage.jsp" />
+    <jsp:include page="generateBookPage.jsp" />
     <jsp:include page="footer.jsp" />
 </html>

@@ -23,11 +23,11 @@
             <div class="row text-center">   
                 <c:forEach items="${book.list}" var="item">
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-                        <div class="thumbnail"> <a href="./memberBookPage.jsp/"><img src="${item}" alt="Thumbnail Image 1" class="img-responsive"></a>
+                        <div class="thumbnail"> <a href="./memberBookPage.jsp"><img src="${item}" alt="Thumbnail Image 1" class="img-responsive"></a>
                             <div class="caption">
                                 <h3>Product</h3>
                                 <p>Description of the book.</p>
-                                <p><a href="./memberBookPage.jsp/" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download </a> </p>
+                                <p><a href="./memberBookPage.jsp" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download </a> </p>
                             </div>
                         </div>
                     </div>
