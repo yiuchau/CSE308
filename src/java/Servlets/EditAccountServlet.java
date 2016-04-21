@@ -5,7 +5,7 @@
  */
 package Servlets;
 
-import Users.User;
+
 import Users.UserManager;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author yixxie
  */
-public class SignUpServlet extends HttpServlet {
+public class EditAccountServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,36 +37,15 @@ public class SignUpServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
-            out.println("<head>");     
-            out.println("</head>");
             out.println("<body>");
-            User b= new User();
-            b.setFirstName(request.getParameter("fName"));
-            b.setLastName(request.getParameter("LName"));
-            b.setUserName(request.getParameter("UserID"));
-            b.setPassword(request.getParameter("password"));
-            b.setEmail(request.getParameter("email"));
-            String role=request.getParameter("role");
-            switch (role) {
-                case "member":
-                    b.setRole(1);
-                    break;
-                case "admin":
-                    b.setRole(2);
-                    break;
-                default:
-                    b.setRole(3);
-                    break;
-            }
-            // call register method
             UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
-            if(userManager.register(b.getUserName(), b.getPassword(), b.getRole(), b.getFirstName(),b.getLastName(),b.getEmail())){
-                RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/homePage.jsp");
-                dispatcher.forward(request, response);
-            }
-            else{
-                out.println("<span style='color:red'>* Username exists or database error. Please choose another username.</span>");
-           }
+            String newFName=request.getParameter("customerFName");
+            String newLName=request.getParameter("customerLName");
+            String newEmail=request.getParameter("customerEmail");
+            String newPassword=request.getParameter("customerPassword");
+            userManager.update(newFName,newLName,newEmail,newPassword);
+            RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/accountPage.jsp");
+            dispatcher.forward(request, response);
             out.println("</body>");
             out.println("</html>");
         }

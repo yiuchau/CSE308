@@ -4,9 +4,17 @@
         <servlet-name>SignUpServlet</servlet-name>
         <servlet-class>Servlets.SignUpServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <servlet-class>Servlets.EditAccountServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SignUpServlet</servlet-name>
         <url-pattern>/SignUpServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditAccountServlet</servlet-name>
+        <url-pattern>/EditAccountServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

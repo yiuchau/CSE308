@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class UserManager {
+public class UserManager implements Serializable{
 
     User user;
 
@@ -72,6 +72,21 @@ public class UserManager {
         em.close();
         emf.close();
         return u != null;
+    }
+    //update user information
+    public void update(String newFName,String newLName,String newEmail,String newPassword){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction( ).begin( );
+        User current=em.find(User.class, getUser().getUserName());
+        current.setFirstName(newFName);
+        current.setLastName(newLName);
+        current.setEmail(newEmail);
+        current.setPassword(newPassword);
+        em.getTransaction( ).commit( );
+        em.close();
+        emf.close();
+        setUser(current);
     }
 
 }

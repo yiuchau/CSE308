@@ -5,18 +5,15 @@
  */
 package Servlets;
 
-import Users.User;
 import Users.UserManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.*;
 
 /**
  *
@@ -47,7 +44,6 @@ public class LoginServlet extends HttpServlet {
         UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
         String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
         if(retValue.equals("Success")){
-            System.out.println("Successfully logged in: " + userManager.getUser().getUserName());
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
             dispatcher.forward(request, response);
         }
