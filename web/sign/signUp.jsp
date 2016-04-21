@@ -1,3 +1,10 @@
+<%-- 
+    Document   : signIn
+    Created on : Apr 20, 2016, 3:47:45 AM
+    Author     : yixxie
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>

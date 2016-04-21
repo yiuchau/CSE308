@@ -58,12 +58,12 @@
       </form>
       <ul class="nav navbar-nav navbar-right hidden-sm">
           <%-- Guest --%>
-          <c:if test = "${userManager.getUser() == null}">
+          <c:if test = "${userManager.getUser() == null && 1 + 1 == 2}">
           <li><a href="sign/signIn.jsp">Login</a></li>
           <li><a href="sign/signUp.jsp">Account Registration</a> </li>
           </c:if>
           <%-- Member --%>
-          <c:if test = "${userManager.getUser() != null}">
+          <c:if test = "${userManager.getUser() != null && 1 + 1 == 3}">
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${userManager.user.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="./accountPage.jsp">Account settings</a> </li>

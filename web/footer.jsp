@@ -25,6 +25,7 @@
    
 </head>
 <body>
+    <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
 <hr>
   <div class="container well">
     <div class="row">
@@ -32,8 +33,8 @@
         <div class="row">
           <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
             <div>
-               <li> <a>Services</a> </li>
               <ul class="list-unstyled">
+                <li> <a>Services</a> </li>
                 <li> <a>Free Download</a> </li>
                 <li> <a>Learn a Language</a> </li>
                 <li> <a>User Guide</a> </li>
