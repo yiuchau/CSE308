@@ -77,6 +77,7 @@
             <li><a href="./moreSearch.html">Advanced Search</a> </li>
           </ul>
         </li>
+        
       </ul>
     </div>
     <!-- /.navbar-collapse --> 

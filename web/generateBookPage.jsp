@@ -21,6 +21,18 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
+<script>
+!function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';
+    if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}
+    }(document, 'script', 'twitter-wjs');</script>
+
+<script
+    type="text/javascript"
+    async defer
+    src="//assets.pinterest.com/js/pinit.js"
+></script>
 <div>
     
   <div class="col-lg-offset-2 col-lg-8">
@@ -60,10 +72,14 @@
    <p class="text-center"><a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Borrow</a>
    <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="placeHoldAction()"><span class="text-center" aria-hidden="true" ></span>Place Hold</a>
    <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" ><span class="text-center" aria-hidden="true" ></span>Share</a></p>
-   <div class="fb-share-button" 
+   <div>
+  <a class="fb-share-button" 
 		data-href="https://www.facebook.com/" 
-		data-layout="button_count">
-	</div>
+                data-layout="button_count"> </a>     
+  <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+  <a href="https://www.pinterest.com/pin/create/button/">
+    <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+   </div>
   
     <p class="text-center">
     <textarea name="Text1" cols="35" rows="5" >Write your review </textarea>
