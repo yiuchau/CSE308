@@ -60,21 +60,21 @@
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, <%= userManager.getUser().getUserName() %> <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="./accountPage.jsp">Account settings</a> </li>
-            <li><a href="./listPage.html">View my collection</a> </li>
-            <li><a href="./listPage.html">View my downloads</a> </li>
-             <li><a href="./unreadPage.html">View announcements</a> </li>
-            <li><a href="./recommendPage.html">Your recommendations</a> </li>
+            <li><a href="./listPage.html">Collection</a> </li>
+            <li><a href="./listPage.html">Downloads</a> </li>
+             <li><a href="./unreadPage.html">Announcements</a> </li>
+            <li><a href="./recommendPage.html">Recommendations</a> </li>
              <li><a href="./inboxPage.html">Inbox</a> </li>
             <li role="separator" class="divider"></li>
-            <li><a href="#" onclick="signOut()">Sign out</a> </li>
+            <li><a href="./homePage.jsp" onclick="userManager.signOut()">Sign out</a> </li>
         </ul>
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Advance Search <span class="caret"></span></a>
           <ul class="dropdown-menu">
-           <li><a href="./popularest.html">the popularest</a> </li>
+           <li><a href="./popularest.html">Most Popular</a> </li>
             <li><a href="./newRelease.html">New Releases</a> </li>
-            <li><a href="./Price.html">TopHolds</a> </li>
+            <li><a href="./Price.html">Top Holds</a> </li>
             <li role="separator" class="divider"></li>
-            <li><a href="./moreSearch.html">More Search</a> </li>
+            <li><a href="./moreSearch.html">Advanced Search</a> </li>
           </ul>
         </li>
       </ul>
