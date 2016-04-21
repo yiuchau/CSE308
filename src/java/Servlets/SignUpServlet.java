@@ -60,7 +60,7 @@ public class SignUpServlet extends HttpServlet {
             }
             // call register method
             UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
-            if(userManager.register(b.getUserName(), b.getPassword(), b.getRole(), b.getFirstName(),b.getLastName(),b.getEmail())){
+            if(userManager.register(b)){
                 RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/homePage.jsp");
                 dispatcher.forward(request, response);
             }
