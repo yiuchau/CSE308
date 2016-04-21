@@ -73,5 +73,9 @@ public class UserManager {
         emf.close();
         return u != null;
     }
+    
+    public void signOut(){
+        this.user = null;
+    }
 
 }
