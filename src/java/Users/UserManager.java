@@ -80,5 +80,9 @@ public class UserManager {
         return u != null;
 
     }
+    
+    public void signOut() {
+        this.user = null;
+    }
 
 }
