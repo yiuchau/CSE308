@@ -69,7 +69,7 @@
         <strong>Cedar, Inc.</strong><br>
         Stony Brook<br>
         NY, 11790<br>
-        <abbr title="Phone">P:</abbr> (631) 420-6969
+        <abbr title="Phone">P:</abbr> (631) 000-0000
       </address>
         <address>
         <strong>Cedar</strong><br>
