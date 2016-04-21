@@ -74,7 +74,6 @@
    
    <p class="text-center"><a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Borrow</a>
    <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="placeHoldAction()"><span class="text-center" aria-hidden="true" ></span>Place Hold</a>
-   <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" ><span class="text-center" aria-hidden="true" ></span>Share</a></p>
    <div>
   <a class="fb-share-button" 
 		data-href="https://www.facebook.com/" 
@@ -82,6 +81,10 @@
   <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
   <a href="https://www.pinterest.com/pin/create/button/">
     <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+  <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com."
+   title="Share by Email">
+  <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
+  </a>
    </div>
   
     <p class="text-center">
