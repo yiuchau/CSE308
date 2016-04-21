@@ -50,10 +50,10 @@ public class LoginServlet extends HttpServlet {
                     dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
                     break;
                 case 2:
-                    dispatcher = getServletContext().getRequestDispatcher("");
+                    dispatcher = getServletContext().getRequestDispatcher("/PublisherHomepage.jsp");
                     break;
                 default:
-                    dispatcher = getServletContext().getRequestDispatcher("");
+                    dispatcher = getServletContext().getRequestDispatcher("/adminHomepage.jsp");
                     break;
                 }
             dispatcher.forward(request, response);
