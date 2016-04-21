@@ -9,19 +9,13 @@ public class UserManager {
 
     User user;
 
-    public UserManager() {
-        System.out.println("UserManager instantiated");
-    }
-
     /*
      * @param username
      * @param password
      */
     public String login(String username, String password) {
-
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
         EntityManager em = emf.createEntityManager();
-
         String retValue;
         User user = em.find(User.class, username);
         if (user == null) {
@@ -78,7 +72,6 @@ public class UserManager {
         em.close();
         emf.close();
         return u != null;
-
     }
 
 }
