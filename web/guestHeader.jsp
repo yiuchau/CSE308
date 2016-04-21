@@ -31,7 +31,7 @@
    <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
       <blockquote>
-        <p><strong><a href="homepage.html">Cedar Library</a></strong></p>
+        <p><strong><a href="homePage.jsp">Cedar Library</a></strong></p>
       </blockquote>
     </div>
     
