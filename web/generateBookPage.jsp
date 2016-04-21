@@ -31,7 +31,7 @@
         <div class="caption">
           <h3>Author</h3>
           <p>Review of the book.....</p>
-          <p><a href="#" class="btn btn-primary" role="button" ><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" ></span>Sample</a></p>
+          <p><a href="#" class="btn btn-primary" role="button" onClick="window.open('./memberBookPage.jsp');" ><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" ></span>Sample</a></p>
         </div>
       </div>
     </div>
