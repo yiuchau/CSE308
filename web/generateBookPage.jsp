@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/custom.css">
         <title>JSP Page</title>
     </head>
     <body>
@@ -37,7 +38,12 @@
     
   <div class="col-lg-offset-2 col-lg-8">
     <h2 class="text-center">Book Name</h2>
-    <div class="thumbnail" style="border:none;"> <img src="images/oneStar.jpg" alt="Thumbnail Image 1" class="img-responsive">
+    <div class="thumbnail" style="border:none;"> 
+        <a id = "ratingStar">&star; </a>
+        <a id = "ratingStar">&star; </a>
+        <a id = "ratingStar">&star; </a>
+        <a id = "ratingStar">&star; </a>
+        <a id = "ratingStar">&star; </a>
     <div class="col-sm-4 col-md-4 col-xs-6 col-lg-6">
       <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
         <div class="caption">
@@ -47,9 +53,6 @@
         </div>
       </div>
     </div>
-  
-  
-  
   </div>
    <div class="col-lg-offset-0 col-lg-6">
    
@@ -88,11 +91,7 @@
      <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 25px;" onclick="updateReview()"><span class="text-center" aria-hidden="true" ></span>Submit Riview</a></p>		
   </div>
 </div>
-
-
-
-
-
+    
 <hr>
 <hr>
 <div class="container">
