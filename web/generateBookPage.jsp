@@ -12,8 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
     <div>
   <div class="col-lg-offset-2 col-lg-8">
     <h2 class="text-center">Book Name</h2>
@@ -168,4 +166,5 @@
     </ul>
   </nav>
 </div>
+</body>
 </html>

@@ -10,7 +10,7 @@
 <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />    
 <jsp:include page="memberHeader.jsp" />
 <jsp:include page="homePageStuff.jsp" />
-<jsp:include page="generateResult.jsp" />
+<jsp:include page="generateMemberHomepage.jsp" />
 <jsp:include page="footer.jsp" />
 
 </html>

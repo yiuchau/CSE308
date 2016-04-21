@@ -14,7 +14,7 @@
     <%-- TESTING, DO NO REMOVE <jsp:include page="header.jsp" /> --%>
     <jsp:include page="guestHeader.jsp" />
     <jsp:include page="homePageStuff.jsp" />
-    <jsp:include page="generateResult.jsp" />
+    <jsp:include page="generateGuestHomepage.jsp" />
     <jsp:include page="footer.jsp" />
 
 </html>
