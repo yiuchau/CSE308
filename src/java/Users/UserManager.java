@@ -31,25 +31,17 @@ public class UserManager implements Serializable{
         return retValue;
     }
 
-    public boolean register(String userName, String password, int role,
-            String firstName, String lastName, String email) {
+    public boolean register(User newUser){
         boolean retValue = false;
-        if (userExist(userName) == false) {
+        if (userExist(newUser.getUserName()) == false) {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
             EntityManager em = emf.createEntityManager();
-            User newUser = new User();
             em.getTransaction().begin();
-            newUser.setFirstName(firstName);
-            newUser.setLastName(lastName);
-            newUser.setEmail(email);
-            newUser.setPassword(password);
-            newUser.setRole(role);
-            newUser.setUserName(userName);
             em.persist(newUser);
             em.getTransaction().commit();
             em.close();
             emf.close();
-            if(userExist(userName)){
+            if(userExist(newUser.getUserName())){
                 retValue = true;
             }
         }
