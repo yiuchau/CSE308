@@ -66,6 +66,7 @@
             <li><a href="./moreSearch.html">More Search</a> </li>
           </ul>
         </li>
+        <li><a>Help<a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
