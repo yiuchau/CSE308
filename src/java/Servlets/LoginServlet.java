@@ -44,19 +44,24 @@ public class LoginServlet extends HttpServlet {
             out.println("<head>");     
             out.println("</head>");
             out.println("<body>");
-        UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
-        String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
-        if(retValue.equals("Success")){
-            System.out.println("Successfully logged in: " + userManager.getUser().getUserName());
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
-            dispatcher.forward(request, response);
-        }
-        else{
-            out.println("<span style='color:red'>"+retValue+"</span>");
-        }
-        out.println("</body>");
-        out.println("</html>");
-        }
+            HttpSession session = request.getSession();
+            UserManager userManager = (UserManager) session.getAttribute("userManager");
+            String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
+            if(retValue.equals("Success")){
+                System.out.println("Successfully logged in: " + userManager.getUser().getUserName());
+                
+                User loggedInUser = userManager.getUser(); 
+                session.setAttribute("loggedInUser", loggedInUser);
+                
+                RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
+                dispatcher.forward(request, response);
+            }
+            else{
+                out.println("<span style='color:red'>"+retValue+"</span>");
+            }
+            out.println("</body>");
+            out.println("</html>");
+            }
     }
 
 
