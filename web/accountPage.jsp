@@ -14,6 +14,14 @@
                 alert("Click OK to edit your account");
                 window.location = "./editAccount.jsp";
             }
+            function deleteAccount(){
+                alert("Click OK to delete your account");
+                window.location = "http://localhost:8080/308code/DeleteAccountServlet";
+            }
+             function linkAccount(){
+                alert("Click OK to link your account. Build later");
+            }
+            
         </script>
     </head>
     <jsp:include page="memberHeader.jsp" />
