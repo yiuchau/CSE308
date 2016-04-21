@@ -66,7 +66,6 @@ public class UserManager implements Serializable{
         return u != null;
     }
 
-    
     public void signOut(){
         this.user = null;
     }
@@ -85,7 +84,7 @@ public class UserManager implements Serializable{
         emf.close();
         setUser(current);
     }
-    
+    //delete user account
     public void remove(String userName){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
         EntityManager em = emf.createEntityManager();
