@@ -48,6 +48,7 @@ public class BookPageServlet extends HttpServlet {
             // something something get item from item manager to generate book page
             UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
             // something something get user from user manager to generate book page
+            
             RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/guestBookPage.jsp");
             dispatcher.forward(request, response);
             out.println("</body>");
