@@ -73,11 +73,11 @@ public class UserManager implements Serializable{
         emf.close();
         return u != null;
     }
-<<<<<<< HEAD
+
     
     public void signOut(){
         this.user = null;
-=======
+    }
     //update user information
     public void update(String newFName,String newLName,String newEmail,String newPassword){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
@@ -92,7 +92,7 @@ public class UserManager implements Serializable{
         em.close();
         emf.close();
         setUser(current);
->>>>>>> origin/master
+
     }
 
 }
