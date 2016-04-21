@@ -40,9 +40,9 @@
       <ul class="nav navbar-nav"> 
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Catalog<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="./eBook.html">eBook</a> </li>
-            <li><a href="./AudioBook.html">Audiobook</a> </li>
-            <li><a href="./Video.html">Video</a> </li>
+            <li><a href="./eBooks.jsp">eBook</a> </li>
+            <li><a href="./audiobooks.jsp">Audiobook</a> </li>
+            <li><a href="./videos.jsp">Video</a> </li>
             <li role="separator" class="divider"></li>
             <li><a href="./moreTypePage.html">More type</a> </li>
           </ul>
@@ -59,9 +59,9 @@
         <li><a href="sign/signUp.jsp">Account Registration</a> </li>
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Advance Search <span class="caret"></span></a>
           <ul class="dropdown-menu">
-           <li><a href="./popularest.html">the popularest</a> </li>
-            <li><a href="./newRelease.html">New Releases</a> </li>
-            <li><a href="./Price.html">TopHolds</a> </li>
+           <li><a href="./mostPopular.jsp">Most Popular</a> </li>
+            <li><a href="./newReleases.jsp">New Releases</a> </li>
+            <li><a href="./topHolds.jsp">TopHolds</a> </li>
             <li role="separator" class="divider"></li>
             <li><a href="./moreSearch.html">More Search</a> </li>
           </ul>
