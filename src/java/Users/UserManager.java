@@ -92,7 +92,17 @@ public class UserManager implements Serializable{
         em.close();
         emf.close();
         setUser(current);
-
+    }
+    
+    public void remove(String userName){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction( ).begin( );
+        User current=em.find(User.class, getUser().getUserName());
+        em.remove( current );
+        em.getTransaction( ).commit( );
+        em.close( );
+        emf.close( );
     }
 
 }
