@@ -19,7 +19,7 @@ public class UserManager {
      */
     public String login(String username, String password) {
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
         EntityManager em = emf.createEntityManager();
 
         String retValue;
@@ -41,7 +41,7 @@ public class UserManager {
             String firstName, String lastName, String email) {
         boolean retValue = false;
         if (userExist(userName) == false) {
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
             EntityManager em = emf.createEntityManager();
             User newUser = new User();
             em.getTransaction().begin();
@@ -72,7 +72,7 @@ public class UserManager {
 
     //check if userName is already taken
     public boolean userExist(String userName) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
         EntityManager em = emf.createEntityManager();
         User u = em.find(User.class, userName);
         em.close();
