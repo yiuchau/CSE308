@@ -46,9 +46,9 @@
         <image id="ratingStar3" value = "3" onclick= "sendReview(3)" onmouseover = "hoverReview(3)" onmouseout ="unhoverReview(3)" src="images/emptyStar.png"> </image>
         <image id="ratingStar4" value = "4" onclick= "sendReview(4)" onmouseover = "hoverReview(4)" onmouseout ="unhoverReview(4)" src="images/emptyStar.png"> </image>
         <image id="ratingStar5" value = "5" onclick= "sendReview(5)" onmouseover = "hoverReview(5)" onmouseout ="unhoverReview(5)" src="images/emptyStar.png"> </image>
-        <p class="text-center"><a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Edit Rating</a>
-        <p class="text-center"><a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Remove Rating</a>
         </p>
+        <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Edit Rating</a>
+        <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Remove Rating</a>
     <div class="col-sm-4 col-md-4 col-xs-6 col-lg-6">
       <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
         <div class="caption">
