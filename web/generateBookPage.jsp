@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/custom.css">
+        <script src="js/custom.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -39,11 +40,11 @@
   <div class="col-lg-offset-2 col-lg-8">
     <h2 class="text-center">Book Name</h2>
     <div class="thumbnail" style="border:none;"> 
-        <a id = "ratingStar">&star; </a>
-        <a id = "ratingStar">&star; </a>
-        <a id = "ratingStar">&star; </a>
-        <a id = "ratingStar">&star; </a>
-        <a id = "ratingStar">&star; </a>
+        <a id="ratingStar" value = "1" onclick= "sendReview(1)" onmouseover = "hoverReview(1)">&star; </a>
+        <a id="ratingStar" value = "2" onclick= "sendReview(2)" onmouseover = "hoverReview(2)">&star; </a>
+        <a id="ratingStar" value = "3" onclick= "sendReview(3)" onmouseover = "hoverReview(3)">&star; </a>
+        <a id="ratingStar" value = "4" onclick= "sendReview(4)" onmouseover = "hoverReview(4)">&star; </a>
+        <a id="ratingStar" value = "5" onclick= "sendReview(5)" onmouseover = "hoverReview(5)">&star; </a>
     <div class="col-sm-4 col-md-4 col-xs-6 col-lg-6">
       <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
         <div class="caption">

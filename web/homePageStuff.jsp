@@ -9,7 +9,6 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
     </head>
     <body>
         <div class="container">
@@ -51,7 +50,7 @@
       <div class="row">
         <div class="col-lg-2 col-md-3 col-sm-3 col-xs-2"><img class="img-circle" alt="Free Shipping" src="images/smile.jpg"></div>
         <div class="col-lg-6 col-md-9 col-sm-9 col-xs-9">
-          <h4>Easy Dowload</h4>
+          <h4>Easy Download</h4>
         </div>
       </div>
     </div>
