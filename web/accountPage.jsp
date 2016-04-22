@@ -9,29 +9,17 @@
 
 <html>
     <head>
-        <script>
-            function editAccount(){
-                alert("Click OK to edit your account");
-                window.location = "./editAccount.jsp";
-            }
-            function deleteAccount(){
-                alert("Click OK to delete your account");
-                window.location = "http://localhost:8080/308code/DeleteAccountServlet";
-            }
-             function linkAccount(){
-                alert("Click OK to link your account. Build later");
-            }
-            
-        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="js/accountSettings.js"></script>
     </head>
     <jsp:include page="memberHeader.jsp" />
     <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
     <body>
         <h2 class="text-center">Account settings 
             <p>
-                <input type="button" value="Edit" onclick="editAccount()">
-                <input type="button" value="Delete Account" onclick="deleteAccount()">
-                <input type="button" value="LinkAccount" onclick="linkAccount()">
+                <input type="button" class = "editAccount" value = "Edit Account"> 
+                <input type="button" class = "deleteAccount" value = "Delete Account"> 
+                <input type="button" class = "linkAccount" value = "Link Account"> 
             </p>
         </h2>
         <div class="container"> 

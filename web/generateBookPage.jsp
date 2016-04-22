@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/custom.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="js/bookPage.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
