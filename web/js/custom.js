@@ -4,10 +4,6 @@
  * and open the template in the editor.
  */
 
-function sendReview(value) {
-    window.alert(value + " STARS!!");
-}
-
 function hoverReview(value){
     switch (value){
         case 1:
@@ -65,3 +61,16 @@ function unhoverReview(value){
             document.getElementById("ratingStar5").src="images/emptyStar.png";
 }
 }
+
+$(document).ready(function(){
+    $(".ratingStars").children("#ratingStar").click(function(){	
+	alert($(this).attr("value") + "Stars!");
+	});
+});
+
+$(document).ready(function(){
+    $(".ratingStars").children("#ratingStar").mouseenter(function(){	
+	$( "div" ).each(function( i ) {
+	});
+})
+});
