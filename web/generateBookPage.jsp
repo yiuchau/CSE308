@@ -83,7 +83,7 @@
    <div>
    
   <a class="fb-share-button" 
-		data-href="https://www.facebook.com/" 
+		data-href="http://localhost:8080/308code/guestBookPage.jsp" 
                 data-layout="button_count"> </a>     
   <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
   <a href="https://www.pinterest.com/pin/create/button/">
