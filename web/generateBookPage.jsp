@@ -48,8 +48,8 @@
         <image id="ratingStar" value = "4" src="images/emptyStar.png"> </image>
         <image id="ratingStar" value = "5" src="images/emptyStar.png"> </image>
         </p>
-        <a class=" editRating btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Edit Rating</a>
-        <a class="removeRating btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Remove Rating</a>
+        <a class="editRating btn btn-primary" role="button" style="width: 120px; height: 30px;"><span  aria-hidden="true" ></span>Edit Rating</a>
+        <a class="removeRating btn btn-primary" role="button" style="width: 120px; height: 30px;"><span  aria-hidden="true" ></span>Remove Rating</a>
     <div class="col-sm-4 col-md-4 col-xs-6 col-lg-6">
       <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
         <div class="caption">
