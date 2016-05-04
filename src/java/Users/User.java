@@ -20,7 +20,6 @@ public class User {
     //@GeneratedValue(strategy = GenerationType.AUTO)
     private String username;
     private String password; //might change later
-    //private String rePassword;
     private String firstName;
     private String lastName;
     private String email;
