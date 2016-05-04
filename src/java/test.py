@@ -4,11 +4,16 @@ import sys
 
 #isbn, title, authors,publisher,releaseDate,pagecount,categories,description, previewLink
 def getDetails(isbn,target):
-  
+	global number
 	url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn
 	response = urllib.urlopen(url)
 	data = json.loads(response.read())
 	if(data.get('items','none')!="none"):
+
+        #id
+		target.write(str(number))
+		target.write("\t")
+		number=number+1  #increase 1
 
 		target.write(isbn)
 		target.write("\t")
@@ -96,12 +101,14 @@ def getDetails(isbn,target):
 		target.write("\n")
 
 fileName=str(sys.argv[1]) #read old file name
+number=int(sys.argv[2]) #read old file name
 f1=open(fileName)
-target = open("details.txt", 'w')
+target = open("details1.txt", 'w')
 for line in f1:
 	line = line.replace('\n', '')
 	#print line
 	getDetails(line,target)
+
 target.close()
 f1.close()
 
