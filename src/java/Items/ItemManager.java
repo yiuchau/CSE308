@@ -178,52 +178,15 @@ public class ItemManager {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
         Query query;
-        List<Item> list = null;
-        //recommendations for guest
-        if(current==null){
-            query = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc");
-            list=(List<Item>)query.getResultList( );
-        }
-        else{
-             Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.releaseDate Desc");
-             list=(List<Item>)query1.getResultList( );
-        }
-        /**
-        //recommendations for member
-        else{
-            List<CheckoutList> checkouts=getCheckoutList();
-            //user hasn't borrowed a book yet
-            
-            if(checkouts.isEmpty()){
-                query = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc");
-                list=(List<Item>)query.getResultList( );
-            }
-            
-            else{
-                List<String> category = new ArrayList<>();
-                for(CheckoutList e:checkouts ) {
-                    category.add(getInformationByISBN(e.getISBN()).getCategories());
-                }
-                for(String c:category ) {
-                    Query tempQuery = em.createQuery("Select e " + "from Item e " + "where e.categories="+c);
-                    List<Item> tempList=(List<Item>)tempQuery.getResultList( );
-                    list.addAll(tempList);
-                }
-            }
-        }
+        query = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc");
+        List<Item> list=(List<Item>)query.getResultList( );
         for( Item e:list ) {
            if("none".equals(e.getImageURL())){
                e.setImageURL("images/100X125.gif");
            }
-           
-           
-           addItem(e);
-           
         }
-*/
         em.close();
         emf.close();
-        
         return list;
     }
     
