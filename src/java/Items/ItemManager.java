@@ -205,7 +205,6 @@ public class ItemManager {
     public Item getInformationByISBN(String ISBN){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
-        //ISBN="0439136369";
         try{
             Query query=em.createQuery("Select e from  Item e Where e.isbn= '"+ISBN+"'");
             Item item=(Item)query.getSingleResult();
@@ -220,4 +219,6 @@ public class ItemManager {
             return null;
         }   
     }
+    
+    
 }
