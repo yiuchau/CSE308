@@ -23,11 +23,9 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String phoneNumber;
     private int role; //1:member,2:admin,3:publisher
-    //private Address address;
-  //  @ManyToMany(targetEntity=Item.class)
-   // private Set<Item> borrowedItems;
-    
+   
     public void setUserName(String username){
         this.username=username;
     }
@@ -64,6 +62,10 @@ public class User {
     public int getRole(){
         return role;
     }
-    public void sendMessage() {
-    }  
+    public String getPhoneNumber(){
+        return phoneNumber;
+    }
+    public void setPhoneNumber(String phoneNumber){
+        this.phoneNumber=phoneNumber;
+    }
 }

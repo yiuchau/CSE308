@@ -36,8 +36,14 @@
             </tr>
             <tr>
                 <td height="50">	
+                    <label>New Phone Number</label>
+                    <input type="text" value="${userManager.user.phoneNumber}" id="customer_phoneNumber" name="customerphoneNumber" tabindex="1" >
+                </td>
+            </tr>
+            <tr>
+                <td height="50">	
                     <label>New password</label>
-                    <input type="text" value="${userManager.user.password}" id="customer_password" name="customerPassword" tabindex="1" >
+                    <input type="password" value="${userManager.user.password}" id="customer_password" name="customerPassword" tabindex="1" >
                 </td>
             </tr>
             </tbody>

@@ -25,6 +25,9 @@
                 <label for="email" class="sr-only">Email address</label>
                 <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <div>&nbsp;</div>
+                <label for="phoneNumber" class="sr-only">Phone Number</label>
+                <input name="phoneNumber" id="phoneNumber" class="form-control" placeholder="Phone Number" required autofocus>
+                <div>&nbsp;</div>
                 <label for="password" class="sr-only">Password</label>
                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"  required>
                 <div>&nbsp;</div>

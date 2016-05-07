@@ -43,7 +43,8 @@ public class EditAccountServlet extends HttpServlet {
             String newLName=request.getParameter("customerLName");
             String newEmail=request.getParameter("customerEmail");
             String newPassword=request.getParameter("customerPassword");
-            userManager.update(newFName,newLName,newEmail,newPassword);
+            String newPhoneNumber=request.getParameter("customerphoneNumber");
+            userManager.update(newFName,newLName,newEmail,newPassword,newPhoneNumber);
             RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/accountPage.jsp");
             dispatcher.forward(request, response);
             out.println("</body>");

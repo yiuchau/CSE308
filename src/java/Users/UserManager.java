@@ -67,7 +67,7 @@ public class UserManager implements Serializable{
     }
 
     //update user information
-    public void update(String newFName,String newLName,String newEmail,String newPassword){
+    public void update(String newFName,String newLName,String newEmail,String newPassword,String newPhoneNumber){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
         EntityManager em = emf.createEntityManager();
         em.getTransaction( ).begin( );
@@ -76,6 +76,7 @@ public class UserManager implements Serializable{
         current.setLastName(newLName);
         current.setEmail(newEmail);
         current.setPassword(newPassword);
+        current.setPhoneNumber(newPhoneNumber);
         em.getTransaction( ).commit( );
         em.close();
         emf.close();

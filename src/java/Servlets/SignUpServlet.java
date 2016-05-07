@@ -38,6 +38,7 @@ public class SignUpServlet extends HttpServlet {
         newUser.setUserName(request.getParameter("UserID"));
         newUser.setPassword(request.getParameter("password"));
         newUser.setEmail(request.getParameter("email"));
+        newUser.setPhoneNumber(request.getParameter("phoneNumber"));
         String role = request.getParameter("role");
         switch (role) {
             case "member":
