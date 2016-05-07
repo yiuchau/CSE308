@@ -10,7 +10,7 @@ public class UserManager implements Serializable{
     User user;
 
     public String login(String username, String password) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPUUser");
         EntityManager em = emf.createEntityManager();
         String retValue;
         User user = em.find(User.class, username);
@@ -30,7 +30,7 @@ public class UserManager implements Serializable{
     public boolean register(User newUser){
         boolean retValue = false;
         if (userExist(newUser.getUserName()) == false) {
-            EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+            EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPUUser");
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
             em.persist(newUser);
@@ -54,7 +54,7 @@ public class UserManager implements Serializable{
 
     //check if userName is already taken
     public boolean userExist(String userName) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPUUser");
         EntityManager em = emf.createEntityManager();
         User u = em.find(User.class, userName);
         em.close();
@@ -68,7 +68,7 @@ public class UserManager implements Serializable{
 
     //update user information
     public void update(String newFName,String newLName,String newEmail,String newPassword,String newPhoneNumber){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPUUser");
         EntityManager em = emf.createEntityManager();
         em.getTransaction( ).begin( );
         User current=em.find(User.class, getUser().getUserName());
@@ -84,7 +84,7 @@ public class UserManager implements Serializable{
     }
     //delete user account
     public void remove(String userName){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPUUser");
         EntityManager em = emf.createEntityManager();
         em.getTransaction( ).begin( );
         User current=em.find(User.class, getUser().getUserName());

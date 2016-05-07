@@ -143,7 +143,7 @@ public class ItemManager {
     }
     
     public List<Item> getMostPopular(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
         EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("Select e " + "from Item e " + "Order by e.averageRating Desc");
         List<Item> rs = (List<Item>)query.getResultList( );
@@ -160,7 +160,7 @@ public class ItemManager {
     }
     
     public List<Item> getNewEBooks(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
         EntityManager em = emf.createEntityManager();
         Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.releaseDate Desc");
         List<Item> list1=(List<Item>)query1.getResultList( );
@@ -176,7 +176,7 @@ public class ItemManager {
     }
     
     public List<Item> getRecommendations(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
         EntityManager em = emf.createEntityManager();
         Query query;
         query = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc");
@@ -192,7 +192,7 @@ public class ItemManager {
     }
     
     public List<CheckoutList> getCheckoutList(User user){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU2" );
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUCheckout" );
         EntityManager em = emf.createEntityManager();
         String userName=user.getUserName();
         Query query1=em.createQuery("Select e " + "from  CheckoutList e " + "Where e.userName= '"+userName+"'");
@@ -203,7 +203,7 @@ public class ItemManager {
     }
     
     public Item getInformationByISBN(String ISBN){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
         EntityManager em = emf.createEntityManager();
         try{
             Query query=em.createQuery("Select e from  Item e Where e.isbn= '"+ISBN+"'");
@@ -221,7 +221,7 @@ public class ItemManager {
     }
     
     public List<Holds> getHolds(User user){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU3" );
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUHolds" );
         EntityManager em = emf.createEntityManager();
         String userName=user.getUserName();
         Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.userName= '"+userName+"'");

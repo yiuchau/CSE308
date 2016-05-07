@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   
-   <persistence-unit name="308ProjectPU" transaction-type="RESOURCE_LOCAL">
+   <persistence-unit name="308ProjectPUItem" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Items.Item</class>
     <properties>
@@ -16,7 +16,7 @@
     </properties>
   </persistence-unit>
   
-  <persistence-unit name="308ProjectPU1" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="308ProjectPUUser" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Users.User</class>
     <properties>
@@ -31,7 +31,7 @@
     </properties>
   </persistence-unit>
   
-  <persistence-unit name="308ProjectPU2" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="308ProjectPUCheckout" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Items.CheckoutList</class>
     <properties>
@@ -46,7 +46,7 @@
     </properties>
   </persistence-unit>
   
-  <persistence-unit name="308ProjectPU3" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="308ProjectPUHolds" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Items.Holds</class>
     <properties>
