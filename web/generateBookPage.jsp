@@ -55,7 +55,7 @@
         <div class="caption">
           <h3>Author</h3>
           <p>Review of the book.....</p>
-          <p><a href="#" class="btn btn-primary" role="button" onClick="window.open('./memberBookPage.jsp');" ><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" ></span>Sample</a></p>
+          <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a></p>
         </div>
       </div>
     </div>
@@ -124,75 +124,7 @@
   <div class="row text-center">
   <div class="row text-center">
   
-  <h2 class="text-center"> The Recommended Books </h2>
-  </div>
-  
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-      <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-      <div class="thumbnail"> <img src="images/book2.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download </a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-      <div class="thumbnail"> <img src="images/book3.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6 hidden-lg hidden-md hidden-sm">
-      <div class="thumbnail"> <img src="images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row text-center hidden-xs">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class="thumbnail"> <img src="images/book4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class="thumbnail"> <img src="images/5.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class="thumbnail"> <img src="images/6.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <nav class="text-center">
     <!-- Add class .pagination-lg for larger blocks or .pagination-sm for smaller blocks-->
     <ul class="pagination">
@@ -206,5 +138,25 @@
     </ul>
   </nav>
 </div>
+
+      <div class="modal fade" id="bookSample" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Book Sample</h4>
+        </div>
+     
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </body>
 </html>
