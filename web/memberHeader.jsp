@@ -63,9 +63,9 @@
             <li><a href="./checkouts.jsp">Checkouts</a> </li>
             <li><a href="./listPage.html">Account Summary</a> </li>
             <li><a href="./holds.jsp">Holds</a> </li>
-            <li><a href="./recommendPage.html">Recommendations</a> </li>
             <li><a href="./recommendPage.html">Wishlist</a> </li>
-            <li><a href="./inboxPage.html">My Rated Titles</a> </li>
+            <li><a href="#">My Rated Titles</a> </li>
+            <li><a href="#">Recommended Books</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="./homePage.jsp" onclick="userManager.signOut()">Sign out</a> </li>
         </ul>
