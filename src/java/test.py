@@ -14,7 +14,9 @@ def getDetails(isbn,target):
 		target.write(str(number))
 		target.write("\t")
 		number=number+1  #increase 1
+		target.write("\t")
 
+        
 		target.write(isbn)
 		target.write("\t")
 
@@ -98,12 +100,21 @@ def getDetails(isbn,target):
 			target.write("none")
 		else:
 			target.write(data['items'][0]["volumeInfo"]["previewLink"].encode('utf-8'))
+		target.write("\t")
+		
+		#imageURL
+		if((data['items'][0]["volumeInfo"].get("imageLinks","none"))=="none"):
+			print "no image"
+			target.write("none")
+		else:
+			target.write(data['items'][0]["volumeInfo"]["imageLinks"]["thumbnail"].encode('utf-8'))
 		target.write("\n")
+		
 
 fileName=str(sys.argv[1]) #read old file name
 number=int(sys.argv[2]) #read old file name
 f1=open(fileName)
-target = open("details1.txt", 'w')
+target = open("details4.txt", 'w')
 for line in f1:
 	line = line.replace('\n', '')
 	#print line
