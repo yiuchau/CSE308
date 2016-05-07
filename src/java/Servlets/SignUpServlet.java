@@ -8,7 +8,6 @@ package Servlets;
 import Users.User;
 import Users.UserManager;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,44 +31,35 @@ public class SignUpServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");     
-            out.println("</head>");
-            out.println("<body>");
-            User b= new User();
-            b.setFirstName(request.getParameter("fName"));
-            b.setLastName(request.getParameter("LName"));
-            b.setUserName(request.getParameter("UserID"));
-            b.setPassword(request.getParameter("password"));
-            b.setEmail(request.getParameter("email"));
-            String role=request.getParameter("role");
-            switch (role) {
-                case "member":
-                    b.setRole(1);
-                    break;
-                case "admin":
-                    b.setRole(2);
-                    break;
-                default:
-                    b.setRole(3);
-                    break;
-            }
-            // call register method
-            UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
-            if(userManager.register(b)){
-                RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/homePage.jsp");
-                dispatcher.forward(request, response);
-            }
-            else{
-                out.println("<span style='color:red'>* Username exists or database error. Please choose another username.</span>");
-           }
-            out.println("</body>");
-            out.println("</html>");
+
+        User newUser = new User();
+        newUser.setFirstName(request.getParameter("fName"));
+        newUser.setLastName(request.getParameter("LName"));
+        newUser.setUserName(request.getParameter("UserID"));
+        newUser.setPassword(request.getParameter("password"));
+        newUser.setEmail(request.getParameter("email"));
+        String role = request.getParameter("role");
+        switch (role) {
+            case "member":
+                newUser.setRole(1);
+                break;
+            case "admin":
+                newUser.setRole(2);
+                break;
+            case "publisher":
+                newUser.setRole(3);
+                break;
         }
+        // call register method
+        UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
+
+        if (userManager.register(newUser)) {
+            request.getRequestDispatcher("/homePage.jsp").forward(request, response);
+        } else {
+            request.setAttribute("errorMessage", "Username exists or database error. Try again.\n");
+            request.getRequestDispatcher("/sign/signUp.jsp").forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
