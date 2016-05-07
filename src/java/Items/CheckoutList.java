@@ -38,10 +38,10 @@ public class CheckoutList implements Serializable {
     public void setId(int id) {
         this.id = id;
     }
-    public String getISBN(){
+    public String getIsbn(){
         return isbn;
     }
-    public void setiSBN(String isbn){
+    public void setIsbn(String isbn){
         this.isbn=isbn;
     }
     public String getUserName(){

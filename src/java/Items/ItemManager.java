@@ -9,6 +9,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
@@ -141,7 +142,7 @@ public class ItemManager {
                 em.close();
     }
     
-    public List getMostPopular(){
+    public List<Item> getMostPopular(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
         Query query = em.createQuery("Select e " + "from Item e " + "Order by e.averageRating Desc");
@@ -158,7 +159,7 @@ public class ItemManager {
         return rs;
     }
     
-    public List getNewEBooks(){
+    public List<Item> getNewEBooks(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
         Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.releaseDate Desc");
@@ -174,7 +175,7 @@ public class ItemManager {
        return list1;
     }
     
-    public List getRecommendations(){
+    public List<Item> getRecommendations(){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
         Query query;
@@ -190,11 +191,11 @@ public class ItemManager {
         return list;
     }
     
-    public List getCheckoutList(User user){
+    public List<CheckoutList> getCheckoutList(User user){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU2" );
         EntityManager em = emf.createEntityManager();
         String userName=user.getUserName();
-        Query query1=em.createQuery("Select e " + "from  CheckoutList e " + "Where e.userName="+userName);
+        Query query1=em.createQuery("Select e " + "from  CheckoutList e " + "Where e.userName= '"+userName+"'");
         List<CheckoutList> list=(List<CheckoutList>)query1.getResultList( );
         em.close();
         emf.close();
@@ -204,10 +205,19 @@ public class ItemManager {
     public Item getInformationByISBN(String ISBN){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
-        Query query=em.createQuery("Select e " + "from  Item e " + "Where e.isbn="+ISBN);
-        Item item=(Item)query.getSingleResult();
-        em.close();
-        emf.close();
-        return item;
+        //ISBN="0439136369";
+        try{
+            Query query=em.createQuery("Select e from  Item e Where e.isbn= '"+ISBN+"'");
+            Item item=(Item)query.getSingleResult();
+            if("none".equals(item.getImageURL())){
+               item.setImageURL("images/100X125.gif");
+            }
+            em.close();
+            emf.close();
+            return item;
+        }catch(NoResultException e) {
+            System.out.println("not found");
+            return null;
+        }   
     }
 }
