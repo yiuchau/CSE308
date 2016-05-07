@@ -7,7 +7,7 @@
 
 <<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<jsp:useBean id="book" class="Items.ItemManager" scope="application" />
+<jsp:useBean id="itemManager" class="Items.ItemManager" scope="session"/>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html lang="en">
     <head>
@@ -23,7 +23,7 @@
         <div class="container">
             <h2 class="text-center">Most popular</h2>
             <div class="row text-center">   
-                <c:forEach items="${book.mostPopular}" var="item" begin="0" end="7">
+                <c:forEach items="${itemManager.mostPopular}" var="item" begin="0" end="7">
                     <div class="col-sm-3">
                         <div class="thumbnail "> <a href="./guestBookPage.jsp"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                             <div class="caption">
@@ -37,7 +37,7 @@
             
             <h2 class="text-center">New eBooks</h2>
             <div class="row text-center">   
-                <c:forEach items="${book.newEBooks}" var="item" begin="0" end="7">
+                <c:forEach items="${itemManager.newEBooks}" var="item" begin="0" end="7">
                     <div class="col-sm-3">
                         <div class="thumbnail "> <a href="./guestBookPage.jsp"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                             <div class="caption">
@@ -52,7 +52,7 @@
             <!-- Recommendations for guests are books that have most totalCopies -->
              <h2 class="text-center">Recommendations</h2>
             <div class="row text-center">   
-                <c:forEach items="${book.recommendations}" var="item" begin="0" end="7">
+                <c:forEach items="${itemManager.recommendations}" var="item" begin="0" end="7">
                     <div class="col-sm-3">
                         <div class="thumbnail "> <a href="./guestBookPage.jsp"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                             <div class="caption">

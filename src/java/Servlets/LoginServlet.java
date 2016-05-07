@@ -15,55 +15,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Brian Lee
- */
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+
 public class LoginServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");     
-            out.println("</head>");
-            out.println("<body>");
-        UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
+        
+        UserManager userManager = (UserManager)request.getSession().getAttribute("userManager");
         String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
+        
         if(retValue.equals("Success")){
-            RequestDispatcher dispatcher ;
             switch (userManager.getUser().getRole()) {
                 case 1:
-                    dispatcher = getServletContext().getRequestDispatcher("/homePageMember.jsp");
+                    request.getRequestDispatcher("/homePageMember.jsp").forward(request, response);
                     break;
                 case 2:
-                    dispatcher = getServletContext().getRequestDispatcher("/adminHomepage.jsp");
+                    request.getRequestDispatcher("/adminHomepage.jsp").forward(request, response);
                     break;
-                default:
-                    dispatcher = getServletContext().getRequestDispatcher("/PublisherHomepage.jsp");
+                case 3:
+                    request.getRequestDispatcher("/PublisherHomepage.jsp").forward(request, response);
                     break;
                 }
-            dispatcher.forward(request, response);
         }
         else{
-            out.println("<span style='color:red'>"+retValue+"</span>");
+            request.setAttribute("errorMessage", retValue);
+            request.getRequestDispatcher("/sign/signIn.jsp").forward(request, response);
         }
-        out.println("</body>");
-        out.println("</html>");
-        }
+
     }
 
 
