@@ -42,9 +42,9 @@
       <ul class="nav navbar-nav"> 
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Catalog<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="./eBook.html">eBook</a> </li>
-            <li><a href="./AudioBook.html">Audiobook</a> </li>
-            <li><a href="./Video.html">Video</a> </li>
+            <li><a href="./eBooks.jsp">eBook</a> </li>
+            <li><a href="./audiobooks.jsp">Audiobook</a> </li>
+            <li><a href="./videos.jsp">Video</a> </li>
             <li role="separator" class="divider"></li>
             <li><a href="./moreTypePage.html">More type</a> </li>
           </ul>
@@ -59,81 +59,31 @@
       <ul class="nav navbar-nav navbar-right hidden-sm">
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${userManager.user.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
-            <li><a href="./accountPage.jsp">Account settings</a> </li>
-            <li><a href="./listPage.html">Collection</a> </li>
-            <li><a href="./listPage.html">Downloads</a> </li>
-             <li><a href="./unreadPage.html">Announcements</a> </li>
+            <li><a href="./accountPage.jsp">Account Settings</a> </li>
+            <li><a href="./myCollection.jsp">Checkouts</a> </li>
+            <li><a href="./listPage.html">Account Summary</a> </li>
+            <li><a href="./unreadPage.html">Holds</a> </li>
             <li><a href="./recommendPage.html">Recommendations</a> </li>
-             <li><a href="./inboxPage.html">Inbox</a> </li>
+            <li><a href="./recommendPage.html">Wishlist</a> </li>
+            <li><a href="./inboxPage.html">My Rated Titles</a> </li>
             <li role="separator" class="divider"></li>
             <li><a href="./homePage.jsp" onclick="userManager.signOut()">Sign out</a> </li>
         </ul>
+              
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Advance Search <span class="caret"></span></a>
           <ul class="dropdown-menu">
-           <li><a href="./popularest.html">Most Popular</a> </li>
-            <li><a href="./newRelease.html">New Releases</a> </li>
-            <li><a href="./Price.html">Top Holds</a> </li>
+           <li><a href="./mostPopular.jsp">Most Popular</a> </li>
+            <li><a href="./newReleases.jsp">New Releases</a> </li>
+            <li><a href="./topHolds.jsp">Top Holds</a> </li>
             <li role="separator" class="divider"></li>
             <li><a href="./moreSearch.html">Advanced Search</a> </li>
           </ul>
         </li>
+        <li><a>Help<a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
   </div>
   <!-- /.container-fluid --> 
 </nav>
-<div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div id="carousel1" class="carousel slide">
-          <ol class="carousel-indicators">
-            <li data-target="#carousel1" data-slide-to="0" class="active"> </li>
-            <li data-target="#carousel1" data-slide-to="1" class=""> </li>
-            <li data-target="#carousel1" data-slide-to="2" class=""> </li>
-          </ol>
-          <div class="carousel-inner">
-            <div class="item"> <img class="img-responsive" src="images/header3.jpg" alt="thumb">
-              <div class="carousel-caption"> Welcome to Cedar Library ! </div>
-            </div>
-            <div class="item active"> <img class="img-responsive" src="images/header.jpg" alt="thumb">
-              <div class="carousel-caption"> Welcome to Cedar Library ! </div>
-            </div>
-            <div class="item"> <img class="img-responsive" src="images/EbookSectionHeader.jpg" alt="thumb">
-              <div class="carousel-caption"> Welcome to Cedar Library ! </div>
-            </div>
-          </div>
-          <a class="left carousel-control" href="#carousel1" data-slide="prev"><span class="icon-prev"></span></a> <a class="right carousel-control" href="#carousel1" data-slide="next"><span class="icon-next"></span></a></div>
-      </div>
-</div>
-    <hr>
-  </div>
-<div class="container">
-  <div class="row">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-      <div class="row">
-        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-2"><img class="img-circle" alt="Free Shipping" src="images/smile.jpg"></div>
-        <div class="col-lg-6 col-md-9 col-sm-9 col-xs-9">
-          <h4>Choose Cedar :) </h4>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-      <div class="row">
-        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-2"><img class="img-circle" alt="Free Shipping" src="images/smile.jpg"></div>
-        <div class="col-lg-6 col-md-9 col-sm-9 col-xs-9">
-          <h4>Easy Dowload</h4>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-      <div class="row">
-        <div class="col-lg-2 col-md-3 col-sm-3 col-xs-2"><img class="img-circle" alt="Free Shipping" src="images/smile.jpg"></div>
-        <div class="col-lg-6 col-md-9 col-sm-9 col-xs-9">
-          <h4>Free for Everything</h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 </html>

@@ -14,13 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER_TABLE")
-public class User implements Serializable {
+public class User {
  
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     private String username;
     private String password; //might change later
-    //private String rePassword;
     private String firstName;
     private String lastName;
     private String email;

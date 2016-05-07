@@ -1,3 +1,10 @@
+<%-- 
+    Document   : adminHomepage
+    Created on : Apr 21, 2016, 1:37:37 AM
+    Author     : yixxie
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html>
 <head>
@@ -19,17 +26,18 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar2"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-      <a class="navbar-brand" href="./homepageMember_publisher.html">Cedar</a></div>
+      <a class="navbar-brand" href="./homepageMember_admin.html">Cedar</a></div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="defaultNavbar2">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Publisher Home<span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="#">Admin Home<span class="sr-only">(current)</span></a></li>
         <li><a href="#">Link</a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catalog<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="#">eBook</a></li>
             <li><a href="#">Audiobook</a></li>
             <li><a href="#">Video</a></li>
+            
             <li class="divider"></li>
             <li><a href="#">More type</a></li>
           </ul>
@@ -37,7 +45,7 @@
       </ul>
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Publisher-unique Search">
+          <input type="text" class="form-control" placeholder="Admin Search">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
@@ -45,9 +53,10 @@
         <li><a href="#">Help Menu</a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Options<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Display User Management Center</a></li>
+            <li><a href="importData.html">Import Objects</a></li>
+            <li><a href="displayTicket.html">Display Support Tickets</a></li>
+            
             <li class="divider"></li>
             <li><a href="#">Separated link</a></li>
           </ul>
@@ -63,7 +72,35 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h2 class="panel-title">Publisher-centric Reports</h2>
+          <h2 class="panel-title">Admin Reports</h2>
+        </div>
+         <div class="panel-body">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Popular Books</th>
+                <th># Licenses</th>
+                <th># Loaned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Avatar: The Last Airbender </td>
+                <td>100</td>
+                <td>100</td>
+              </tr>
+              <tr>
+                <td>Mary</td>
+                <td>1520</td>
+                <td>1499</td>
+              </tr>
+              <tr>
+                <td>July</td>
+                <td>55</td>
+                <td>50</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div class="panel-body"> </div>
       </div>
@@ -75,6 +112,7 @@
           <table class="table table-bordered">
             <thead>
               <tr>
+              	<th>Librarian Requester</th>
                 <th>Content ID [Select for Details]</th>
                 <th>Existing</th>
                 <th>No. Requested</th>
@@ -82,19 +120,22 @@
             </thead>
             <tbody>
               <tr>
+              	<td>Annie </td>
                 <td>Avatar: The Last Airbender </td>
                 <td>100</td>
                 <td>15</td>
               </tr>
               <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
+              	<td>Daniel</td>
+                <td>Spooky Town</td>
+                <td>420</td>
+                <td>100</td>
               </tr>
               <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
+              	<td>Samantha</td>
+                <td>April</td>
+                <td>800</td>
+                <td>250</td>
               </tr>
             </tbody>
           </table>

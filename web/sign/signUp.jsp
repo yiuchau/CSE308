@@ -1,3 +1,10 @@
+<%-- 
+    Document   : signIn
+    Created on : Apr 20, 2016, 3:47:45 AM
+    Author     : yixxie
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -51,7 +58,7 @@
         <div>&nbsp;</div>
         
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <div>&nbsp;</div>
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"  required>

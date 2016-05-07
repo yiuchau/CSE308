@@ -1,8 +1,7 @@
 <%-- 
-    Document   : body
-    Created on : Apr 18, 2016, 10:32:17 PM
-    Author     : yixxie
-    (Test only) Page that dynamically generate book image, description (not complete, make changes accoreding to Item class and database)
+    Document   : generateMemberHomepage
+    Created on : Apr 21, 2016, 12:36:43 PM
+    Author     : Brian Lee
 --%>
 
 <<%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,11 +23,11 @@
             <div class="row text-center">   
                 <c:forEach items="${book.list}" var="item">
                     <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-                        <div class="thumbnail"> <a href="http://localhost:8080/308code/BookPageServlet"><img src="${item}" alt="Thumbnail Image 1" class="img-responsive"></a>
+                        <div class="thumbnail"> <a href="./memberBookPage.jsp"><img src="${item}" alt="Thumbnail Image 1" class="img-responsive"></a>
                             <div class="caption">
                                 <h3>Product</h3>
                                 <p>Description of the book.</p>
-                                <p><a href="http://localhost:8080/308code/BookPageServlet" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download </a> </p>
+                                <p><a href="./memberBookPage.jsp" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download </a> </p>
                             </div>
                         </div>
                     </div>

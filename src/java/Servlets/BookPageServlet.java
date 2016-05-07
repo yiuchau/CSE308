@@ -44,17 +44,29 @@ public class BookPageServlet extends HttpServlet {
             out.println("<title>Servlet BookPageServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            ItemManager itemManager = (ItemManager) request.getSession().getAttribute("itemManager");
-            // something something get item from item manager to generate book page
+            String bookName = request.getParameter("bookName");
+            //request.setAttribute("bookName", bookName);
+            
             UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
-            // something something get user from user manager to generate book page
-            RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/guestBookPage.jsp");
+            RequestDispatcher dispatcher;
+            switch (userManager.getUser().getRole()) {
+                case 1:
+                    dispatcher = getServletContext().getRequestDispatcher("./memberBookPage.jsp");
+                    break;
+                case 2:
+                    dispatcher = getServletContext().getRequestDispatcher("./adminBookPage.jsp");
+                    break;
+                case 3:
+                    dispatcher = getServletContext().getRequestDispatcher("./publisherBookPage.jsp");
+                    break;
+                default:
+                    dispatcher = getServletContext().getRequestDispatcher("./guestBookPage.jsp");
+                    break;
+                }
             dispatcher.forward(request, response);
             out.println("</body>");
             out.println("</html>");
-            
         }
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

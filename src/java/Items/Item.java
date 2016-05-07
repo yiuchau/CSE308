@@ -1,177 +1,131 @@
 
 package Items;
 
-import Users.User;
-import java.util.Date;
+
 import java.io.Serializable;
-import java.util.Set;
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
+
 
 
 @Entity
-@Table
+@Table(name = "Item")
 public class Item implements Serializable {
+   
     @Id
-    private Long ISBN;
-    private int type; 
-    //0 ebook, 1 audio, 2 movie        
-    String author;
-    int pages;
-    private String title;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String isbn; 
+    private String title;   
+    private String author;
+    private String publisher;  //if no publisher, "none" in database
+    private String releaseDate;
+    private String pageCount;   //if no pageCount available, "none" in database
+    private String categories;
     private String description;
-    private String publisher;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date releaseDate;
-    //URL imageURL;
-    //genre
-    //publisher
-    //ratings
-    private double averageRating;
+    private String previewLink;
+    private double averageRating; //default 0
     private int totalCopies;
     private int availableCopies;
-    @ManyToMany(targetEntity=User.class)
-    private Set<Item> borrowedByUsers;
-    
+    private String imageURL;
+    private int type; 
+    //0 ebook, 1 audio, 2 movie 
     
     public Item() {
         
     }
-    
-     /**
-     * @return the ISBN
-     */
-    public Long getISBN() {
-        return ISBN;
+    public int getID(){
+        return id;
     }
-
-    /**
-     * @param ISBN the ISBN to set
-     */
-    public void setISBN(Long ISBN) {
-        this.ISBN = ISBN;
+    public void setID(int id){
+        this.id=id;
     }
-     
-    /**
-     * @return the type
-     */
-    public int getType() {
-        return type;
+    public String getISBN() {
+        return isbn;
     }
-
-    /**
-     * @param type the type to set
-     */
-    public void setType(int type) {
-        this.type = type;
+    public void setISBN(String isbn) {
+        this.isbn = isbn;
     }
-
-    /**
-     * @return the title
-     */
     public String getTitle() {
         return title;
     }
-
-    /**
-     * @param title the title to set
-     */
     public void setTitle(String title) {
         this.title = title;
     }
-
-    /**
-     * @return the description
-     */
+    public String getAuthor(){
+        return author;
+    }
+    public void setAuthor(String author){
+        this.author=author;
+    }
     public String getDescription() {
         return description;
     }
-
-    /**
-     * @param description the description to set
-     */
     public void setDescription(String description) {
         this.description = description;
     }
-
-    /**
-     * @return the publisher
-     */
     public String getPublisher() {
         return publisher;
     }
-
-    /**
-     * @param publisher the publisher to set
-     */
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
-    /**
-     * @return the releaseDate
-     */
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
-
-    /**
-     * @param releaseDate the releaseDate to set
-     */
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
-
-    /**
-     * @return the averageRating
-     */
+    public String getPageCount(){
+        return pageCount;
+    }
+    public void setPageCount(String pageCount){
+        this.pageCount=pageCount;
+    }
+    public String getCategories(){
+        return categories;
+    }
+    public void setCategories(String categories){
+        this.categories=categories;
+    }
+    public String getPreviewLink(){
+        return previewLink;
+    }
+    public void setPreviewLink(String previewLink){
+        this.previewLink=previewLink;
+    }
     public double getAverageRating() {
         return averageRating;
     }
-
-    /**
-     * @param averageRating the averageRating to set
-     */
     public void setAverageRating(double averageRating) {
         this.averageRating = averageRating;
     }
-
-    /**
-     * @return the totalCopies
-     */
     public int getTotalCopies() {
         return totalCopies;
     }
-
-    /**
-     * @param totalCopies the totalCopies to set
-     */
     public void setTotalCopies(int totalCopies) {
         this.totalCopies = totalCopies;
     }
-
-    /**
-     * @return the availableCopies
-     */
     public int getAvailableCopies() {
         return availableCopies;
     }
-
-    /**
-     * @param availableCopies the availableCopies to set
-     */
     public void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
+    }
+    public String getImageURL(){
+        return imageURL;
+    }
+    public void setImageURL(String imageURL){
+        this.imageURL=imageURL;
+    }
+    public int getType(){
+        return type;
+    }
+    public void setType(int type){
+        this.type=type;
     }
        
 }

@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class UserManager {
+public class UserManager implements Serializable{
 
     User user;
 
@@ -31,25 +31,17 @@ public class UserManager {
         return retValue;
     }
 
-    public boolean register(String userName, String password, int role,
-            String firstName, String lastName, String email) {
+    public boolean register(User newUser){
         boolean retValue = false;
-        if (userExist(userName) == false) {
+        if (userExist(newUser.getUserName()) == false) {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
             EntityManager em = emf.createEntityManager();
-            User newUser = new User();
             em.getTransaction().begin();
-            newUser.setFirstName(firstName);
-            newUser.setLastName(lastName);
-            newUser.setEmail(email);
-            newUser.setPassword(password);
-            newUser.setRole(role);
-            newUser.setUserName(userName);
             em.persist(newUser);
             em.getTransaction().commit();
             em.close();
             emf.close();
-            if(userExist(userName)){
+            if(userExist(newUser.getUserName())){
                 retValue = true;
             }
         }
@@ -76,6 +68,36 @@ public class UserManager {
     
     public void signOut() {
         this.user = null;
+    }
+
+    public void signOut(){
+        this.user = null;
+    }
+    //update user information
+    public void update(String newFName,String newLName,String newEmail,String newPassword){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction( ).begin( );
+        User current=em.find(User.class, getUser().getUserName());
+        current.setFirstName(newFName);
+        current.setLastName(newLName);
+        current.setEmail(newEmail);
+        current.setPassword(newPassword);
+        em.getTransaction( ).commit( );
+        em.close();
+        emf.close();
+        setUser(current);
+    }
+    //delete user account
+    public void remove(String userName){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction( ).begin( );
+        User current=em.find(User.class, getUser().getUserName());
+        em.remove( current );
+        em.getTransaction( ).commit( );
+        em.close( );
+        emf.close( );
     }
 
 }

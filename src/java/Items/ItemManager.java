@@ -2,6 +2,7 @@
 package Items;
 
 
+import Users.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -11,6 +12,8 @@ import javax.persistence.Query;
 
 public class ItemManager {
     private List<Item> itemCollection;
+    Item item;
+    User user;
     
     public ItemManager() {
         //initialize itemCollection
@@ -18,7 +21,7 @@ public class ItemManager {
         System.out.println("Test: ItemManager instantiated.");
     }
     
-    Item findItem(Long ISBN) {
+    public Item findItem(String ISBN) {
         
         
         Item retItem;
@@ -37,7 +40,7 @@ public class ItemManager {
         return retItem;
     }
     
-    void createItem(Item item) {
+    public void createItem(Item item) {
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
         EntityManager em = emf.createEntityManager();
@@ -48,7 +51,7 @@ public class ItemManager {
         em.close();
     }
     
-    void updateItemTitle(Long ISBN, String newTitle) {
+    public void updateItemTitle(String ISBN, String newTitle) {
         Item itemToUpdate = findItem(ISBN);
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
@@ -60,7 +63,7 @@ public class ItemManager {
         em.close();
     }
     
-    void deleteItem(Long ISBN) {
+    public void deleteItem(String ISBN) {
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
         EntityManager em = emf.createEntityManager();
@@ -73,7 +76,7 @@ public class ItemManager {
         emf.close();
     }
     
-    void queryExample() {
+    public void queryExample() {
         		//Scalar function
                         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
@@ -118,4 +121,56 @@ public class ItemManager {
                 emf.close();
                 em.close();
     }
+    
+    public List getMostPopular(){                       
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
+        EntityManager em = emf.createEntityManager();
+        Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.averageRating Desc");
+        List<Item> list1=(List<Item>)query1.getResultList( );
+        for( Item e:list1 ) {
+           if("none".equals(e.getImageURL())){
+               e.setImageURL("images/100X125.gif");
+           }
+        }
+        em.close();
+        emf.close();
+        return list1;
+    }
+    
+    public List getNewEBooks(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
+        EntityManager em = emf.createEntityManager();
+        Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.releaseDate Desc");
+        List<Item> list1=(List<Item>)query1.getResultList( );
+        for( Item e:list1 ) {
+           if("none".equals(e.getImageURL())){
+               e.setImageURL("images/100X125.gif");
+           }
+        }
+        em.close();
+        emf.close();
+        return list1;
+    }
+    
+    public List getRecommendations(){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
+        EntityManager em = emf.createEntityManager();
+        Query query1=null;
+        //recommendations for guest
+        if(user==null){
+            query1 = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc");
+        }
+        
+        List<Item> list1=(List<Item>)query1.getResultList( );
+        for( Item e:list1 ) {
+           if("none".equals(e.getImageURL())){
+               e.setImageURL("images/100X125.gif");
+           }
+        }
+        em.close();
+        emf.close();
+        return list1;
+    }
+    
+    
 }
