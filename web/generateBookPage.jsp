@@ -38,8 +38,7 @@
 ></script>
 <div>
     
-  <div class="col-lg-offset-2 col-lg-8">
-    <h2 class="text-center">Book Name</h2>
+<div class="col-lg-offset-2 col-lg-8">
     <div class="thumbnail" style="border:none;"> 
         <p class="ratingStars text-center">
         <image id="ratingStar" value = "1" src="images/emptyStar.png"> </image>
@@ -53,9 +52,7 @@
     <div class="col-sm-4 col-md-4 col-xs-6 col-lg-6">
       <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
         <div class="caption">
-          <h3>Author</h3>
-          <p>Review of the book.....</p>
-          <p><a href="#" class="btn btn-primary" role="button" onClick="window.open('./memberBookPage.jsp');" ><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" ></span>Sample</a></p>
+          <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a></p>
         </div>
       </div>
     </div>
@@ -63,7 +60,6 @@
    <div class="col-lg-offset-0 col-lg-6">
    
    
-   <h2 class="text-center">Book Name</h2>
    <p class="media-body">
    Description of the book.
    VOGUE was founded in 1892, it has a long history and been widely respected in fashion world. The magazine covering fashion, makeup, beauty, health, entertainment and arts fields, it is a 		    comprehensive lifestyle magazine.
@@ -78,11 +74,13 @@
    
    </p>
    
-   <p class="text-center">
+   <div class="container">
        <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Borrow</a>
        <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="placeHoldAction()"><span class="text-center" aria-hidden="true" ></span>Place Hold</a>
-   <div>
-   
+   </p>
+   </div>
+       
+  <div class="container">
   <a class="fb-share-button" 
 		data-href="http://localhost:8080/308code/guestBookPage.jsp" 
                 data-layout="button_count"> </a>     
@@ -93,106 +91,16 @@
    title="Share by Email">
   <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
   </a>
-   </div>
+  </div>
   
-    <p class="text-center">
-    <textarea name="Text1" cols="35" rows="5" >Write your review </textarea>
-    </p>
-    <p class="text-center">
-     <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 25px;" onclick="updateReview()"><span class="text-center" aria-hidden="true" ></span>Submit Riview</a></p>		
+    	
   </div>
 </div>
-    
-<hr>
-<hr>
-<div class="container">
-<div class="row text-center">
   
-  <h2 class="text-center"> </h2>
-</div>
-</div>
-
-
-
-
-<hr>
-<hr>
- 
-
-<hr>
 <div class="container">
   <div class="row text-center">
-  <div class="row text-center">
   
-  <h2 class="text-center"> The Recommended Books </h2>
-  </div>
-  
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-      <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-      <div class="thumbnail"> <img src="images/book2.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download </a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
-      <div class="thumbnail"> <img src="images/book3.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6 hidden-lg hidden-md hidden-sm">
-      <div class="thumbnail"> <img src="images/400X200.gif" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a></p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row text-center hidden-xs">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class="thumbnail"> <img src="images/book4.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class="thumbnail"> <img src="images/5.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <div class="thumbnail"> <img src="images/6.jpg" alt="Thumbnail Image 1" class="img-responsive">
-        <div class="caption">
-          <h3>Product</h3>
-          <p>Description of the book.</p>
-          <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Download</a> </p>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <nav class="text-center">
     <!-- Add class .pagination-lg for larger blocks or .pagination-sm for smaller blocks-->
     <ul class="pagination">
@@ -201,10 +109,31 @@
       <li><a href="#">2</a></li>
       <li><a href="#">3</a></li>
       <li><a href="#">4</a></li>
-      <li class="disabled"><a href="#">5</a></li>
+      <li><a href="#">5</a></li>
       <li> <a href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> </a> </li>
     </ul>
   </nav>
 </div>
+</div>
+
+      <div class="modal fade" id="bookSample" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Book Sample</h4>
+        </div>
+     
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 </body>
 </html>
