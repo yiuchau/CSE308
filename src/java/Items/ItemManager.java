@@ -4,6 +4,7 @@ package Items;
 
 import Users.User;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +20,10 @@ public class ItemManager {
         //initialize itemCollection
         itemCollection = new ArrayList<Item>();
         System.out.println("Test: ItemManager instantiated.");
+    }
+    
+    public List<Item> getItemCollection() {
+        return this.itemCollection;
     }
     
     public Item findItem(String ISBN) {
@@ -38,6 +43,21 @@ public class ItemManager {
         em.close();
         itemCollection.add(retItem);
         return retItem;
+    }
+    
+    public void addItem(Item newItem) {
+        
+        Iterator<Item> it = itemCollection.iterator();
+        
+        while(it.hasNext()) {
+            Item oldItem = it.next();
+            if(oldItem.getISBN().equals(newItem.getISBN())){
+                it.remove();
+            }
+        }
+        
+        itemCollection.add(newItem);
+        System.out.println("Item " + newItem.getISBN() + "added to collection.");
     }
     
     public void createItem(Item item) {
@@ -122,22 +142,34 @@ public class ItemManager {
                 em.close();
     }
     
-    public List getMostPopular(){                       
+    public List getMostPopular(){
+        
+        System.out.println("Generating Most Popular Items.");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
-        Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.averageRating Desc");
-        List<Item> list1=(List<Item>)query1.getResultList( );
-        for( Item e:list1 ) {
-           if("none".equals(e.getImageURL())){
-               e.setImageURL("images/100X125.gif");
+        
+        Query query = em.createQuery("Select e " + "from Item e " + "Order by e.averageRating Desc");
+        
+        List<Item> rs = (List<Item>)query.getResultList( );
+       
+        for(Item newItem: rs) {
+           System.out.println("Iterating through: " + newItem.getTitle());
+           if(newItem.getImageURL().equals("None")){
+               newItem.setImageURL("images/100X125.gif");
            }
+           addItem(newItem);
         }
+        
         em.close();
         emf.close();
-        return list1;
+        return rs;
     }
     
     public List getNewEBooks(){
+        
+        
+        System.out.println("Generating Most Recent Items.");
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
         Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.releaseDate Desc");
@@ -146,6 +178,7 @@ public class ItemManager {
            if("none".equals(e.getImageURL())){
                e.setImageURL("images/100X125.gif");
            }
+           addItem(e);
         }
         em.close();
         emf.close();
@@ -153,6 +186,10 @@ public class ItemManager {
     }
     
     public List getRecommendations(){
+        
+        
+        System.out.println("Generating Recommended Items.");
+        
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU" );
         EntityManager em = emf.createEntityManager();
         Query query1=null;
@@ -166,6 +203,10 @@ public class ItemManager {
            if("none".equals(e.getImageURL())){
                e.setImageURL("images/100X125.gif");
            }
+           
+           
+           addItem(e);
+           
         }
         em.close();
         emf.close();

@@ -45,8 +45,9 @@
     <div style="font-size: 16px"><a href="../homePage.jsp">Back to HomePage</a></div>
     <form class="form-signin" method="post" action="http://localhost:8080/308code/LoginServlet" class="ibm-row-form" name="login" id="loginform">
         
+        <div style="color: #FF0000;">${errorMessage}</div>
         <h2 class="form-signin-heading">Please sign in</h2>
-        <label for="inputUserName" class="sr-only">Email address</label>
+        <label for="inputUserName" class="sr-only">Username</label>
         <input name="inputUserName" type="name" id="inputEmail" class="form-control" placeholder="UserName" required autofocus>
         <div>&nbsp;</div>
 <label for="inputPassword" class="sr-only">Password</label>

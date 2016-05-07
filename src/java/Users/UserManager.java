@@ -9,10 +9,6 @@ public class UserManager implements Serializable{
 
     User user;
 
-    /*
-     * @param username
-     * @param password
-     */
     public String login(String username, String password) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
         EntityManager em = emf.createEntityManager();
@@ -70,9 +66,6 @@ public class UserManager implements Serializable{
         this.user = null;
     }
 
-    public void signOut(){
-        this.user = null;
-    }
     //update user information
     public void update(String newFName,String newLName,String newEmail,String newPassword){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("308ProjectPU1");
