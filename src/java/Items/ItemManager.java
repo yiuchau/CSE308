@@ -220,5 +220,15 @@ public class ItemManager {
         }   
     }
     
+    public List<Holds> getHolds(User user){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPU3" );
+        EntityManager em = emf.createEntityManager();
+        String userName=user.getUserName();
+        Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.userName= '"+userName+"'");
+        List<Holds> list=(List<Holds>)query1.getResultList( );
+        em.close();
+        emf.close();
+        return list;
+    }
     
 }

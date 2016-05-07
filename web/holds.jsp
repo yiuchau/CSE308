@@ -1,7 +1,7 @@
 <%-- 
-    Document   : myCollection
-    Created on : Apr 21, 2016, 1:00:41 AM
-    Author     : Brian Lee
+    Document   : holds
+    Created on : May 7, 2016, 5:35:08 PM
+    Author     : yixxie
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -24,9 +24,9 @@
         </head>
         <body> 
             <div class="container">
-                <h2 class="text-center">Checkouts</h2>
+                <h2 class="text-center">Holds</h2>
                 <div class="row text-center">   
-                    <c:forEach items="${itemManager.getCheckoutList(userManager.user)}" var="item">
+                    <c:forEach items="${itemManager.getHolds(userManager.user)}" var="item">
                         <div class="col-sm-3">
                             <div class="caption">
                                 <div class="thumbnail "> <img src="${itemManager.getInformationByISBN(item.isbn).imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
