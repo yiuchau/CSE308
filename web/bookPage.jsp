@@ -69,14 +69,26 @@
                         <div class="thumbnail"> <a href="#"><img src="<%= (item.getImageURL())%>" width="250" height="150" class="img-responsive"></a>
 
                         </div>
-                        <div class="caption">
-                            <a href="#" class="btn btn-primary btn-block" role="button"
-                               onclick="borrowAction()"><span  aria-hidden="true" ></span>Borrow</a>
+                       
+                             
+                        <% if(item.getTotalCopies()==0){ %>
+                            <div class="caption">
+                                <a href="#" class="btn btn-primary btn-block" role="button"
+                                onclick=""><span  aria-hidden="true" ></span>Recommend</a>
+                        <% } else { %>
+                            <% if(item.getAvailableCopies()!=0){ %>
+                                <div class="caption">
+                                    <a href="#" class="btn btn-primary btn-block" role="button"
+                                    onclick=""><span  aria-hidden="true" ></span>Borrow</a>
+                            <% } else { %>
+                                <div class="caption">
+                                    <a href="#" class="btn btn-primary btn-block" role="button"
+                                            onclick=""><span  aria-hidden="true" ></span>Place Hold</a>
+                            <% } %>       
+                        <% } %>
 
-                            <a href="#" class="btn btn-success btn-block" role="button"
-                               onclick="placeHoldAction()"><span class="text-center" aria-hidden="true" ></span>Place Hold</a>
                             <a href="#" class="btn btn-info btn-block" role="button"
-                               onclick="placeHoldAction()"><span class="text-center" aria-hidden="true" ></span>Wishlist</a>
+                               onclick=""><span class="text-center" aria-hidden="true" ></span>Wishlist</a>
                             <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
                             <p>
                             <div class="ratingStars text-center">
