@@ -20,7 +20,6 @@ public class ItemManager {
 
     //EntityManagerFactory emf;
     EntityManager em;
-    Query query;
 
     @PreDestroy
     public void destroy() {
@@ -57,14 +56,14 @@ public class ItemManager {
         }
 
         try {
-            query = em.createQuery("Select i from  Item i Where i.isbn = ?1");
+            Query query = em.createQuery("Select i from  Item i Where i.isbn = ?1");
             query.setParameter(1, ISBN);
             retItem = (Item) query.getSingleResult();
             if (retItem.getImageURL().equals("None")) {
                 retItem.setImageURL("images/100X125.gif");
             }
         } catch (NoResultException e) {
-            System.out.println("Item with ISBN" + ISBN + " not found.\n");
+            System.out.println("Item with ISBN " + ISBN + " not found.\n");
             return null;
         }
 
@@ -110,6 +109,8 @@ public class ItemManager {
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);
         List<Item> retList = new ArrayList<Item>();
+        
+        Query query;
         if (category.equals("MostPopular")) {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC");
             query.setMaxResults(50);

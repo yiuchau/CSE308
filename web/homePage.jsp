@@ -33,7 +33,7 @@
             <div class="row text-center">   
                 <c:forEach items="${itemManager.getCollection('MostRecent')}" var="item" begin="0" end="7">
                     <div class="col-sm-3">
-                        <div class="thumbnail "> <a href="./guestBookPage.jsp"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                        <div class="thumbnail "> <a href="./guestBookPage.jsp?isbn=${item.ISBN}"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                             <div class="caption">
                                 <font size="2">${item.title}</font>
                                 <p><a href="./guestBookPage.jsp" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Borrow</a> </p>
@@ -48,7 +48,7 @@
             <div class="row text-center">   
                 <c:forEach items="${itemManager.getCollection('Recommended')}" var="item" begin="0" end="7">
                     <div class="col-sm-3">
-                        <div class="thumbnail "> <a href="./guestBookPage.jsp"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                        <div class="thumbnail "> <a href="./guestBookPage.jsp?isbn=${item.ISBN}"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                             <div class="caption">
                                 <font size="2">${item.title}</font>
                                 <p><a href="./guestBookPage.jsp" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Borrow</a> </p>
