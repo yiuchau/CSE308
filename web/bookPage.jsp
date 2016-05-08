@@ -119,13 +119,17 @@
                                         <p class="list-group-item-text">Release Date</p></li>
 
                                     <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getAverageRating())%></h4>
+                                        <p class="list-group-item-text">Average Rating</p></li>
+                                    
+                                     <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getCategories())%></h4>
+                                        <p class="list-group-item-text">Subjects</p></li>
+                                     
+                                     <li class="list-group-item">
                                         <h4 class="list-group-item-heading"><%= (item.getAvailableCopies())%></h4>
                                         <p class="list-group-item-text">Available Copies</p></li>
 
-                                    <li class="list-group-item">
-                                        <h4 class="list-group-item-heading"><%= (item.getTotalCopies())%></h4>
-                                        <p class="list-group-item-text">Total Copies</p></li>
-                                    
                                     <li class="list-group-item">
                                         <h4 class="list-group-item-heading"><%= (item.getTotalCopies())%></h4>
                                         <p class="list-group-item-text">Total Copies</p></li>

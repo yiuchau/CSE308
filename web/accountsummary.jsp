@@ -3,12 +3,10 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-    <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
     <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%-- TESTING, DO NO REMOVE <jsp:include page="header.jsp" /> --%>
     <jsp:include page="memberHeader.jsp" />
-    <jsp:include page="homePageStuff.jsp" />
     <html lang="en">
         <head>
             <meta charset="UTF-8">
