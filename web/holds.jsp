@@ -26,7 +26,7 @@
                     <c:forEach items="${itemManager.getCollection('Holds')}" var="item">
                         <div class="col-sm-3">
                             <div class="caption">
-                                <div class="thumbnail "> <img src="${itemimageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                                <div class="thumbnail "> <img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                                     <font size="2">${item.title}</font>
                                 </div>
                             </div>

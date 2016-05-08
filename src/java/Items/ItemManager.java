@@ -135,9 +135,7 @@ public class ItemManager {
             List<WishList> rs = (List<WishList>) query.getResultList();
             for (WishList wishItem : rs) {
                 Item item = findItem(wishItem.getIsbn());
-                if (item.getBanned() == 0) {
-                    retList.add(item);
-                }
+                retList.add(item);
             }
             return retList;
 
@@ -147,22 +145,18 @@ public class ItemManager {
             List<Holds> rs = (List<Holds>) query.getResultList();
             for (Holds holdItem : rs) {
                 Item item = findItem(holdItem.getIsbn());
-                if (item.getBanned() == 0) {
-                    retList.add(item);
-                }
+                retList.add(item);
             }
+            System.out.println("Size: " + retList.size());
             return retList;
 
         } else if (category.equals("Ratings")) {
             query = em.createQuery("SELECT r FROM RateList r WHERE r.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<RateList> rs = (List<RateList>) query.getResultList();
-            retList = new ArrayList();
             for (RateList rateItem : rs) {
                 Item item = findItem(rateItem.getIsbn());
-                if (item.getBanned() == 0) {
-                    retList.add(item);
-                }
+                retList.add(item);
             }
             return retList;
 
@@ -172,7 +166,7 @@ public class ItemManager {
             query.setMaxResults(50);
         }
 
-        retList = query.getResultList();
+        retList = (List<Item>) query.getResultList();
         for (Item newItem : retList) {
             if (newItem.getImageURL().equals("None")) {
                 newItem.setImageURL("images/100X125.gif");
