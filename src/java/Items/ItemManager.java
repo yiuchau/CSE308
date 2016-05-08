@@ -68,7 +68,7 @@ public class ItemManager {
         }
 
         itemCollection.add(newItem);
-        System.out.println("Item " + newItem.getISBN() + "added to collection.");
+        //System.out.println("Item " + newItem.getISBN() + "added to collection.");
     }
 
     public void persist(Item item) {
@@ -112,6 +112,7 @@ public class ItemManager {
                 }
             }
             return retList;
+            
         } else if (category.equals("WishList")) {
             query = em.createQuery("SELECT w FROM WishList w WHERE w.userName = ?1");
             query.setParameter(1, user.getUserName());
@@ -155,7 +156,7 @@ public class ItemManager {
             query.setMaxResults(50);
         }
 
-        retList = (List<Item>) query.getResultList();
+        retList = query.getResultList();
         for (Item newItem : retList) {
             if (newItem.getImageURL().equals("None")) {
                 newItem.setImageURL("images/100X125.gif");

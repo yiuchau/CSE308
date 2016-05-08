@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <jsp:useBean id="ItemManager" class="Items.ItemManager" scope="session" />    
+    <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />    
     <jsp:include page="memberHeader.jsp" />
     <jsp:include page="Ads.jsp" />
     <head>
@@ -64,6 +64,8 @@
 
 
     </body>
-    <jsp:include page="footer.jsp" />
+</html>
+
+<jsp:include page="footer.jsp" />
 
 </html>
