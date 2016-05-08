@@ -25,7 +25,7 @@
         </script>
     </head>
     <jsp:include page="memberHeader.jsp" />
-    <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
+    <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
     <body>
         <h2 class="text-center">Account settings 
             <p>
@@ -38,19 +38,19 @@
             <table width="400" border="1" align="center" > 
             <tbody>
                 <tr>
-                    <td height="50"> First Name:	${userManager.user.firstName} </td>
+                    <td height="50"> First Name:	${itemManager.user.firstName} </td>
                 </tr>
                 <tr>
-                     <td height="50"> Last Name:	${userManager.user.lastName} </td>
+                     <td height="50"> Last Name:	${itemManager.user.lastName} </td>
                 </tr>
                 <tr>
-                    <td height="50">	Email:          ${userManager.user.email}</td>
+                    <td height="50">	Email:          ${itemManager.user.email}</td>
                 </tr>
                  <tr>
-                     <td height="50">	Phone Number:   ${userManager.user.phoneNumber}</td>
+                     <td height="50">	Phone Number:   ${itemManager.user.phoneNumber}</td>
                 </tr>
                 <tr>
-                    <td height="50"><font color="red">*UserName[Can't be changed]:${userManager.user.userName}</font></td>
+                    <td height="50"><font color="red">*UserName[Can't be changed]:${itemManager.user.userName}</font></td>
                 </tr>
                 <tr>
                     <td height="50">	Password:	******</td>

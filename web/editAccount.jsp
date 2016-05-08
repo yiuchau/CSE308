@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <jsp:include page="memberHeader.jsp" />
-    <jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
+    <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
     <body>
         <form method="post" action="http://localhost:8080/308code/EditAccountServlet">
         <h2 class="text-center">Change Account settings  <input type="submit" value="submit" /></h2>
@@ -18,32 +18,32 @@
             <tr>
                 <td height="50"> 
                     <label>New First Name</label>
-                    <input type="text" value="${userManager.user.firstName}" id="customer_fname" name="customerFName" tabindex="1" >
+                    <input type="text" value="${itemManager.user.firstName}" id="customer_fname" name="customerFName" tabindex="1" >
 		</td>
                 </tr>
             <tr>
             <tr>
                 <td height="50"> 
                     <label>New Last Name</label>
-                    <input type="text" value="${userManager.user.lastName}" id="customer_lname" name="customerLName" tabindex="1" >
+                    <input type="text" value="${itemManager.user.lastName}" id="customer_lname" name="customerLName" tabindex="1" >
 		</td>
                 </tr>
             <tr>
                 <td height="50">	
                     <label>New email</label>
-                    <input type="text" value="${userManager.user.email}" id="customer_email" name="customerEmail" tabindex="1" >
+                    <input type="text" value="${itemManager.user.email}" id="customer_email" name="customerEmail" tabindex="1" >
                 </td>
             </tr>
             <tr>
                 <td height="50">	
                     <label>New Phone Number</label>
-                    <input type="text" value="${userManager.user.phoneNumber}" id="customer_phoneNumber" name="customerphoneNumber" tabindex="1" >
+                    <input type="text" value="${itemManager.user.phoneNumber}" id="customer_phoneNumber" name="customerphoneNumber" tabindex="1" >
                 </td>
             </tr>
             <tr>
                 <td height="50">	
                     <label>New password</label>
-                    <input type="password" value="${userManager.user.password}" id="customer_password" name="customerPassword" tabindex="1" >
+                    <input type="password" value="${itemManager.user.password}" id="customer_password" name="customerPassword" tabindex="1" >
                 </td>
             </tr>
             </tbody>
