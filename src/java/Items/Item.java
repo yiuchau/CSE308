@@ -31,8 +31,8 @@ public class Item implements Serializable {
     private int totalCopies;
     private int availableCopies;
     private String imageURL;
-    private int type; 
-    //0 ebook, 1 audio, 2 movie 
+    private int type; //0 ebook, 1 audio, 2 movie 
+    private int banned; //default:0 , banned:1
     
     public Item() {
         
@@ -126,6 +126,12 @@ public class Item implements Serializable {
     }
     public void setType(int type){
         this.type=type;
+    }
+    public int getBanned(){
+        return banned;
+    }
+    public void setBanned(int banned){
+        this.banned=banned;
     }
        
 }
