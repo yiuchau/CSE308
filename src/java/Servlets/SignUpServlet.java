@@ -58,7 +58,7 @@ public class SignUpServlet extends HttpServlet {
             request.getRequestDispatcher("/homePage.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Username exists or database error. Try again.\n");
-            request.getRequestDispatcher("/sign/signUp.jsp").forward(request, response);
+            request.getRequestDispatcher("./signUp.jsp").forward(request, response);
         }
 
     }

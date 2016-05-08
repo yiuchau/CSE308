@@ -28,7 +28,7 @@ public class LoginServlet extends HttpServlet {
         if(retValue.equals("Success")){
             switch (userManager.getUser().getRole()) {
                 case 1:
-                    request.getRequestDispatcher("/homePageMember.jsp").forward(request, response);
+                    request.getRequestDispatcher("./homePageMember.jsp").forward(request, response);
                     break;
                 case 2:
                     request.getRequestDispatcher("/adminHomepage.jsp").forward(request, response);
@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
         }
         else{
             request.setAttribute("errorMessage", retValue);
-            request.getRequestDispatcher("/sign/signIn.jsp").forward(request, response);
+            request.getRequestDispatcher("./signIn.jsp").forward(request, response);
         }
 
     }
