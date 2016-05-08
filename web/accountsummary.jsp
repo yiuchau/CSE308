@@ -22,23 +22,7 @@
                 <br>
                 <h2 class="text-center">Checkouts</h2>
                 <div class="row text-center">   
-                    <c:forEach items="${itemManager.getCheckoutList(userManager.user)}" var="item">
-                        <div class="col-sm-3">
-                            <div class="caption">
-                                <div class="thumbnail "> <img src="${itemManager.getInformationByISBN(item.isbn).imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
-                                    <font size="2">${itemManager.getInformationByISBN(item.isbn).title}</font>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
-                
-                <br>
-                <h1 class="text-center">My Wishing List</h1>
-                <br>
-                <h2 class="text-center">Current Available Books</h2>
-                <div class="row text-center">   
-                    <c:forEach items="${itemManager.getAvailableIteams(userManager.user)}" var="item">
+                    <c:forEach items="${itemManager.getCollection('Checkouts')}" var="item">
                         <div class="col-sm-3">
                             <div class="caption">
                                 <div class="thumbnail "> <img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
@@ -48,15 +32,33 @@
                         </div>
                     </c:forEach>
                 </div>
-                <h2 class="text-center">All Books</h2>
+                
+                <br>
+                <h2 class="text-center">My Wishing List</h2>
+                <br>
+                <br>
+                <h2 class="text-center">Currently Available Books</h2>
                 <div class="row text-center">   
-                    <c:forEach items="${itemManager.getWishList(userManager.user)}" var="item">
+                    <c:forEach items="${itemManager.getCollection('WishListA')}" var="item">
                         <div class="col-sm-3">
                             <div class="caption">
-                                <div class="thumbnail "> <img src="${itemManager.getInformationByISBN(item.isbn).imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
-                                    <font size="2">${itemManager.getInformationByISBN(item.isbn).title}</font>
-                                    <br>
-                                    <font size="2">Banned Status : ${itemManager.getInformationByISBN(item.isbn).banned}</font>
+                                <div class="thumbnail "> <img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                                    <font size="2">${item.title}</font>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+                </div>
+                
+                
+                <h2 class="text-center">All Books</h2>
+                <div class="row text-center">  
+                    
+                    <c:forEach items="${itemManager.getCollection('WishList')}" var="item">
+                        <div class="col-sm-3">
+                            <div class="caption">
+                                <div class="thumbnail "> <img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                                    <font size="2">${item.title}</font>
                                 </div>
                             </div>
                         </div>
@@ -66,11 +68,11 @@
                 <br>
                 <h2 class="text-center">Holds</h2>
                 <div class="row text-center">   
-                    <c:forEach items="${itemManager.getHolds(userManager.user)}" var="item">
+                    <c:forEach items="${itemManager.getCollection('Holds')}" var="item">
                         <div class="col-sm-3">
                             <div class="caption">
-                                <div class="thumbnail "> <img src="${itemManager.getInformationByISBN(item.isbn).imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
-                                    <font size="2">${itemManager.getInformationByISBN(item.isbn).title}</font>
+                                <div class="thumbnail "> <img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                                    <font size="2">${item.title}</font>
                                 </div>
                             </div>
                         </div>
@@ -80,13 +82,13 @@
                 <br>                         
                 <h2 class="text-center">Rated Books</h2>
                 <div class="row text-center">   
-                    <c:forEach items="${itemManager.getRateList(userManager.user)}" var="item">
+                    <c:forEach items="${itemManager.getRateList(itemManager.user)}" var="item">
                         <div class="col-sm-3">
                             <div class="caption">
-                                <div class="thumbnail "> <img src="${itemManager.getInformationByISBN(item.isbn).imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
-                                    <font size="2">${itemManager.getInformationByISBN(item.isbn).title}</font>
+                                <div class="thumbnail "> <img src="${itemManager.findItem(item.isbn).imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                                    <font size="2">${itemManager.findItem(item.isbn).title}</font>
                                     <br>
-                                    <font size="2">Average Rating : ${itemManager.getInformationByISBN(item.isbn).averageRating}</font>
+                                    <font size="2">Average Rating : ${itemManager.findItem(item.isbn).averageRating}</font>
                                     <br>
                                     <font size="2">Your Rating : ${item.rate}</font>
                                 </div>
