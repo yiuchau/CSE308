@@ -26,7 +26,7 @@
                         <input type="checkbox" value="remember-me">
                         Remember me </label>
                 </div>
-                <div><span style="text-align: center; font-size: 16px;">Not a member? &nbsp; </span><a href="signUp.jsp">Sign Up</a></div>
+                <div><span style="text-align: center; font-size: 16px;">Not a member? &nbsp; </span><a href="http://localhost:8080/308code/sign/signUp.jsp">Sign Up</a></div>
             </form>
 
         </div>
