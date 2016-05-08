@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="container">
-            <div style="font-size: 16px"><a href="../homePage.jsp">Return to HomePage</a></div>
+            <div style="font-size: 16px"><a href="http://localhost:8080/308code/homePage.jsp">Return to HomePage</a></div>
             <form class="form-signin" method="post" action="http://localhost:8080/308code/LoginServlet" class="ibm-row-form" name="login" id="loginform">
                 <div style="color: #FF0000;">${errorMessage}</div>
                 <h2 class="form-signin-heading">Please sign in</h2>
