@@ -7,19 +7,9 @@
     <%-- TESTING, DO NO REMOVE <jsp:include page="header.jsp" /> --%>
     <jsp:include page="memberHeader.jsp" />
     <html lang="en">
-    <script>
-        function Available() { 
-            alert("Show Available Books in Wishing List!")
-        }
-    </script>
+ 
     
     
-        <script>
-        function All() { 
-            
-            alert("Show All Books in Wishing List!")
-        }
-        </script>
         <head>
             <link rel="stylesheet" href="css/bootstrap.css">
         </head>
@@ -34,7 +24,7 @@
                                 <li><a href="./wishlistB.jsp" onclick="All()">All Books</a> </li>
                             </ul>
                         </li>
-                </ul>       
+                </ul>
                 
                 <br>
                 <h2 class="text-center">Currently Available Books</h2>
@@ -50,20 +40,7 @@
                     </c:forEach>
                 </div>
                 
-                
-                <h2 class="text-center">All Books</h2>
-                <div class="row text-center">  
-                    
-                    <c:forEach items="${itemManager.getCollection('WishList')}" var="item">
-                        <div class="col-sm-3">
-                            <div class="caption">
-                                <div class="thumbnail "> <img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
-                                    <font size="2">${item.title}</font>
-                                </div>
-                            </div>
-                        </div>
-                    </c:forEach>
-                </div>
+
             </div>
         </body>
     </html>

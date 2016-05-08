@@ -34,10 +34,10 @@ public class Item implements Serializable {
     private String imageURL;
     private int type; //0 ebook, 1 audio, 2 movie 
     private int banned; //default:0 , banned:1
-    
+      
     public Item() {
         
-    }
+    }  
     public int getID(){
         return id;
     }
