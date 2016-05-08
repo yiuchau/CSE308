@@ -18,7 +18,7 @@ public class ItemManager {
     private List<Item> itemCollection;
     User user;
 
-    EntityManagerFactory emf;
+    //EntityManagerFactory emf;
     EntityManager em;
     Query query;
 
@@ -26,7 +26,7 @@ public class ItemManager {
     public void destroy() {
         System.out.println("Im inside destroy...");
         em.close();
-        emf.close();
+        //emf.close();
     }
 
     public static ItemManager getInstance() {
@@ -38,8 +38,8 @@ public class ItemManager {
 
     public ItemManager() {
         itemCollection = new ArrayList<Item>();
-        emf = Persistence.createEntityManagerFactory("308ProjectPU");
-        em = emf.createEntityManager();
+        //emf = Persistence.createEntityManagerFactory("308ProjectPU");
+        em = EMF.createEntityManager();
     }
 
     public List<Item> getItemCollection() {
@@ -117,7 +117,7 @@ public class ItemManager {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.releaseDate DESC");
             query.setMaxResults(50);
         } else if (category.equals("Checkouts")) {
-            query = em.createQuery("SELECT c FROM checkoutList c WHERE c.userName = ?1");
+            query = em.createQuery("SELECT c FROM CheckoutList c WHERE c.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
 
