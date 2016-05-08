@@ -38,6 +38,7 @@
 ></script>
 <div>
     
+    <c:set item = ${itemManager.findItem(request.getAttribute("isbn"))} />
 <div class="col-lg-offset-2 col-lg-8">
     <div class="thumbnail" style="border:none;"> 
         <p class="ratingStars text-center">
@@ -50,7 +51,7 @@
         <a class="editRating btn btn-primary" role="button" style="width: 120px; height: 30px;"><span  aria-hidden="true" ></span>Edit Rating</a>
         <a class="removeRating btn btn-primary" role="button" style="width: 120px; height: 30px;"><span  aria-hidden="true" ></span>Remove Rating</a>
     <div class="col-sm-4 col-md-4 col-xs-6 col-lg-6">
-      <div class="thumbnail"> <a href="context.html"><img src="images/book1.jpg" alt="Thumbnail Image 1" class="img-responsive"></a>
+      <div class="thumbnail"> <a href="#"><img src="${item.imageURL}" alt="Thumbnail Image 1" class="img-responsive"></a>
         <div class="caption">
           <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a></p>
         </div>
@@ -58,20 +59,30 @@
     </div>
   </div>
    <div class="col-lg-offset-0 col-lg-6">
-   
+       
+       <div> 
+       <h2>${item.Title}</h2>
+      <p>by ${item.Author}</p>
+      <p>ISBN: ${item.ISBN}
+          <br>
+      Publisher: ${item.Publisher}
+      <br>
+      Release Date: ${item.ReleaseDate}
+      <br>
+      Average Rating:${item.AverageRating}
+      <br>
+      Available Copies:${item.AvailableCopies}
+      <br>
+      Total Copies: ${item.TotalCopies}
+      <br></p>
+    </div>
    
    <p class="media-body">
-   Description of the book.
-   VOGUE was founded in 1892, it has a long history and been widely respected in fashion world. The magazine covering fashion, makeup, beauty, health, entertainment and arts fields, it is a 		    comprehensive lifestyle magazine.
-
-	Since VOGUE was launched in the US in 1892, it has overwhelmingly been regarded as the world's Fashion Bible.
-
-	The American edition of VOGUE magazine was started in 1892, its publisher Condé Nast Company later launched a British version in the year 1916 and France version in 1921. Nast is the 	    founder of modern magazine layout. He was the first to employ artists as publisher of magazine photographers.The VOGUE magazine is also the first magazine to use colorful photography to      express the fashion works.
-
-    The VOGUE magazine made from a unique perspective to reflect the local culture. Her supporting role for related industry is unmatched. Mostly deserve to be mentioned is that the VOGUE   Magazine promoted the development of the global fashion industry. Many famous designers today are originally found by it.
-
-  The VOGUE  put the emphasis on policy of editorial independence and adhering to the highest standard of editing purposes.Each month's VOGUE magazine has the world's 18 million most influential loyal readers. Around the world, the VOGUE magazine designers, writers and artists honored as authoritative style and fashion.
+       ${item.Description}
+   </p>
    
+   <p class="media-body">
+       ${item.description}
    </p>
    
    <div class="container">

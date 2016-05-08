@@ -11,8 +11,9 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-public class ItemManager{
+public class ItemManager {
 
+    private static ItemManager singleton = null;
 
     private List<Item> itemCollection;
     User user;
@@ -27,6 +28,14 @@ public class ItemManager{
         em.close();
         emf.close();
     }
+
+    public static ItemManager getInstance() {
+        if (singleton == null) {
+            singleton = new ItemManager();
+        }
+        return singleton;
+    }
+
     public ItemManager() {
         itemCollection = new ArrayList<Item>();
         emf = Persistence.createEntityManagerFactory("308ProjectPU");
@@ -111,7 +120,7 @@ public class ItemManager{
             query = em.createQuery("SELECT c FROM checkoutList c WHERE c.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
-            
+
             for (CheckoutList checkoutItem : rs) {
                 Item item = findItem(checkoutItem.getIsbn());
                 if (item.getBanned() == 0) {
@@ -119,7 +128,7 @@ public class ItemManager{
                 }
             }
             return retList;
-            
+
         } else if (category.equals("WishList")) {
             query = em.createQuery("SELECT w FROM WishList w WHERE w.userName = ?1");
             query.setParameter(1, user.getUserName());
@@ -170,7 +179,7 @@ public class ItemManager{
             }
             addItem(newItem);
         }
-        
+
         System.out.println("Size: " + retList.size());
         return retList;
     }
