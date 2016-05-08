@@ -60,8 +60,8 @@
           <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${userManager.user.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="./accountPage.jsp">Account Settings</a> </li>
+            <li><a href="./accountsummary.jsp">Account Summary</a> </li>
             <li><a href="./checkouts.jsp">Checkouts</a> </li>
-            <li><a href="./listPage.html">Account Summary</a> </li>
             <li><a href="./holds.jsp">Holds</a> </li>
             <li><a href="./wishlist.jsp">Wishlist</a> </li>
             <li><a href="./ratelist.jsp">My Rated Titles</a> </li>
