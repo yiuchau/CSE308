@@ -46,6 +46,21 @@
     </properties>
   </persistence-unit>
   
+  <persistence-unit name="308ProjectPUWishList" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Items.WishList</class>
+    <properties>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql2.cs.stonybrook.edu/yixxie"/>
+      <property name="javax.persistence.jdbc.user" value="yixxie"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="109034982"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="eclipselink.logging.level" value="FINE"/>
+      <property name="eclipselink.ddl-generation" value="create-tables"/>
+    </properties>
+  </persistence-unit>
+  
   <persistence-unit name="308ProjectPUHolds" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Items.Holds</class>
@@ -60,5 +75,9 @@
       <property name="eclipselink.ddl-generation" value="create-tables"/>
     </properties>
   </persistence-unit>
+  
+  
+  
+  
   
 </persistence>

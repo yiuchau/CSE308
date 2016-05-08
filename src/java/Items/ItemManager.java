@@ -201,6 +201,18 @@ public class ItemManager {
         emf.close();
         return list;
     }
+ 
+    public List<WishList> getWishList(User user){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUWishList" );
+        EntityManager em = emf.createEntityManager();
+        String userName=user.getUserName();
+        Query query1=em.createQuery("Select e " + "from  WishList e " + "Where e.userName= '"+userName+"'");
+        List<WishList> list=(List<WishList>)query1.getResultList( );
+        em.close();
+        emf.close();
+        return list;
+    }    
+    
     
     public Item getInformationByISBN(String ISBN){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
