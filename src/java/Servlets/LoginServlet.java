@@ -1,11 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servlets;
 
-import Users.UserManager;
+import Items.ItemManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -22,11 +17,11 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        UserManager userManager = (UserManager)request.getSession().getAttribute("userManager");
-        String retValue= userManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
+        ItemManager itemManager = (ItemManager)request.getSession().getAttribute("userManager");
+        String retValue= itemManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
         
         if(retValue.equals("Success")){
-            switch (userManager.getUser().getRole()) {
+            switch (itemManager.getUser().getRole()) {
                 case 1:
                     request.getRequestDispatcher("./homePageMember.jsp").forward(request, response);
                     break;

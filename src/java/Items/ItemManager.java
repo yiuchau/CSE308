@@ -1,9 +1,6 @@
-
 package Items;
 
-
 import Users.User;
-import Users.UserManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,256 +11,218 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 public class ItemManager {
+
     private List<Item> itemCollection;
-    Item item;
-    UserManager userManager;
-    User current;
-    
+    User user;
+    EntityManagerFactory emf;
+    EntityManager em;
+
     public ItemManager() {
         //initialize itemCollection
         itemCollection = new ArrayList<Item>();
         System.out.println("Test: ItemManager instantiated.");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
+        EntityManager em = emf.createEntityManager();
     }
-    
+
     public List<Item> getItemCollection() {
         return this.itemCollection;
     }
-    
+
     public Item findItem(String ISBN) {
         Item retItem;
-        for(Item i: itemCollection) {
-            if(i.getISBN() == ISBN){
+        for (Item i : itemCollection) {
+            if (i.getISBN() == ISBN) {
+                em.refresh(i);
                 retItem = i;
                 return retItem;
             }
         }
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
-        EntityManager em = emf.createEntityManager();
-        retItem = em.find( Item.class, ISBN);
-        emf.close();
-        em.close();
-        itemCollection.add(retItem);
+
+        try {
+            Query query = em.createQuery("Select e from  Item e Where e.isbn= '" + ISBN + "'");
+            retItem = (Item) query.getSingleResult();
+            if (retItem.getImageURL().equals("None")) {
+                retItem.setImageURL("images/100X125.gif");
+            }
+        } catch (NoResultException e) {
+            System.out.println("Item with ISBN" + ISBN + " not found.\n");
+            return null;
+        }
+
+        addItem(retItem);
         return retItem;
     }
-    
+
     public void addItem(Item newItem) {
-        
+
         Iterator<Item> it = itemCollection.iterator();
-        
-        while(it.hasNext()) {
+
+        while (it.hasNext()) {
             Item oldItem = it.next();
-            if(oldItem.getISBN().equals(newItem.getISBN())){
+            if (oldItem.getISBN().equals(newItem.getISBN())) {
                 it.remove();
             }
         }
-        
+
         itemCollection.add(newItem);
         System.out.println("Item " + newItem.getISBN() + "added to collection.");
     }
-    
-    public void createItem(Item item) {
-        
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
-        EntityManager em = emf.createEntityManager();
+
+    public void persist(Item item) {
         em.getTransaction().begin();
         em.persist(item);
         em.getTransaction().commit();
-        emf.close();
-        em.close();
     }
-    
+
     public void updateItemTitle(String ISBN, String newTitle) {
         Item itemToUpdate = findItem(ISBN);
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction( ).begin( );
+        em.getTransaction().begin();
         itemToUpdate.setTitle(newTitle);
         em.getTransaction().commit();
-        emf.close();
-        em.close();
     }
-    
+
     public void deleteItem(String ISBN) {
-        
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
-        EntityManager em = emf.createEntityManager();
         Item itemToDelete = findItem(ISBN);
-        em.getTransaction( ).begin( );
-        //remove item from collection
-        em.remove( itemToDelete );
-        em.getTransaction( ).commit( );
-        em.close();
-        emf.close();
+        em.getTransaction().begin();
+        em.remove(itemToDelete);
+        em.getTransaction().commit();
     }
-    
-    public void queryExample() {
-        		//Scalar function
-                        
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "CSE308WebAppPU" );
-        EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("Select UPPER(e.ename) from Employee e");
-        List<String> list=query.getResultList();
-		
-        for(String e:list)
-	{
-            System.out.println("Employee NAME :"+e);
-	}
-	
-        //Aggregate function
-	Query query1 = em.createQuery("Select MAX(e.salary) from Employee e");
-	Double result=(Double) query1.getSingleResult();
-	System.out.println("Max Employee Salary :"+result);
-        
-        //Between
-		Query query2 = em.createQuery( "Select e " +
-                                             "from Employee e " +
-					     "where e.salary " +
-					     "Between 30000 and 40000" );
-		List<Item> list2=(List<Item>)query2.getResultList( );
-		 
-		for( Item i:list2 )
-		{
-			//System.out.print("Employee ID :"+ i.getEid( ));
-			//System.out.println("\t Employee salary :"+i.getSalary( ));
-		}
-		
-		//Like
-		Query query3 = em.
-			createQuery("Select e " +
-					    "from Employee e " +
-					    "where e.ename LIKE 'M%'");
-		List<Item> list3=(List<Item>)query1.getResultList( );
-		for( Item e:list3 )
-		{
-			//System.out.print("Employee ID :"+e.getEid( ));
-			//System.out.println("\t Employee name :"+e.getEname( ));
-		}
-                emf.close();
-                em.close();
-    }
-    
-    public List<Item> getMostPopular(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
-        EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("Select e " + "from Item e " + "Order by e.averageRating Desc");
-        List<Item> rs = (List<Item>)query.getResultList( );
-        for(Item newItem: rs) {
-           System.out.println("Iterating through: " + newItem.getTitle());
-           if(newItem.getImageURL().equals("None")){
-               newItem.setImageURL("images/100X125.gif");
-           }
-           addItem(newItem);
-        }
-        em.close();
-        emf.close();
-        return rs;
-    }
-    
-    public List<Item> getNewEBooks(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
-        EntityManager em = emf.createEntityManager();
-        Query query1 = em.createQuery("Select e " + "from Item e " + "Order by e.releaseDate Desc");
-        List<Item> list1=(List<Item>)query1.getResultList( );
-        for( Item e:list1 ) {
-           if("none".equals(e.getImageURL())){
-               e.setImageURL("images/100X125.gif");
-           }
-           addItem(e);
-        }
-       em.close();
-       emf.close();
-       return list1;
-    }
-    
-    public List<Item> getRecommendations(){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
-        EntityManager em = emf.createEntityManager();
+
+    public List<Item> getCollection(String category) {
         Query query;
-        query = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc");
-        List<Item> list=(List<Item>)query.getResultList( );
-        for( Item e:list ) {
-           if("none".equals(e.getImageURL())){
-               e.setImageURL("images/100X125.gif");
-           }
+        List<Item> retList;
+        if (category.equals("MostPopular")) {
+            query = em.createQuery("Select i " + "from Item e" + "Order by averageRating Desc LIMIT 50");
+        } else if (category.equals("MostRecent")) {
+            query = em.createQuery("Select i " + "from Item e " + "Order by releaseDate Desc LIMIT 50");
+        } else if (category.equals("Checkouts")) {
+            //TODO create item list from checkout
+            query = em.createQuery("Select e " + "from  CheckoutList " + "Where e.userName= '" + user.getUserName() + "'");
+            List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
+            retList = new ArrayList();
+            for (CheckoutList checkoutItem : rs){
+                Item item = findItem(checkoutItem.getIsbn());
+                if (item.getBanned() == 0) {
+                    retList.add(item);
+                }
+            }
+            return retList; 
+        } else if (category.equals("WishList")) {
+            //TODO create item list from wish list
+            query = em.createQuery("Select e " + "from  WishList e " + "Where e.userName= '" + user.getUserName() + "'");
+            List<WishList> rs = (List<WishList>) query.getResultList();
+            retList = new ArrayList();
+            for (WishList wishItem : rs){
+                Item item = findItem(wishItem.getIsbn());
+                if (item.getBanned() == 0) {
+                    retList.add(item);
+                }
+            }
+            return retList; 
+        
+        } else if (category.equals("Holds")) {
+            //TODO create item list from wish list
+            query = em.createQuery("Select e " + "from  Holds e " + "Where e.userName= '" + user.getUserName() + "'");
+            List<Holds> rs = (List<Holds>) query.getResultList();
+            retList = new ArrayList();
+            for (Holds holdItem : rs){
+                Item item = findItem(holdItem.getIsbn());
+                if (item.getBanned() == 0) {
+                    retList.add(item);
+                }
+            }
+            return retList; 
+        
+        } else if (category.equals("Ratings")) {
+            //TODO create item list from wish list
+            query = em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '" + user.getUserName() + "'");
+            List<RateList> rs = (List<RateList>) query.getResultList();
+            retList = new ArrayList();
+            for (RateList rateItem : rs){
+                Item item = findItem(rateItem.getIsbn());
+                if (item.getBanned() == 0) {
+                    retList.add(item);
+                }
+            }
+            return retList; 
+        
+        } else {
+            //TODO RECOMMENDATIONS
+            query = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc LIMIT 50");
         }
-        em.close();
-        emf.close();
-        return list;
-    }
-    
-    public List<CheckoutList> getCheckoutList(User user){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUCheckout" );
-        EntityManager em = emf.createEntityManager();
-        String userName=user.getUserName();
-        Query query1=em.createQuery("Select e " + "from  CheckoutList e " + "Where e.userName= '"+userName+"'");
-        List<CheckoutList> list=(List<CheckoutList>)query1.getResultList( );
-        em.close();
-        emf.close();
-        return list;
-    }
- 
-    public List<WishList> getWishList(User user){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUWishList" );
-        EntityManager em = emf.createEntityManager();
-        String userName=user.getUserName();
-        Query query1=em.createQuery("Select e " + "from  WishList e " + "Where e.userName= '"+userName+"'");
-        List<WishList> list=(List<WishList>)query1.getResultList( );
-        em.close();
-        emf.close();
-        return list;
-    }    
-    
-    public List<RateList> getRateList(User user){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPURateList" );
-        EntityManager em = emf.createEntityManager();
-        String userName=user.getUserName();
-        Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
-        List<RateList> list=(List<RateList>)query1.getResultList( );
-        em.close();
-        emf.close();
-        return list;
-    } 
-    
-    
-    public Item getInformationByISBN(String ISBN){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
-        EntityManager em = emf.createEntityManager();
-        try{
-            Query query=em.createQuery("Select e from  Item e Where e.isbn= '"+ISBN+"'");
-            Item item=(Item)query.getSingleResult();
-            if("none".equals(item.getImageURL())){
-               item.setImageURL("images/100X125.gif");
+
+        retList = (List<Item>) query.getResultList();
+        for (Item newItem : retList) {
+            if (newItem.getImageURL().equals("None")) {
+                newItem.setImageURL("images/100X125.gif");
             }
-            em.close();
-            emf.close();
-            return item;
-        }catch(NoResultException e) {
-            System.out.println("not found");
-            return null;
-        }   
+            addItem(newItem);
+        }
+
+        return retList;
     }
-    
-    public List<Item> getAvailableIteams(User user){
-        List<WishList> wlist = getWishList(user);
-        List<Item> list = new ArrayList();
-        for(int i =0; i<wlist.size();i++){
-            Item item = getInformationByISBN(wlist.get(i).getIsbn());
-            if(item.getBanned()==0){
-                list.add(item);
+
+    public String login(String username, String password) {
+        String retValue;
+        User user = em.find(User.class, username);
+        if (user == null) {
+            retValue = "User Name doesn't exist. Please register first";
+        } else if (user.getPassword().equals(password)) {
+            this.setUser(user);
+            retValue = "Success";
+        } else {
+            retValue = "Incorrect password";
+        }
+        return retValue;
+    }
+
+    public boolean register(User newUser) {
+        boolean retValue = false;
+        if (userExist(newUser.getUserName()) == false) {
+            em.getTransaction().begin();
+            em.persist(newUser);
+            em.getTransaction().commit();
+            if (userExist(newUser.getUserName())) {
+                retValue = true;
             }
-        }   
-        return list;
+        }
+        return retValue;
     }
-    
-    public List<Holds> getHolds(User user){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUHolds" );
-        EntityManager em = emf.createEntityManager();
-        String userName=user.getUserName();
-        Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.userName= '"+userName+"'");
-        List<Holds> list=(List<Holds>)query1.getResultList( );
-        em.close();
-        emf.close();
-        return list;
+
+    public User getUser() {
+        return this.user;
     }
-    
+
+    public void setUser(User user) {
+        this.user = user;
+
+    }
+
+    public boolean userExist(String userName) {
+        User u = em.find(User.class, userName);
+        return u != null;
+    }
+
+    public void signOut() {
+        this.user = null;
+    }
+
+    //update user information
+    public void updateUser(String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber) {
+        em.getTransaction().begin();
+        user.setFirstName(newFName);
+        user.setLastName(newLName);
+        user.setEmail(newEmail);
+        user.setPassword(newPassword);
+        user.setPhoneNumber(newPhoneNumber);
+        em.getTransaction().commit();
+    }
+
+    public void removeUser(String userName) {
+        em.getTransaction().begin();
+        em.remove(user);
+        em.getTransaction().commit();
+    }
+
 }

@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Servlets;
 
-
-import Users.UserManager;
+import Items.ItemManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,41 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author yixxie
- */
 public class EditAccountServlet extends HttpServlet {
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<body>");
-            UserManager userManager = (UserManager) request.getSession().getAttribute("userManager");
-            String newFName=request.getParameter("customerFName");
-            String newLName=request.getParameter("customerLName");
-            String newEmail=request.getParameter("customerEmail");
-            String newPassword=request.getParameter("customerPassword");
-            String newPhoneNumber=request.getParameter("customerphoneNumber");
-            userManager.update(newFName,newLName,newEmail,newPassword,newPhoneNumber);
-            RequestDispatcher dispatcher =getServletContext().getRequestDispatcher("/accountPage.jsp");
-            dispatcher.forward(request, response);
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+            ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
+            String newFName = request.getParameter("customerFName");
+            String newLName = request.getParameter("customerLName");
+            String newEmail = request.getParameter("customerEmail");
+            String newPassword = request.getParameter("customerPassword");
+            String newPhoneNumber = request.getParameter("customerphoneNumber");
+            itemManager.updateUser(newFName, newLName, newEmail, newPassword, newPhoneNumber);
+            request.getRequestDispatcher("/accountPage.jsp").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -1,9 +1,3 @@
-<%-- 
-    Document   : newjsp
-    Created on : Apr 21, 2016, 1:07:08 AM
-    Author     : Brian Lee
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

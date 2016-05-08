@@ -28,11 +28,12 @@ public class test {
        user.setPassword("aaa");
        user.setUserName("123");
        user.setPhoneNumber("12324");
-       List<CheckoutList> list=im.getCheckoutList(user);
-       for( CheckoutList e:list ) {
-          String number=e.getIsbn();
+       im.setUser(user);
+       List<Item> list=im.getCollection("Checkouts");
+       for( Item e:list ) {
+          String number=e.getISBN();
           System.out.println(number);
-          Item i=im.getInformationByISBN(number);
+          Item i=im.findItem(number);
           System.out.println(i.getTitle());
         }
        
