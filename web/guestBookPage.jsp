@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/custom.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="js/bookPage.js"></script>
+        <script src="jwes/bookPage.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -43,7 +43,7 @@
             async defer
             src="//assets.pinterest.com/js/pinit.js"
         ></script>
-        
+
         <%
             Item item = ItemManager.getInstance().findItem(request.getParameter("isbn"));
         %>
@@ -52,7 +52,7 @@
             <div class="row-fluid">
 
 
-                <div class="col-sm-4">
+                <div class="col-sm-4 col-sm-offset-1">
                     <div class="thumbnail" style="border:none;"> 
 
                         <div class="thumbnail"> <a href="#"><img src="<%= (item.getImageURL())%>" width="250" height="150" class="img-responsive"></a>
@@ -88,66 +88,66 @@
                         <div class="panel-heading">
                             <h2 class="panel-title text-center"><%= (item.getTitle())%></h2>
                         </div>
-                    </div>
-                    <div class="panel-body">
-                        <div>
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <h4 class="list-group-item-heading"><%= (item.getAuthor())%></h4>
-                                    <p class="list-group-item-text">Author</p></li>
+                        <div class="panel-body">
+                            <div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getAuthor())%></h4>
+                                        <p class="list-group-item-text">Author</p></li>
 
-                                <li class="list-group-item">
-                                    <h4 class="list-group-item-heading"><%= (item.getISBN())%></h4>
-                                    <p class="list-group-item-text">ISBN</p></li>
+                                    <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getISBN())%></h4>
+                                        <p class="list-group-item-text">ISBN</p></li>
 
-                                <li class="list-group-item">
-                                    <h4 class="list-group-item-heading"><%= (item.getPublisher())%></h4>
-                                    <p class="list-group-item-text">Publisher</p></li>
+                                    <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getPublisher())%></h4>
+                                        <p class="list-group-item-text">Publisher</p></li>
 
-                                <li class="list-group-item">
-                                    <h4 class="list-group-item-heading"><%= (item.getReleaseDate())%></h4>
-                                    <p class="list-group-item-text">Release Date</p></li>
+                                    <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getReleaseDate())%></h4>
+                                        <p class="list-group-item-text">Release Date</p></li>
 
-                                <li class="list-group-item">
-                                    <h4 class="list-group-item-heading"><%= (item.getAvailableCopies())%></h4>
-                                    <p class="list-group-item-text">Available Copies</p></li>
+                                    <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getAvailableCopies())%></h4>
+                                        <p class="list-group-item-text">Available Copies</p></li>
 
-                                <li class="list-group-item">
-                                    <h4 class="list-group-item-heading"><%= (item.getTotalCopies())%></h4>
-                                    <p class="list-group-item-text">Total Copies</p></li>
+                                    <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getTotalCopies())%></h4>
+                                        <p class="list-group-item-text">Total Copies</p></li>
+                            </div>
+
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" href="#collapse1">View Description</a>
+                                        <span class="caret"></span></button>
+                                    </h4>
+                                </div>
+                                <div id="collapse1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <blockquote>
+                                            <%= (item.getDescription())%>
+                                        </blockquote></div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="btn-group">
+                                <a class="fb-share-button" 
+                                   data-href="http://localhost:8080/308code/guestBookPage.jsp" 
+                                   data-layout="button_count"> </a>     
+                                <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+                                <a href="https://www.pinterest.com/pin/create/button/">
+                                    <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
+                                <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com."
+                                   title="Share by Email">
+                                    <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
+                                </a>
+                            </div>
                         </div>
 
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" href="#collapse1">Description</a>
-                                </h4>
-                            </div>
-                            <div id="collapse1" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <blockquote>
-                                        <%= (item.getDescription())%>
-                                    </blockquote></div>
-                            </div>
-                        </div>
-                                    
-                                    
-
-                    <div class="btn-group">
-                        <a class="fb-share-button" 
-                           data-href="http://localhost:8080/308code/guestBookPage.jsp" 
-                           data-layout="button_count"> </a>     
-                        <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-                        <a href="https://www.pinterest.com/pin/create/button/">
-                            <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
-                        <a href="mailto:?subject=I wanted you to see this site&amp;body=Check out this site http://www.website.com."
-                           title="Share by Email">
-                            <img src="http://png-2.findicons.com/files/icons/573/must_have/48/mail.png">
-                        </a>
                     </div>
-                    </div>
-
-
                 </div>
             </div>
         </div>
