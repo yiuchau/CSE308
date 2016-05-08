@@ -255,4 +255,14 @@ public class ItemManager {
         em.remove(user);
         em.getTransaction().commit();
     }
+    
+    
+    public List<RateList> getRateList(User user){
+        String userName=user.getUserName();
+        Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
+        List<RateList> list=(List<RateList>)query1.getResultList( );        
+        return list;
+    } 
+    
+    
 }
