@@ -125,6 +125,10 @@
                                     <li class="list-group-item">
                                         <h4 class="list-group-item-heading"><%= (item.getTotalCopies())%></h4>
                                         <p class="list-group-item-text">Total Copies</p></li>
+                                    
+                                    <li class="list-group-item">
+                                        <h4 class="list-group-item-heading"><%= (item.getTotalCopies())%></h4>
+                                        <p class="list-group-item-text">Total Copies</p></li>
                             </div>
 
                             <div class="panel panel-info">

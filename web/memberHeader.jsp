@@ -5,11 +5,6 @@
     <head>
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
-    <script>
-        func logout(){
-            alert("called");
-        }
-    </script>
     <body>
         <nav>
             <div class="container"> 
