@@ -93,12 +93,12 @@ public class ItemManager {
         Query query;
         List<Item> retList;
         if (category.equals("MostPopular")) {
-            query = em.createQuery("Select i " + "from Item e" + "Order by averageRating Desc LIMIT 50");
+            query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC LIMIT 50");
         } else if (category.equals("MostRecent")) {
-            query = em.createQuery("Select i " + "from Item e " + "Order by releaseDate Desc LIMIT 50");
+            query = em.createQuery("SELECT i FROM Item i ORDER BY i.releaseDate DESC LIMIT 50");
         } else if (category.equals("Checkouts")) {
-            //TODO create item list from checkout
-            query = em.createQuery("Select e " + "from  CheckoutList " + "Where e.userName= '" + user.getUserName() + "'");
+            query = em.createQuery("SELECT c FROM CheckoutList c WHERE c.userName = ?1");
+            query.setParameter(1, user.getUserName());
             List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
             retList = new ArrayList();
             for (CheckoutList checkoutItem : rs){
@@ -109,8 +109,8 @@ public class ItemManager {
             }
             return retList; 
         } else if (category.equals("WishList")) {
-            //TODO create item list from wish list
-            query = em.createQuery("Select e " + "from  WishList e " + "Where e.userName= '" + user.getUserName() + "'");
+            query = em.createQuery("SELECT w FROM WishList w WHERE w.userName = ?1");
+            query.setParameter(1, user.getUserName());
             List<WishList> rs = (List<WishList>) query.getResultList();
             retList = new ArrayList();
             for (WishList wishItem : rs){
@@ -122,8 +122,8 @@ public class ItemManager {
             return retList; 
         
         } else if (category.equals("Holds")) {
-            //TODO create item list from wish list
-            query = em.createQuery("Select e " + "from  Holds e " + "Where e.userName= '" + user.getUserName() + "'");
+            query = em.createQuery("SELECT h FROM Holds h WHERE h.userName = ?1");
+            query.setParameter(1, user.getUserName());
             List<Holds> rs = (List<Holds>) query.getResultList();
             retList = new ArrayList();
             for (Holds holdItem : rs){
@@ -135,8 +135,8 @@ public class ItemManager {
             return retList; 
         
         } else if (category.equals("Ratings")) {
-            //TODO create item list from wish list
-            query = em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '" + user.getUserName() + "'");
+            query = em.createQuery("SELECT r FROM RateList r WHERE r.userName = ?1");
+            query.setParameter(1, user.getUserName());
             List<RateList> rs = (List<RateList>) query.getResultList();
             retList = new ArrayList();
             for (RateList rateItem : rs){
@@ -149,7 +149,7 @@ public class ItemManager {
         
         } else {
             //TODO RECOMMENDATIONS
-            query = em.createQuery("Select e " + "from Item e " + "Order by e.totalCopies Desc LIMIT 50");
+            query = em.createQuery("SELECT e FROM Item e ORDER BY e.totalCopies DESC LIMIT 50");
         }
 
         retList = (List<Item>) query.getResultList();
