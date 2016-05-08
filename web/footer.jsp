@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="css/bootstrap.css">
    </head>
 <body>
-    <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
 <hr>
   <div class="container well">
     <div class="row">

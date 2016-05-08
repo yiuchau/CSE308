@@ -4,13 +4,14 @@ import Users.User;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-public class ItemManager {
+public class ItemManager{
 
 
     private List<Item> itemCollection;
@@ -20,6 +21,12 @@ public class ItemManager {
     EntityManager em;
     Query query;
 
+    @PreDestroy
+    public void destroy() {
+        System.out.println("Im inside destroy...");
+        em.close();
+        emf.close();
+    }
     public ItemManager() {
         itemCollection = new ArrayList<Item>();
         emf = Persistence.createEntityManagerFactory("308ProjectPU");
@@ -163,7 +170,8 @@ public class ItemManager {
             }
             addItem(newItem);
         }
-
+        
+        System.out.println("Size: " + retList.size());
         return retList;
     }
 
@@ -228,5 +236,4 @@ public class ItemManager {
         em.remove(user);
         em.getTransaction().commit();
     }
-
 }
