@@ -12,7 +12,6 @@ import javax.persistence.Query;
 
 public class ItemManager {
 
-    private static ItemManager singleton = null;
 
     private List<Item> itemCollection;
     User user;
@@ -21,28 +20,10 @@ public class ItemManager {
     EntityManager em;
     Query query;
 
-    /**
-     * Private class constructor. It will only get called once in the lifetime
-     * of the program. Instantiates Collection of Items to hold persistent
-     * objects, EntityManagerFactory and EntityManager objects needed for JPA
-     * queries.
-     */
     public ItemManager() {
         itemCollection = new ArrayList<Item>();
-        emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
+        emf = Persistence.createEntityManagerFactory("308ProjectPU");
         em = emf.createEntityManager();
-    }
-
-    /**
-     * Ensures the ItemCollection class is only initiated once.
-     *
-     * @return the singleton ItemCollection
-     */
-    public static ItemManager getInstance() {
-        if (singleton == null) {
-            singleton = new ItemManager();
-        }
-        return singleton;
     }
 
     public List<Item> getItemCollection() {
@@ -111,16 +92,19 @@ public class ItemManager {
     }
 
     public List<Item> getCollection(String category) {
-        List<Item> retList;
+        System.out.println("Query: " + category);
+        List<Item> retList = new ArrayList<Item>();
         if (category.equals("MostPopular")) {
-            query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC LIMIT 50");
+            query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC");
+            query.setMaxResults(50);
         } else if (category.equals("MostRecent")) {
-            query = em.createQuery("SELECT i FROM Item i ORDER BY i.releaseDate DESC LIMIT 50");
+            query = em.createQuery("SELECT i FROM Item i ORDER BY i.releaseDate DESC");
+            query.setMaxResults(50);
         } else if (category.equals("Checkouts")) {
-            query = em.createQuery("SELECT c FROM CheckoutList c WHERE c.userName = ?1");
+            query = em.createQuery("SELECT c FROM checkoutList c WHERE c.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
-            retList = new ArrayList();
+            
             for (CheckoutList checkoutItem : rs) {
                 Item item = findItem(checkoutItem.getIsbn());
                 if (item.getBanned() == 0) {
@@ -132,7 +116,6 @@ public class ItemManager {
             query = em.createQuery("SELECT w FROM WishList w WHERE w.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<WishList> rs = (List<WishList>) query.getResultList();
-            retList = new ArrayList();
             for (WishList wishItem : rs) {
                 Item item = findItem(wishItem.getIsbn());
                 if (item.getBanned() == 0) {
@@ -145,7 +128,6 @@ public class ItemManager {
             query = em.createQuery("SELECT h FROM Holds h WHERE h.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<Holds> rs = (List<Holds>) query.getResultList();
-            retList = new ArrayList();
             for (Holds holdItem : rs) {
                 Item item = findItem(holdItem.getIsbn());
                 if (item.getBanned() == 0) {
@@ -169,7 +151,8 @@ public class ItemManager {
 
         } else {
             //TODO RECOMMENDATIONS
-            query = em.createQuery("SELECT e FROM Item e ORDER BY e.totalCopies DESC LIMIT 50");
+            query = em.createQuery("SELECT i FROM Item i ORDER BY i.totalCopies DESC");
+            query.setMaxResults(50);
         }
 
         retList = (List<Item>) query.getResultList();
@@ -185,7 +168,7 @@ public class ItemManager {
 
     public String login(String username, String password) {
         String retValue;
-        User user = em.find(User.class, username);
+        User user = em.find(Users.User.class, username);
         if (user == null) {
             retValue = "User Name doesn't exist. Please register first";
         } else if (user.getPassword().equals(password)) {
@@ -220,7 +203,7 @@ public class ItemManager {
     }
 
     public boolean userExist(String userName) {
-        User u = em.find(User.class, userName);
+        User u = em.find(Users.User.class, userName);
         return u != null;
     }
 

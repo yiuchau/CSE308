@@ -25,7 +25,7 @@
 </head>
 <body>
 
-<jsp:useBean id="userManager" class="Users.UserManager" scope="session" />
+<jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
 <nav>
   <div class="container"> 
     
@@ -46,7 +46,7 @@
             <li><a href="./audiobooks.jsp">Audiobook</a> </li>
             <li><a href="./videos.jsp">Video</a> </li>
             <li role="separator" class="divider"></li>
-            <li><a href="./moreTypePage.html">More type</a> </li>
+            <li><a href="./moreTypePage.html">Genres</a> </li>
           </ul>
         </li>
       </ul>
@@ -57,7 +57,7 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right hidden-sm">
-          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${userManager.user.userName} <span class="caret"></span></a>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${itemManager.user.userName} <span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li><a href="./accountPage.jsp">Account Settings</a> </li>
             <li><a href="./accountsummary.jsp">Account Summary</a> </li>
@@ -67,17 +67,11 @@
             <li><a href="./ratelist.jsp">My Rated Titles</a> </li>
             <li><a href="#">Recommended Books</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="./homePage.jsp" onclick="userManager.signOut()">Sign out</a> </li>
+            <li><a href="./homePage.jsp" onclick="itemManager.signOut()">Sign out</a> </li>
         </ul>
               
         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Advance Search <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-           <li><a href="./mostPopular.jsp">Most Popular</a> </li>
-            <li><a href="./newReleases.jsp">New Releases</a> </li>
-            <li><a href="./topHolds.jsp">Top Holds</a> </li>
-            <li role="separator" class="divider"></li>
-            <li><a href="./moreSearch.html">Advanced Search</a> </li>
-          </ul>
+        <li><a href="./moreSearch.html">Advanced Search</a> </li>
         </li>
         <li><a>Help<a></li>
       </ul>

@@ -17,7 +17,7 @@ public class LoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        ItemManager itemManager = (ItemManager)request.getSession().getAttribute("userManager");
+        ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
         String retValue= itemManager.login(request.getParameter("inputUserName"), request.getParameter("inputPassword"));
         
         if(retValue.equals("Success")){
