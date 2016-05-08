@@ -31,12 +31,23 @@ public class Item implements Serializable {
     private int totalCopies;
     private int availableCopies;
     private String imageURL;
-    private int type; 
+    private int type;
+    private int banned;
     //0 ebook, 1 audio, 2 movie 
     
     public Item() {
         
     }
+
+    public int getBanned() {
+        return banned;
+    }
+
+    public void setBanned(int banned) {
+        this.banned = banned;
+    }
+    
+    
     public int getID(){
         return id;
     }

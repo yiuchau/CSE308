@@ -232,6 +232,18 @@ public class ItemManager {
         }   
     }
     
+    public List<Item> getAvailableIteams(User user){
+        List<WishList> wlist = getWishList(user);
+        List<Item> list = new ArrayList();
+        for(int i =0; i<wlist.size();i++){
+            Item item = getInformationByISBN(wlist.get(i).getIsbn());
+            if(item.getBanned()==0){
+                list.add(item);
+            }
+        }   
+        return list;
+    }
+    
     public List<Holds> getHolds(User user){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUHolds" );
         EntityManager em = emf.createEntityManager();

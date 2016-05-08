@@ -77,6 +77,7 @@
    <div class="container">
        <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="borrowAction()"><span  aria-hidden="true" ></span>Borrow</a>
        <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="placeHoldAction()"><span class="text-center" aria-hidden="true" ></span>Place Hold</a>
+       <a href="#" class="btn btn-primary" role="button" style="width: 120px; height: 30px;" onclick="placeHoldAction()"><span class="text-center" aria-hidden="true" ></span>Add Wishing List</a>
    </p>
    </div>
        
