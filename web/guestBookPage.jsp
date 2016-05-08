@@ -45,6 +45,7 @@
         ></script>
 
         <%
+            System.out.println(request.getParameter("isbn"));
             Item item = ItemManager.getInstance().findItem(request.getParameter("isbn"));
         %>
 
