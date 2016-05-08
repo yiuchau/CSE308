@@ -130,13 +130,28 @@ public class ItemManager {
             }
             return retList;
 
-        } else if (category.equals("WishList")) {
+        } 
+        else if (category.equals("WishList")) {
             query = em.createQuery("SELECT w FROM WishList w WHERE w.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<WishList> rs = (List<WishList>) query.getResultList();
             for (WishList wishItem : rs) {
                 Item item = findItem(wishItem.getIsbn());
                 retList.add(item);
+            }
+            return retList;
+
+        } 
+
+        else if (category.equals("WishListA")) {
+            query = em.createQuery("SELECT w FROM WishList w WHERE w.userName = ?1");
+            query.setParameter(1, user.getUserName());
+            List<WishList> rs = (List<WishList>) query.getResultList();
+            for (WishList wishItem : rs) {
+                Item item = findItem(wishItem.getIsbn());
+                if(item.getBanned()==0){
+                    retList.add(item);
+                }             
             }
             return retList;
 
