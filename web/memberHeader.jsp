@@ -1,9 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<jsp:useBean id="itemManager" class="Items.ItemManager" scope="session"/>
 <html lang="en">
     <head>
         <link rel="stylesheet" href="css/bootstrap.css">
     </head>
+    <script>
+        func logout(){
+            alert("called");
+        }
+    </script>
     <body>
         <nav>
             <div class="container"> 
@@ -46,7 +52,7 @@
                                 <li><a href="./ratelist.jsp">My Rated Titles</a> </li>
                                 <li><a href="#">Recommended Books</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="./homePage.jsp" onclick="userManager.signOut()">Sign out</a> </li>
+                                <li><a href=http://localhost:8080/308code/LogoutServlet>Sign out</a> </li>
                             </ul>
 
 
