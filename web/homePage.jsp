@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
 
 <!DOCTYPE html>
 <html>
