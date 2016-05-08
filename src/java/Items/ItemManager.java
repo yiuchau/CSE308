@@ -213,6 +213,17 @@ public class ItemManager {
         return list;
     }    
     
+    public List<RateList> getRateList(User user){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPURateList" );
+        EntityManager em = emf.createEntityManager();
+        String userName=user.getUserName();
+        Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
+        List<RateList> list=(List<RateList>)query1.getResultList( );
+        em.close();
+        emf.close();
+        return list;
+    } 
+    
     
     public Item getInformationByISBN(String ISBN){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory( "308ProjectPUItem" );
