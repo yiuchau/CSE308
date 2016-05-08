@@ -21,8 +21,8 @@ public class ItemManager {
         //initialize itemCollection
         itemCollection = new ArrayList<Item>();
         System.out.println("Test: ItemManager instantiated.");
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
-        EntityManager em = emf.createEntityManager();
+        emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
+        em = emf.createEntityManager();
     }
 
     public List<Item> getItemCollection() {
