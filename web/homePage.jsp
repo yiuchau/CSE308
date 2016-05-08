@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="container">
-            <h2 class="text-center">Most Recent</h2>
+            <h2 class="text-center">New Releases</h2>
             <div class="row text-center">   
                 <c:forEach items="${itemManager.getCollection('MostRecent')}" var="item" begin="0" end="7">
                     <div class="col-sm-3">
