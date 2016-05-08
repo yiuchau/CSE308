@@ -12,17 +12,37 @@ import javax.persistence.Query;
 
 public class ItemManager {
 
+    private static ItemManager singleton = null;
+
     private List<Item> itemCollection;
     User user;
+
     EntityManagerFactory emf;
     EntityManager em;
+    Query query;
 
+    /**
+     * Private class constructor. It will only get called once in the lifetime
+     * of the program. Instantiates Collection of Items to hold persistent
+     * objects, EntityManagerFactory and EntityManager objects needed for JPA
+     * queries.
+     */
     public ItemManager() {
-        //initialize itemCollection
         itemCollection = new ArrayList<Item>();
-        System.out.println("Test: ItemManager instantiated.");
         emf = Persistence.createEntityManagerFactory("CSE308WebAppPU");
         em = emf.createEntityManager();
+    }
+
+    /**
+     * Ensures the ItemCollection class is only initiated once.
+     *
+     * @return the singleton ItemCollection
+     */
+    public static ItemManager getInstance() {
+        if (singleton == null) {
+            singleton = new ItemManager();
+        }
+        return singleton;
     }
 
     public List<Item> getItemCollection() {
@@ -40,7 +60,8 @@ public class ItemManager {
         }
 
         try {
-            Query query = em.createQuery("Select e from  Item e Where e.isbn= '" + ISBN + "'");
+            query = em.createQuery("Select i from  Item i Where i.isbn = ?1");
+            query.setParameter(1, ISBN);
             retItem = (Item) query.getSingleResult();
             if (retItem.getImageURL().equals("None")) {
                 retItem.setImageURL("images/100X125.gif");
@@ -90,7 +111,6 @@ public class ItemManager {
     }
 
     public List<Item> getCollection(String category) {
-        Query query;
         List<Item> retList;
         if (category.equals("MostPopular")) {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC LIMIT 50");
@@ -101,52 +121,52 @@ public class ItemManager {
             query.setParameter(1, user.getUserName());
             List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
             retList = new ArrayList();
-            for (CheckoutList checkoutItem : rs){
+            for (CheckoutList checkoutItem : rs) {
                 Item item = findItem(checkoutItem.getIsbn());
                 if (item.getBanned() == 0) {
                     retList.add(item);
                 }
             }
-            return retList; 
+            return retList;
         } else if (category.equals("WishList")) {
             query = em.createQuery("SELECT w FROM WishList w WHERE w.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<WishList> rs = (List<WishList>) query.getResultList();
             retList = new ArrayList();
-            for (WishList wishItem : rs){
+            for (WishList wishItem : rs) {
                 Item item = findItem(wishItem.getIsbn());
                 if (item.getBanned() == 0) {
                     retList.add(item);
                 }
             }
-            return retList; 
-        
+            return retList;
+
         } else if (category.equals("Holds")) {
             query = em.createQuery("SELECT h FROM Holds h WHERE h.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<Holds> rs = (List<Holds>) query.getResultList();
             retList = new ArrayList();
-            for (Holds holdItem : rs){
+            for (Holds holdItem : rs) {
                 Item item = findItem(holdItem.getIsbn());
                 if (item.getBanned() == 0) {
                     retList.add(item);
                 }
             }
-            return retList; 
-        
+            return retList;
+
         } else if (category.equals("Ratings")) {
             query = em.createQuery("SELECT r FROM RateList r WHERE r.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<RateList> rs = (List<RateList>) query.getResultList();
             retList = new ArrayList();
-            for (RateList rateItem : rs){
+            for (RateList rateItem : rs) {
                 Item item = findItem(rateItem.getIsbn());
                 if (item.getBanned() == 0) {
                     retList.add(item);
                 }
             }
-            return retList; 
-        
+            return retList;
+
         } else {
             //TODO RECOMMENDATIONS
             query = em.createQuery("SELECT e FROM Item e ORDER BY e.totalCopies DESC LIMIT 50");
