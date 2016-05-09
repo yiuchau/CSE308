@@ -19,7 +19,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="css/custom.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-        <script src="jwes/bookPage.js"></script>
+        <script src="js/bookPage.js"></script>
         <title>JSP Page</title>
     </head>
     <body>
@@ -93,13 +93,15 @@
                             <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
                             
                                 <div class="modal fade" id="bookSample" role="dialog">
-                                <div class="modal-dialog">
-    
+                                <div class="modal-dialog modal-lg">
+
+                                        <h1>Book Sample</h1>
+
                                 <!-- Modal content-->
                                 <div class="modal-content">
                                     
                                 <div class="modal-body">
-                                    <iframe src="./bookServlet?isbn=<%= (item.getISBN())%>&type=viewSample" width="580" height="550"></iframe>
+                                    <iframe src="./bookServlet?isbn=<%= (item.getISBN())%>&type=viewSample" width="650" height="580"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -118,7 +120,7 @@
                                 <image id="ratingStar" value = "5" src="images/emptyStar.png" width="25" height=25"> </image>
                                 </p>
                                 <a class="editRating btn btn-danger btn-block" role="button"><span  aria-hidden="true" ></span>Edit Rating</a>
-                                <a class="removeRating btn btn-default btn-block" role="button"><span  aria-hidden="true" ></span>Remove Rating</a>
+                                <a class="editRating btn btn-default btn-block" role="button"><span  aria-hidden="true" ></span>Remove Rating</a>
 
                             </div>
                         </div>
