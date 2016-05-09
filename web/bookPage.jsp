@@ -78,8 +78,8 @@
                         <% } else { %>
                             <% if(item.getAvailableCopies()!=0){ %>
                                 <div class="caption">
-                                    <a href="#" class="btn btn-primary btn-block" role="button"
-                                    onclick=""><span  aria-hidden="true" ></span>Borrow</a>
+                                    <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=borrow" class="btn btn-primary btn-block" role="button"
+                                       ><span  aria-hidden="true" ></span>Borrow</a>
                             <% } else { %>
                                 <div class="caption">
                                     <a href="#" class="btn btn-primary btn-block" role="button"
@@ -98,7 +98,7 @@
                                 <div class="modal-content">
                                     
                                 <div class="modal-body">
-                                    <iframe src="./bookSampleServlet?isbn=<%= (item.getISBN())%>" width="580" height="550"></iframe>
+                                    <iframe src="./bookServlet?isbn=<%= (item.getISBN())%>&type=viewSample" width="580" height="550"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

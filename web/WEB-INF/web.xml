@@ -17,16 +17,12 @@
         <servlet-class>Servlets.EMFServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>BookPageServlet</servlet-name>
-        <servlet-class>Servlets.BookPageServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LogoutServlet</servlet-name>
         <servlet-class>Servlets.LogoutServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>bookSampleServlet</servlet-name>
-        <servlet-class>Servlets.bookSampleServlet</servlet-class>
+        <servlet-name>bookServlet</servlet-name>
+        <servlet-class>Servlets.bookServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -53,16 +49,12 @@
         <url-pattern>/EMFServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>BookPageServlet</servlet-name>
-        <url-pattern>/BookPageServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/LogoutServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>bookSampleServlet</servlet-name>
-        <url-pattern>/bookSampleServlet</url-pattern>
+        <servlet-name>bookServlet</servlet-name>
+        <url-pattern>/bookServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
