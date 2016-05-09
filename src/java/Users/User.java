@@ -25,7 +25,8 @@ public class User {
     private String email;
     private String phoneNumber;
     private int role; //1:member,2:admin,3:publisher
-   
+    private String lendingPeriod; //default value:3 days
+    
     public void setUserName(String username){
         this.username=username;
     }
@@ -67,5 +68,11 @@ public class User {
     }
     public void setPhoneNumber(String phoneNumber){
         this.phoneNumber=phoneNumber;
+    }
+    public String getLendingPeriod(){
+        return lendingPeriod;
+    }
+    public void setLendingPeriod(String lendingPeriod){
+        this.lendingPeriod=lendingPeriod;
     }
 }

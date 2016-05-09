@@ -8,6 +8,7 @@ package Items;
 import Users.User;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -42,8 +43,9 @@ public class test {
         }
        
        */
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date dateobj = new Date();
-        System.out.println(dateobj);
+         java.util.Date javaDate = new java.util.Date();
+    long javaTime = javaDate.getTime();
+    java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(javaTime);
+    System.out.println("The SQL TIMESTAMP is: " + sqlTimestamp);
     }
 }

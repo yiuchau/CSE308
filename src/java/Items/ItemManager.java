@@ -3,7 +3,9 @@ package Items;
 import Users.User;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -114,7 +116,10 @@ public class ItemManager {
             CheckoutList newItem=new CheckoutList();
             newItem.setIsbn(ISBN);
             newItem.setUserName(current);
-            newItem.setCheckoutTime(getCurrentTime());
+            Date currentDate=getCurrentDate();
+            newItem.setCheckoutTime(currentDate);
+            Date dueDate=calculateDueDate();
+            newItem.setDueTime(dueDate);
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();
@@ -135,9 +140,23 @@ public class ItemManager {
         return isPresent;
     }
     
-    public Date getCurrentTime(){
-        Date dateobj = new Date();
-        return dateobj;
+    public Date getCurrentDate(){
+        java.util.Date javaDate = new java.util.Date();
+        long javaTime = javaDate.getTime();
+        java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(javaTime);
+        return sqlTimestamp;
+    }
+    
+    public Date calculateDueDate(){
+        String period=user.getLendingPeriod();
+        Calendar c = Calendar.getInstance();
+        c.setTime(new Date()); // Now use today date.
+        Date newDate = null;
+        if(period.equals("3 days")){
+            c.add(Calendar.DATE, 3); // Adding 5 days
+            newDate =c.getTime();
+        }
+        return newDate;
     }
     
     public List<Item> getCollection(String category) {
