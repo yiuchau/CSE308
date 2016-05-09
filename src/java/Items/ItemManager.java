@@ -6,9 +6,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 public class ItemManager {
@@ -48,40 +46,32 @@ public class ItemManager {
     public Item findItem(String ISBN) {
         Item retItem;
         for (Item i : itemCollection) {
-            if (i.getISBN() == ISBN) {
+            if (i.getISBN().equals(ISBN)) {
                 em.refresh(i);
                 retItem = i;
                 return retItem;
             }
         }
-
         try {
             Query query = em.createQuery("Select i from  Item i Where i.isbn = ?1");
             query.setParameter(1, ISBN);
             retItem = (Item) query.getSingleResult();
-            if (retItem.getImageURL().equals("None")) {
-                retItem.setImageURL("images/100X125.gif");
-            }
         } catch (NoResultException e) {
             System.out.println("Item with ISBN " + ISBN + " not found.\n");
             return null;
         }
-
         addItem(retItem);
         return retItem;
     }
 
     public void addItem(Item newItem) {
-
         Iterator<Item> it = itemCollection.iterator();
-
         while (it.hasNext()) {
             Item oldItem = it.next();
             if (oldItem.getISBN().equals(newItem.getISBN())) {
                 it.remove();
             }
         }
-
         itemCollection.add(newItem);
         //System.out.println("Item " + newItem.getISBN() + "added to collection.");
     }
@@ -106,6 +96,33 @@ public class ItemManager {
         em.getTransaction().commit();
     }
 
+    public boolean addToCheckoutList(String ISBN){
+        String current=user.getUserName();
+        boolean success=false;
+        if(itemExist(ISBN,current,"CheckoutList")==false){
+            CheckoutList newItem=new CheckoutList();
+            newItem.setIsbn(ISBN);
+            newItem.setUserName(current);
+            em.getTransaction().begin();
+            em.persist(newItem);
+            em.getTransaction().commit();
+            success=true;
+        }
+        return success;
+    }
+    
+    public boolean itemExist(String ISBN,String userName,String table) {
+        boolean isPresent = false;
+        if(table.equals("CheckoutList")){
+            CheckoutKey checkoutKey=new CheckoutKey(ISBN,userName);
+            if(em.find(Items.CheckoutList.class, checkoutKey)!=null){
+                isPresent = true;
+            }
+        }
+        return isPresent;
+        
+    }
+     
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);
         List<Item> retList = new ArrayList<Item>();
@@ -123,7 +140,7 @@ public class ItemManager {
             List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
 
             for (CheckoutList checkoutItem : rs) {
-                Item item = findItem(checkoutItem.getIsbn());
+               Item item = findItem(checkoutItem.getIsbn());
                 if (item.getBanned() == 0) {
                     retList.add(item);
                 }
@@ -255,7 +272,6 @@ public class ItemManager {
         em.remove(user);
         em.getTransaction().commit();
     }
-    
     
     public List<RateList> getRateList(User user){
         String userName=user.getUserName();

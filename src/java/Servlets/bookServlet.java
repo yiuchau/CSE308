@@ -31,7 +31,7 @@ public class bookServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-         response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
         String ISBN=request.getParameter("isbn");
         request.setAttribute("isbn", ISBN);
@@ -39,10 +39,15 @@ public class bookServlet extends HttpServlet {
        if(type.equals("viewSample")){
             request.getRequestDispatcher("./bookSample.jsp").forward(request, response);
         }
-       
-       
         else if(type.equals("borrow")){
-            request.getRequestDispatcher("").forward(request, response);
+            if(itemManager.getUser()==null){
+                request.getRequestDispatcher("./signIn.jsp").forward(request, response);
+            }
+            else{
+                if(itemManager.addToCheckoutList(ISBN)==true){
+                   request.getRequestDispatcher("./bookPage.jsp?isbn="+ISBN).forward(request, response);
+                }
+            }
         }
        
     }

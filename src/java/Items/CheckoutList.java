@@ -7,10 +7,10 @@ package Items;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -20,25 +20,32 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "CheckoutList")
+@IdClass(CheckoutKey.class)
 public class CheckoutList implements Serializable {
     
+  
+    
+   // @EmbeddedId
+   // private CheckoutKey key;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
     private String isbn;
+    @Id
     private String userName;
+
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date checkoutTime;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dueTime;
 
-    public int getId() {
-        return id;
+    /**
+    public CheckoutKey getKey(){
+        return key;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setKey(CheckoutKey key){
+        this.key=key;
     }
-    public String getIsbn(){
+   */
+     public String getIsbn(){
         return isbn;
     }
     public void setIsbn(String isbn){
@@ -50,6 +57,7 @@ public class CheckoutList implements Serializable {
     public void setUserName(String userName){
         this.userName=userName;
     }
+    
     public Date getCheckoutTime(){
         return checkoutTime;
     }
