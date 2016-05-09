@@ -153,7 +153,7 @@ public class ItemManager {
         c.setTime(new Date()); // Now use today date.
         Date newDate = null;
         if(period.equals("3 days")){
-            c.add(Calendar.DATE, 3); // Adding 5 days
+            c.add(Calendar.DATE, 3); // Adding 3 days
             newDate =c.getTime();
         }
         return newDate;
