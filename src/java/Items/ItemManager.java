@@ -73,7 +73,6 @@ public class ItemManager {
             }
         }
         itemCollection.add(newItem);
-        //System.out.println("Item " + newItem.getISBN() + "added to collection.");
     }
 
     public void persist(Item item) {
@@ -120,7 +119,6 @@ public class ItemManager {
             }
         }
         return isPresent;
-        
     }
      
     public List<Item> getCollection(String category) {
@@ -211,6 +209,13 @@ public class ItemManager {
         return retList;
     }
 
+     public List<RateList> getRateList(User user){
+        String userName=user.getUserName();
+        Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
+        List<RateList> list=(List<RateList>)query1.getResultList( );        
+        return list;
+    } 
+     
     public String login(String username, String password) {
         String retValue;
         User user = em.find(Users.User.class, username);
@@ -272,13 +277,4 @@ public class ItemManager {
         em.remove(user);
         em.getTransaction().commit();
     }
-    
-    public List<RateList> getRateList(User user){
-        String userName=user.getUserName();
-        Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
-        List<RateList> list=(List<RateList>)query1.getResultList( );        
-        return list;
-    } 
-    
-    
 }

@@ -23,7 +23,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-
+        <h3 align="center" style="color:#008000;">${successMessage}</h3>
+        <h3 align="center" style="color:#FF0000;">${errorMessage}</h3>
         <div id="fb-root"></div>
         <script>
             (function (d, s, id) {
