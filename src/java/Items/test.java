@@ -6,6 +6,10 @@
 package Items;
 
 import Users.User;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +23,7 @@ import javax.persistence.Query;
  */
 public class test {
     public static void main(String[] args){
+        /**
        ItemManager im=new ItemManager();
        User user=new User();
        user.setEmail("yi.xie.4@stonybrook.edu");
@@ -37,6 +42,10 @@ public class test {
           System.out.println(i.getTitle());
         }
        
-       
+       */
+         java.util.Date javaDate = new java.util.Date();
+    long javaTime = javaDate.getTime();
+    java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(javaTime);
+    System.out.println("The SQL TIMESTAMP is: " + sqlTimestamp);
     }
 }

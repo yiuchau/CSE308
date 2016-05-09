@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav navbar-right hidden-sm">
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Option<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="./wishlist.jsp" >My Wishing List</a> </li>
+                                <li><a href="./wishlist.jsp" >My WishList</a> </li>
                                 <li><a href="./checkouts.jsp" onclick="All()">Checkouts</a> </li>
                                 <li><a href="./holds.jsp" onclick="All()">Holds</a> </li>
                                 <li><a href="./ratelist.jsp" onclick="All()">Rated Books</a> </li>

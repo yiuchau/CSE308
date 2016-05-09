@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -23,29 +24,16 @@ import javax.persistence.Temporal;
 @IdClass(CheckoutKey.class)
 public class CheckoutList implements Serializable {
     
-  
-    
-   // @EmbeddedId
-   // private CheckoutKey key;
     @Id
     private String isbn;
     @Id
     private String userName;
-
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date checkoutTime;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date dueTime;
 
-    /**
-    public CheckoutKey getKey(){
-        return key;
-    }
-    public void setKey(CheckoutKey key){
-        this.key=key;
-    }
-   */
-     public String getIsbn(){
+    public String getIsbn(){
         return isbn;
     }
     public void setIsbn(String isbn){
