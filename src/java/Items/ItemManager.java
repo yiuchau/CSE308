@@ -1,7 +1,10 @@
 package Items;
 
 import Users.User;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PreDestroy;
@@ -111,6 +114,7 @@ public class ItemManager {
             CheckoutList newItem=new CheckoutList();
             newItem.setIsbn(ISBN);
             newItem.setUserName(current);
+            newItem.setCheckoutTime(getCurrentTime());
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();
@@ -130,7 +134,12 @@ public class ItemManager {
         }
         return isPresent;
     }
-     
+    
+    public Date getCurrentTime(){
+        Date dateobj = new Date();
+        return dateobj;
+    }
+    
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);
         List<Item> retList = new ArrayList<Item>();

@@ -6,6 +6,9 @@
 package Items;
 
 import Users.User;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -19,6 +22,7 @@ import javax.persistence.Query;
  */
 public class test {
     public static void main(String[] args){
+        /**
        ItemManager im=new ItemManager();
        User user=new User();
        user.setEmail("yi.xie.4@stonybrook.edu");
@@ -37,6 +41,9 @@ public class test {
           System.out.println(i.getTitle());
         }
        
-       
+       */
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date dateobj = new Date();
+        System.out.println(dateobj);
     }
 }
