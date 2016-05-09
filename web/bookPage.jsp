@@ -89,7 +89,31 @@
 
                             <a href="#" class="btn btn-info btn-block" role="button"
                                onclick=""><span class="text-center" aria-hidden="true" ></span>Wishlist</a>
-                            <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
+                            <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#myModal" role="button"><span aria-hidden="true" ></span>Sample</a>
+                            
+                           
+                            
+                                <div class="modal fade" id="myModal" role="dialog">
+                                <div class="modal-dialog">
+    
+                                <!-- Modal content-->
+                                <div class="modal-content">
+                                    
+                                <div class="modal-body">
+                                    <iframe src="./bookSampleServlet?isbn=<%= (item.getISBN())%>" width="580" height="550"></iframe>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+      
+                                </div>
+                                </div>
+                            
+                            
+                            
+                            
+                            
                             <p>
                             <div class="ratingStars text-center">
                                 <image id="ratingStar" value = "1" src="images/emptyStar.png" width="25" height=25"> </image>
