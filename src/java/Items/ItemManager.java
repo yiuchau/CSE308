@@ -87,6 +87,15 @@ public class ItemManager {
         itemToUpdate.setTitle(newTitle);
         em.getTransaction().commit();
     }
+    
+    //Decrease one each time(borrow book)
+     public void updateItemAvailableCopies(String ISBN) {
+        Item itemToUpdate = findItem(ISBN);
+        em.getTransaction().begin();
+        int currentNumber=itemToUpdate.getAvailableCopies();
+        itemToUpdate.setAvailableCopies(currentNumber-1);
+        em.getTransaction().commit();
+    }
 
     public void deleteItem(String ISBN) {
         Item itemToDelete = findItem(ISBN);
@@ -105,6 +114,7 @@ public class ItemManager {
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();
+            updateItemAvailableCopies(ISBN);
             success=true;
         }
         return success;
@@ -152,7 +162,9 @@ public class ItemManager {
             List<WishList> rs = (List<WishList>) query.getResultList();
             for (WishList wishItem : rs) {
                 Item item = findItem(wishItem.getIsbn());
-                retList.add(item);
+                if (item.getBanned() == 0) {
+                    retList.add(item);
+                }
             }
             return retList;
 
@@ -176,7 +188,9 @@ public class ItemManager {
             List<Holds> rs = (List<Holds>) query.getResultList();
             for (Holds holdItem : rs) {
                 Item item = findItem(holdItem.getIsbn());
-                retList.add(item);
+                if (item.getBanned() == 0) {
+                    retList.add(item);
+                }
             }
             System.out.println("Size: " + retList.size());
             return retList;
@@ -187,7 +201,9 @@ public class ItemManager {
             List<RateList> rs = (List<RateList>) query.getResultList();
             for (RateList rateItem : rs) {
                 Item item = findItem(rateItem.getIsbn());
-                retList.add(item);
+                if (item.getBanned() == 0) {
+                    retList.add(item);
+                }
             }
             return retList;
 
@@ -197,11 +213,11 @@ public class ItemManager {
             query.setMaxResults(50);
         }
 
-        retList = (List<Item>) query.getResultList();
-        for (Item newItem : retList) {
-            if (newItem.getImageURL().equals("None")) {
-                newItem.setImageURL("images/100X125.gif");
-            }
+        List<Item> tempList = (List<Item>) query.getResultList();
+        for (Item newItem : tempList) {
+            if (newItem.getBanned() == 0) {
+                   retList.add(newItem);
+                }
             addItem(newItem);
         }
 
