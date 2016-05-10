@@ -43,7 +43,7 @@
                                 <li><a href="./accountsummary.jsp">Account Summary</a> </li>
                                 <li><a href="./checkouts.jsp">Checkouts</a> </li>
                                 <li><a href="./holds.jsp">Holds</a> </li>
-                                <li><a href="./wishlist.jsp">Wishlist</a> </li>
+                                <li><a href="./wishlistB.jsp">Wishlist</a> </li>
                                 <li><a href="./ratelist.jsp">My Rated Titles</a> </li>
                                 <li><a href="#">Recommended Books</a></li>
                                 <li role="separator" class="divider"></li>

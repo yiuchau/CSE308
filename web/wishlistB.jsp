@@ -18,16 +18,14 @@
                 <ul class="nav navbar-nav navbar-right hidden-sm">
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Option<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="./wishlistA.jsp" onclick="Available()">Currently Available Books</a> </li>
-                                <li><a href="./wishlistB.jsp" onclick="All()">All Books</a> </li>
+                                <li><a href="./wishlistA.jsp">Currently Available Books</a> </li>
+                                <li><a href="./wishlistB.jsp">All Books</a> </li>
                             </ul>
                         </li>
                 </ul>       
                 
                 <br>
 
-                
-                
                 <h2 class="text-center">All Books</h2>
                 <div class="row text-center">  
                     
