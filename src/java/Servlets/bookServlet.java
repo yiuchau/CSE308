@@ -52,13 +52,17 @@ public class bookServlet extends HttpServlet {
                         request.setAttribute("errorMessage", "You've already borrowed this book!");
                     }
                 }
-                else if(type.equals("addToWishlist")){
-                    if(itemManager.addToWishlist(ISBN)==true){
+                else if(type.equals("addToWishList")){
+                    if(itemManager.addToWishList(ISBN)==true){
                         request.setAttribute("successMessage", "Added to wishlist");
                     }
                     else{
                         request.setAttribute("errorMessage", "This book is already in your wishlist!");
                     }
+                }
+                else if(type.equals("removeFromWishList")){
+                    itemManager.removeFromWishList(ISBN);
+                    request.setAttribute("successMessage", "Removed from wishlist");   
                 }
                 request.getRequestDispatcher("./bookPage.jsp?isbn="+ISBN).forward(request, response);
                 

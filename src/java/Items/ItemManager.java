@@ -129,8 +129,8 @@ public class ItemManager {
         return success;
     }
     
-    public boolean addToWishlist(String ISBN){
-         String current=user.getUserName();
+    public boolean addToWishList(String ISBN){
+        String current=user.getUserName();
         boolean success=false;
         if(itemExist(ISBN,current,"WishList")==false){
             WishList newItem=new  WishList();
@@ -144,6 +144,15 @@ public class ItemManager {
             success=true;
         }
         return success;
+    }
+    
+    public void removeFromWishList(String ISBN){
+        String current=user.getUserName();
+        WishlistKey wishlistKey=new WishlistKey(ISBN,current);
+        WishList item=em.find(Items.WishList.class, wishlistKey);
+        em.getTransaction().begin();
+        em.remove(item);
+        em.getTransaction().commit();
     }
     
     public boolean itemExist(String ISBN,String userName,String table) {
