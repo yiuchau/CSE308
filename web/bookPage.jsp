@@ -101,7 +101,7 @@
                                 <div class="modal-content">
                                     
                                 <div class="modal-body">
-                                    <iframe src="./bookServlet?isbn=<%= (item.getISBN())%>&type=viewSample" width="650" height="580"></iframe>
+                                    <iframe src="./bookServlet?isbn=<%= (item.getISBN())%>&type=viewSample" width="700" height="580"></iframe>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

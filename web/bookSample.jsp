@@ -28,6 +28,6 @@
     }       
       google.setOnLoadCallback(initialize);
     </script>
-    <div id="viewerCanvas" style="width: 600px; height: 500px;"></div>
+    <div id="viewerCanvas" style="width: 700px; height: 560px;"></div>
   </body>
 </html>
