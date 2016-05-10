@@ -129,11 +129,34 @@ public class ItemManager {
         return success;
     }
     
+    public boolean addToWishlist(String ISBN){
+         String current=user.getUserName();
+        boolean success=false;
+        if(itemExist(ISBN,current,"WishList")==false){
+            WishList newItem=new  WishList();
+            newItem.setIsbn(ISBN);
+            newItem.setUserName(current);
+            Date currentDate=getCurrentDate();
+            newItem.setWishtime(currentDate);
+            em.getTransaction().begin();
+            em.persist(newItem);
+            em.getTransaction().commit();
+            success=true;
+        }
+        return success;
+    }
+    
     public boolean itemExist(String ISBN,String userName,String table) {
         boolean isPresent = false;
         if(table.equals("CheckoutList")){
             CheckoutKey checkoutKey=new CheckoutKey(ISBN,userName);
             if(em.find(Items.CheckoutList.class, checkoutKey)!=null){
+                isPresent = true;
+            }
+        }
+        else if(table.equals("WishList")){
+            WishlistKey wishlistKey=new WishlistKey(ISBN,userName);
+            if(em.find(Items.WishList.class, wishlistKey)!=null){
                 isPresent = true;
             }
         }

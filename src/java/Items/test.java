@@ -23,7 +23,7 @@ import javax.persistence.Query;
  */
 public class test {
     public static void main(String[] args){
-        /**
+        
        ItemManager im=new ItemManager();
        User user=new User();
        user.setEmail("yi.xie.4@stonybrook.edu");
@@ -34,6 +34,7 @@ public class test {
        user.setUserName("123");
        user.setPhoneNumber("12324");
        im.setUser(user);
+       /**
        List<Item> list=im.getCollection("Checkouts");
        for( Item e:list ) {
           String number=e.getISBN();
@@ -41,11 +42,9 @@ public class test {
           Item i=im.findItem(number);
           System.out.println(i.getTitle());
         }
+        */
        
-       */
-         java.util.Date javaDate = new java.util.Date();
-    long javaTime = javaDate.getTime();
-    java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(javaTime);
-    System.out.println("The SQL TIMESTAMP is: " + sqlTimestamp);
+       
+        // System.out.println(im.itemExist("0064431622","123","CheckoutList"));
     }
 }

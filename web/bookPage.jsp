@@ -88,10 +88,10 @@
                             <% } %>       
                         <% } %>
 
-                            <a href="#" class="btn btn-info btn-block" role="button"
-                               onclick=""><span class="text-center" aria-hidden="true" ></span>Wishlist</a>
-                            <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
+                            <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=addToWishlist" class="btn btn-info btn-block" role="button"
+                               ><span class="text-center" aria-hidden="true" ></span>Wishlist</a>
                             
+                            <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
                                 <div class="modal fade" id="bookSample" role="dialog">
                                 <div class="modal-dialog modal-lg">
 

@@ -10,23 +10,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <title>Google Book Search Embedded Viewer API Example</title>
+    <title>Google Book Search</title>
   </head>
   <body>
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load("books", "0");
+        google.load("books", "0");
 
-      function initialize() {
-        var number=${requestScope.isbn};
-        var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
-        viewer.load('ISBN:'+number, bookNotFound);
-    }
+        function initialize() {
+            var number=${requestScope.isbn};
+            var viewer = new google.books.DefaultViewer(document.getElementById('viewerCanvas'));
+            viewer.load('ISBN:'+number, bookNotFound);
+        }
 
-    function bookNotFound() {
-      document.getElementById('viewerCanvas').innerHTML="<h1>No Sample Available!</h1>";
-    }       
-      google.setOnLoadCallback(initialize);
+        function bookNotFound() {
+            document.getElementById('viewerCanvas').innerHTML="<h1>No Sample Available!</h1>";
+        }       
+        google.setOnLoadCallback(initialize);
     </script>
     <div id="viewerCanvas" style="width: 700px; height: 560px;"></div>
   </body>

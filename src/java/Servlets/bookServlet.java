@@ -39,21 +39,32 @@ public class bookServlet extends HttpServlet {
         if(type.equals("viewSample")){
             request.getRequestDispatcher("./bookSample.jsp").forward(request, response);
         }
-        else if(type.equals("borrow")){
+        else {
             if(itemManager.getUser()==null){
                 request.getRequestDispatcher("./signIn.jsp").forward(request, response);
             }
             else{
-                if(itemManager.addToCheckoutList(ISBN)==true){
-                   request.setAttribute("successMessage", "Added to checkout list");
-                   
+                if(type.equals("borrow")){
+                    if(itemManager.addToCheckoutList(ISBN)==true){
+                        request.setAttribute("successMessage", "Added to checkout list");
+                    }
+                    else{
+                        request.setAttribute("errorMessage", "You've already borrowed this book!");
+                    }
                 }
-                else{
-                   request.setAttribute("errorMessage", "You've already borrowed this book!");
+                else if(type.equals("addToWishlist")){
+                    if(itemManager.addToWishlist(ISBN)==true){
+                        request.setAttribute("successMessage", "Added to wishlist");
+                    }
+                    else{
+                        request.setAttribute("errorMessage", "This book is already in your wishlist!");
+                    }
                 }
                 request.getRequestDispatcher("./bookPage.jsp?isbn="+ISBN).forward(request, response);
+                
             }
         }
+       
         
        
     }

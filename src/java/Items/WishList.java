@@ -11,8 +11,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -20,25 +22,16 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "WishList")
+@IdClass(WishlistKey.class)
 public class WishList implements Serializable{
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int wishid;
     private String isbn;
+    @Id
     private String userName;
-    @Temporal(javax.persistence.TemporalType.DATE)
+     @Temporal(TemporalType.TIMESTAMP)
     private Date wishtime;
 
-
-
-    public int getWishid() {
-        return wishid;
-    }
-
-    public void setWishid(int wishid) {
-        this.wishid = wishid;
-    }
-    
     public String getIsbn(){
         return isbn;
     }
