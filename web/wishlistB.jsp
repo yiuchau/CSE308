@@ -34,6 +34,7 @@
                             <div class="caption">
                                 <div class="thumbnail "> <img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                                     <font size="2">${item.title}</font>
+                                    <p><a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Remove</a></p>
                                 </div>
                             </div>
                         </div>

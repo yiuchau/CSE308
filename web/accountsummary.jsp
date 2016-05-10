@@ -25,9 +25,10 @@
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Menu<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="./wishlistB.jsp" >My WishList</a> </li>
-                                <li><a href="./checkouts.jsp" onclick="All()">Checkouts</a> </li>
-                                <li><a href="./holds.jsp" onclick="All()">Holds</a> </li>
-                                <li><a href="./ratelist.jsp" onclick="All()">Rated Books</a> </li>
+                                <li><a href="./checkouts.jsp" >Checkouts</a> </li>
+                                <li><a href="./holds.jsp" >Holds</a> </li>
+                                <li><a href="./ratelist.jsp">Rated Books</a> </li>
+                                <li><a href="#" >Account Settings</a> </li>
                             </ul>
                         </li>
                 </ul>  
