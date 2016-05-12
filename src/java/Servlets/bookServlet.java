@@ -44,25 +44,35 @@ public class bookServlet extends HttpServlet {
                 request.getRequestDispatcher("./signIn.jsp").forward(request, response);
             }
             else{
-                if(type.equals("borrow")){
-                    if(itemManager.addToCheckoutList(ISBN)==true){
-                        request.setAttribute("successMessage", "Added to checkout list");
-                    }
-                    else{
-                        request.setAttribute("errorMessage", "You've already borrowed this book!");
-                    }
-                }
-                else if(type.equals("addToWishList")){
-                    if(itemManager.addToWishList(ISBN)==true){
-                        request.setAttribute("successMessage", "Added to wishlist");
-                    }
-                    else{
-                        request.setAttribute("errorMessage", "This book is already in your wishlist!");
-                    }
-                }
-                else if(type.equals("removeFromWishList")){
-                    itemManager.removeFromWishList(ISBN);
-                    request.setAttribute("successMessage", "Removed from wishlist");   
+                switch (type) {
+                    case "borrow":
+                        if(itemManager.addToCheckoutList(ISBN)==true){
+                            request.setAttribute("successMessage", "Added to checkout list");
+                        }
+                        else{
+                            request.setAttribute("errorMessage", "You've already borrowed this book!");
+                        }   break;
+                    case "addToWishList":
+                        if(itemManager.addToWishList(ISBN)==true){
+                            request.setAttribute("successMessage", "Added to wishlist");
+                        }
+                        else{
+                            request.setAttribute("errorMessage", "This book is already in your wishlist!");
+                        }   break;
+                    case "removeFromWishList":
+                        itemManager.removeFromWishList(ISBN);
+                        request.setAttribute("successMessage", "Removed from wishlist");
+                        break;   
+                    case "placeHold":
+                        String message=itemManager.addToHoldsList(ISBN);
+                        if("success".equals(message)){
+                            request.setAttribute("successMessage", "Added to holds");
+                        }
+                        else{
+                            request.setAttribute("errorMessage", message);
+                        }  
+                    default:
+                        break;
                 }
                 request.getRequestDispatcher("./bookPage.jsp?isbn="+ISBN).forward(request, response);
                 

@@ -8,11 +8,11 @@ package Items;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -20,22 +20,17 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "Holds")
+@IdClass(HoldsKey.class)
 public class Holds implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
     private String isbn;
+    @Id
     private String userName;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date placeHoldTime;
+    private String checkOutType; //email(default) or automatic
 
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
     public String getIsbn(){
         return isbn;
     }
@@ -54,4 +49,11 @@ public class Holds implements Serializable {
     public void setPlaceHoldTime(Date placeHoldTime){
         this.placeHoldTime=placeHoldTime;
     }
+    public String getCheckOutType(){
+        return checkOutType;
+    }
+    public void setCheckOutType(String checkOutType){
+        this.checkOutType=checkOutType;
+    }
 }
+

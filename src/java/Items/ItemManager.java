@@ -1,9 +1,6 @@
 package Items;
 
 import Users.User;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -146,6 +143,29 @@ public class ItemManager {
         return success;
     }
     
+     public String addToHoldsList(String ISBN){
+        String current=user.getUserName();
+        String returnMessage="success";
+        if(itemExist(ISBN,current,"CheckoutList")==true){
+            returnMessage="You've already borrowed this book!";
+        }
+        else if(itemExist(ISBN,current,"Holds")==true){
+            returnMessage="You've already placed a hold on this book!";
+        }
+        else{
+            Holds newItem=new Holds();
+            newItem.setIsbn(ISBN);
+            newItem.setUserName(current);
+            Date currentDate=getCurrentDate();
+            newItem.setPlaceHoldTime(currentDate);
+            newItem.setCheckOutType("email");//defalut is email
+            em.getTransaction().begin();
+            em.persist(newItem);
+            em.getTransaction().commit();
+        }
+        return returnMessage;
+    }
+    
     public void removeFromWishList(String ISBN){
         String current=user.getUserName();
         WishlistKey wishlistKey=new WishlistKey(ISBN,current);
@@ -166,6 +186,12 @@ public class ItemManager {
         else if(table.equals("WishList")){
             WishlistKey wishlistKey=new WishlistKey(ISBN,userName);
             if(em.find(Items.WishList.class, wishlistKey)!=null){
+                isPresent = true;
+            }
+        }
+        else if(table.equals("Holds")){
+            HoldsKey holdsKey=new  HoldsKey(ISBN,userName);
+            if(em.find(Items.Holds.class,holdsKey)!=null){
                 isPresent = true;
             }
         }

@@ -83,7 +83,7 @@
                                        ><span  aria-hidden="true" ></span>Borrow</a>
                             <% } else { %>
                                 <div class="caption">
-                                    <a href="#" class="btn btn-primary btn-block" role="button"
+                                    <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=placeHold" class="btn btn-primary btn-block" role="button"
                                             onclick=""><span  aria-hidden="true" ></span>Place Hold</a>
                             <% } %>       
                         <% } %>
