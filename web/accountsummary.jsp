@@ -28,6 +28,7 @@
                                 <li><a href="./checkouts.jsp" >Checkouts</a> </li>
                                 <li><a href="./holds.jsp" >Holds</a> </li>
                                 <li><a href="./ratelist.jsp">Rated Books</a> </li>
+                                <li><a href="./recommended.jsp">Recommended Books</a> </li>
                                 <li><a href="#" >Account Settings</a> </li>
                             </ul>
                         </li>
