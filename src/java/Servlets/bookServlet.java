@@ -73,6 +73,7 @@ public class bookServlet extends HttpServlet {
                         else{
                             request.setAttribute("errorMessage", message);
                         } 
+                        break;
                     case "recommend":
                         option=request.getParameter("option");
                         String email=request.getParameter("email");
@@ -82,6 +83,7 @@ public class bookServlet extends HttpServlet {
                         else{
                             request.setAttribute("errorMessage", "You've already recommended this book!");
                         }
+                        break;
                     default:
                         break;
                 }
