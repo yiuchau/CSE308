@@ -389,7 +389,7 @@ public class ItemManager {
     }
 
     //update user information
-    public void updateUser(String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod) {
+    public void updateUser(String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod,String newMaturityLevel) {
         em.getTransaction().begin();
         user.setFirstName(newFName);
         user.setLastName(newLName);
@@ -397,6 +397,7 @@ public class ItemManager {
         user.setPassword(newPassword);
         user.setPhoneNumber(newPhoneNumber);
         user.setLendingPeriod(newLendingPeriod);
+        user.setMaturityLevel(newMaturityLevel);
         em.getTransaction().commit();
     }
 

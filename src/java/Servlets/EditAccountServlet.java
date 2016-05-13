@@ -21,10 +21,14 @@ public class EditAccountServlet extends HttpServlet {
             String newPassword = request.getParameter("customerPassword");
             String newPhoneNumber = request.getParameter("customerphoneNumber");
             String newLendingPeriod=request.getParameter("lendingPreiod");
+            String newMaturityLevel=request.getParameter("maturityLevel");
             if ("None".equals(newLendingPeriod)){
-                newLendingPeriod=itemManager.getUser().getLendingPeriod(); 
+                newLendingPeriod=itemManager.getUser().getLendingPeriod(); //unchanged
             }
-            itemManager.updateUser(newFName, newLName, newEmail, newPassword, newPhoneNumber,newLendingPeriod);
+            if ("None".equals(newMaturityLevel)){
+                newMaturityLevel=itemManager.getUser().getMaturityLevel();  //unchanged
+            }
+            itemManager.updateUser(newFName, newLName, newEmail, newPassword, newPhoneNumber,newLendingPeriod,newMaturityLevel);
             request.getRequestDispatcher("/accountPage.jsp").forward(request, response);
 
     }

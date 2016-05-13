@@ -21,7 +21,7 @@ public class User implements Serializable {
     private String phoneNumber;
     private int role; //1:member,2:admin,3:publisher
     private String lendingPeriod; //default value:3 days
-    private String maturityLevel;//default adult
+    private String maturityLevel;//default adult 
     
     public void setUserName(String username){
         this.username=username;

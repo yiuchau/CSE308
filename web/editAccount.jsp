@@ -9,13 +9,14 @@
 <html>
     <jsp:include page="memberHeader.jsp" />
     <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
+   
     <body>
             
         <form method="post" action="http://localhost:8080/308code/EditAccountServlet">
         <h2 class="text-center">Change Account settings  <input type="submit" value="submit" /></h2>
         <div class="container"> 
-            <table width="400" border="1" align="center" > 
-            <tbody>
+            <table width="430" border="1" align="center" > 
+            <body>
             <tr>
                 <td height="50"> 
                     <label>New First Name</label>
@@ -47,7 +48,7 @@
                     <input type="password" value="${itemManager.user.password}" id="customer_password" name="customerPassword" tabindex="1" >
                 </td>
             </tr>
-             <tr>
+            <tr>
                 <td height="50">	
                     <label>New lending Period</label>
                     <select name="lendingPreiod">
@@ -59,6 +60,40 @@
                     </select>
                 </td>
             </tr>
+            <tr>
+                <td height="50">	
+                    <label>New Maturity Level</label>
+                    <select name="maturityLevel">
+                        <option value="None">-- Select --</option>
+                        <option value="children">Children</option>
+                        <option value="adult">Adult</option>
+                    </select>
+                </td>
+            </tr>
+            
+              <tr>
+                <td height="50">	
+                    <label >New display contrast level</label>
+                    <input type="range" name="contrastLevel" min="0" max="5">
+                        
+                </td>
+            </tr>
+            
+     
+              <tr>
+                <td height="50">	
+                    <label>Use Dyslexic Font</label>
+                    <select name="fyslexicFont">
+                        <option value="None">-- Select --</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </td>
+            </tr>
+            
+            
+            
+            
             </tbody>
             </table>
         </div>
