@@ -71,10 +71,43 @@
 
                         </div>
                        
-                             
                         <% if(item.getTotalCopies()==0){ %>
-                                <a href="#" class="btn btn-primary btn-block" role="button"
-                                onclick=""><span  aria-hidden="true" ></span>Recommend</a>
+                                  <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#recommend" role="button"><span  aria-hidden="true" ></span>Recommend</a>
+                                
+                                    <p>
+                                        <div class="modal fade" id="recommend" role="dialog">
+                                            <div class="modal-dialog">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <form role="form" action="./bookServlet?isbn=<%= (item.getISBN())%>&type=recommend" method="POST">
+                                                            <div
+                                                                <label>Please enter your Email address</label>
+                                                            </div>
+                                                                <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> 
+                                                            <div class="options" >
+                                                                <br>
+                                                                <label>Please set the checkout type when this book becomes available:</label>
+                                                                <br>
+                                                                    <input type="radio" name="option" value="email" checked>Email Notification <br>
+                                                                <br>
+                                                                    <input type="radio" name="option" value="automatic">Automatic Checkout<br>
+                                                                <br>
+                                                            </div>
+                                                            <button type="" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Submit</button>
+                                                        </form>
+                                     
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    <p>  
+                                
+                                
+                                
                         <% } else { %>
                             <% if(item.getAvailableCopies()!=0){ %>
                                     <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=borrow" class="btn btn-primary btn-block" role="button"
@@ -82,7 +115,6 @@
                             <% } else { %>
                                 
                                     <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#placeHold" role="button"><span  aria-hidden="true" ></span>Place Hold</a>
-                                
                                     <p>
                                         <div class="modal fade" id="placeHold" role="dialog">
                                             <div class="modal-dialog">
@@ -109,8 +141,7 @@
                                                 </div>
                                             </div>
                                         </div> 
-                                    <p>      
-                                        
+                                    <p>        
                             <% } %>       
                         <% } %>
 
@@ -119,22 +150,22 @@
                            
                             <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
                                 <div class="modal fade" id="bookSample" role="dialog">
-                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-dialog modal-lg">
 
                                         <h1>Book Sample</h1>
 
-                                <!-- Modal content-->
-                                <div class="modal-content">
+                                        <!-- Modal content-->
+                                        <div class="modal-content">
                                     
-                                <div class="modal-body">
-                                    <iframe src="./bookServlet?isbn=<%= (item.getISBN())%>&type=viewSample" width="700" height="580"></iframe>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                </div>
-                                </div>
+                                            <div class="modal-body">
+                                                <iframe src="./bookServlet?isbn=<%= (item.getISBN())%>&type=viewSample" width="700" height="580"></iframe>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
       
-                                </div>
+                                    </div>
                                 </div>
                             
                             <p>
