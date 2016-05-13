@@ -166,6 +166,24 @@ public class ItemManager {
         return returnMessage;
     }
     
+     public boolean addToRecommended(String ISBN,String checkoutType,String email){
+        String current=user.getUserName();
+        boolean success=false;
+        if(itemExist(ISBN,current,"Recommended")==false){
+            RecommendedList newItem=new RecommendedList();
+            newItem.setIsbn(ISBN);
+            newItem.setUserName(current);
+            Date currentDate=getCurrentDate();
+            newItem.setRecommendedTime(currentDate);
+            newItem.setCheckOutType(checkoutType);
+            newItem.setEmail(email);
+            em.getTransaction().begin();
+            em.persist(newItem);
+            em.getTransaction().commit();
+            success=true;
+        }
+        return success;
+     }
     public void removeFromWishList(String ISBN){
         String current=user.getUserName();
         WishlistKey wishlistKey=new WishlistKey(ISBN,current);
@@ -192,6 +210,12 @@ public class ItemManager {
         else if(table.equals("Holds")){
             HoldsKey holdsKey=new  HoldsKey(ISBN,userName);
             if(em.find(Items.Holds.class,holdsKey)!=null){
+                isPresent = true;
+            }
+        }
+        else if(table.equals("Recommended")){
+            RecommendedKey recommendedKey=new  RecommendedKey(ISBN,userName);
+            if(em.find(Items.RecommendedList.class,recommendedKey)!=null){
                 isPresent = true;
             }
         }
