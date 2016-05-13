@@ -73,24 +73,50 @@
                        
                              
                         <% if(item.getTotalCopies()==0){ %>
-                            <div class="caption">
                                 <a href="#" class="btn btn-primary btn-block" role="button"
                                 onclick=""><span  aria-hidden="true" ></span>Recommend</a>
                         <% } else { %>
                             <% if(item.getAvailableCopies()!=0){ %>
-                                <div class="caption">
                                     <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=borrow" class="btn btn-primary btn-block" role="button"
                                        ><span  aria-hidden="true" ></span>Borrow</a>
                             <% } else { %>
-                                <div class="caption">
-                                    <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=placeHold" class="btn btn-primary btn-block" role="button"
-                                            onclick=""><span  aria-hidden="true" ></span>Place Hold</a>
+                                
+                                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#placeHold" role="button"><span  aria-hidden="true" ></span>Place Hold</a>
+                                
+                                    <p>
+                                        <div class="modal fade" id="placeHold" role="dialog">
+                                            <div class="modal-dialog">
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-body">
+                                                        <h4 class="modal-title">Please set the checkout type when this book becomes available</h4>
+            
+                                                        <form role="form" action="./bookServlet?isbn=<%= (item.getISBN())%>&type=placeHold" method="POST">
+                                                            <div class="options" >
+                                                                <br>
+                                                                <input type="radio" name="option" value="email" checked>Email Notification <br>
+                                                                <br>
+                                                                <input type="radio" name="option" value="automatic">Automatic Checkout<br>
+                                                                <br>
+                                                            </div>
+                                                            <button type="" class="btn btn-success btn-block"><span class="glyphicon glyphicon-off"></span>Submit</button>
+                                                        </form>
+                                     
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                    <p>      
+                                        
                             <% } %>       
                         <% } %>
 
                             <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=addToWishList" class="btn btn-info btn-block" role="button"
                                ><span class="text-center" aria-hidden="true" ></span>Wishlist</a>
-                            
+                           
                             <a href="#" class="btn btn-warning btn-block" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
                                 <div class="modal fade" id="bookSample" role="dialog">
                                 <div class="modal-dialog modal-lg">
@@ -125,6 +151,7 @@
                             </div>
                         </div>
                     </div>
+                
                 </div>
 
                 <div class="col-sm-6">
@@ -187,7 +214,7 @@
 
                             <div class="btn-group">
                                 <a class="fb-share-button" 
-                                   data-href="http://localhost:8080/308code/guestBookPage.jsp" 
+                                   data-href="http://localhost:8080/308code/bookPage.jsp" 
                                    data-layout="button_count"> </a>     
                                 <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
                                 <a href="https://www.pinterest.com/pin/create/button/">

@@ -143,7 +143,7 @@ public class ItemManager {
         return success;
     }
     
-     public String addToHoldsList(String ISBN){
+     public String addToHoldsList(String ISBN,String checkoutType){
         String current=user.getUserName();
         String returnMessage="success";
         if(itemExist(ISBN,current,"CheckoutList")==true){
@@ -158,7 +158,7 @@ public class ItemManager {
             newItem.setUserName(current);
             Date currentDate=getCurrentDate();
             newItem.setPlaceHoldTime(currentDate);
-            newItem.setCheckOutType("email");//defalut is email
+            newItem.setCheckOutType(checkoutType);
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();

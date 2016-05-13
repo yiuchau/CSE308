@@ -64,7 +64,8 @@ public class bookServlet extends HttpServlet {
                         request.setAttribute("successMessage", "Removed from wishlist");
                         break;   
                     case "placeHold":
-                        String message=itemManager.addToHoldsList(ISBN);
+                        String option=request.getParameter("option");
+                        String message=itemManager.addToHoldsList(ISBN,option);
                         if("success".equals(message)){
                             request.setAttribute("successMessage", "Added to holds");
                         }

@@ -29,7 +29,7 @@ public class Holds implements Serializable {
     private String userName;
     @Temporal(TemporalType.TIMESTAMP)
     private Date placeHoldTime;
-    private String checkOutType; //email(default) or automatic
+    private String checkOutType; //email or automatic
 
     public String getIsbn(){
         return isbn;
