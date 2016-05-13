@@ -389,13 +389,14 @@ public class ItemManager {
     }
 
     //update user information
-    public void updateUser(String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber) {
+    public void updateUser(String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod) {
         em.getTransaction().begin();
         user.setFirstName(newFName);
         user.setLastName(newLName);
         user.setEmail(newEmail);
         user.setPassword(newPassword);
         user.setPhoneNumber(newPhoneNumber);
+        user.setLendingPeriod(newLendingPeriod);
         em.getTransaction().commit();
     }
 

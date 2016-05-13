@@ -20,7 +20,11 @@ public class EditAccountServlet extends HttpServlet {
             String newEmail = request.getParameter("customerEmail");
             String newPassword = request.getParameter("customerPassword");
             String newPhoneNumber = request.getParameter("customerphoneNumber");
-            itemManager.updateUser(newFName, newLName, newEmail, newPassword, newPhoneNumber);
+            String newLendingPeriod=request.getParameter("lendingPreiod");
+            if ("None".equals(newLendingPeriod)){
+                newLendingPeriod=itemManager.getUser().getLendingPeriod(); 
+            }
+            itemManager.updateUser(newFName, newLName, newEmail, newPassword, newPhoneNumber,newLendingPeriod);
             request.getRequestDispatcher("/accountPage.jsp").forward(request, response);
 
     }

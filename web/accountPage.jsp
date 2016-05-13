@@ -50,10 +50,13 @@
                      <td height="50">	Phone Number:   ${itemManager.user.phoneNumber}</td>
                 </tr>
                 <tr>
-                    <td height="50"><font color="red">*UserName[Can't be changed]:${itemManager.user.userName}</font></td>
+                    <td height="50">	Password:	******</td>
                 </tr>
                 <tr>
-                    <td height="50">	Password:	******</td>
+                    <td height="50">	Lending Period:	${itemManager.user.lendingPeriod}</td>
+                </tr>
+                <tr>
+                    <td height="50">	Maturity Level:	${itemManager.user.maturityLevel}</td>
                 </tr>
             </tbody>
             </table>

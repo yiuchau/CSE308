@@ -10,6 +10,7 @@
     <jsp:include page="memberHeader.jsp" />
     <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
     <body>
+            
         <form method="post" action="http://localhost:8080/308code/EditAccountServlet">
         <h2 class="text-center">Change Account settings  <input type="submit" value="submit" /></h2>
         <div class="container"> 
@@ -44,6 +45,18 @@
                 <td height="50">	
                     <label>New password</label>
                     <input type="password" value="${itemManager.user.password}" id="customer_password" name="customerPassword" tabindex="1" >
+                </td>
+            </tr>
+             <tr>
+                <td height="50">	
+                    <label>New lending Period</label>
+                    <select name="lendingPreiod">
+                        <option value="None">-- Select --</option>
+                        <option value="5 minutes">5 Minutes</option>
+                        <option value="3 days">3 days</option>
+                        <option value="7 days">7 days</option>
+                        <option value="10 days">10 days</option>
+                    </select>
                 </td>
             </tr>
             </tbody>
