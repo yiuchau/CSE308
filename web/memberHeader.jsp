@@ -53,7 +53,7 @@
 
                                 <li><a href="./moreSearch.html">Advanced Search</a> </li>
                           
-                        <li><a>Help<a></li>
+                        <li><a href="./help.jsp">Help<a></li>
                                     </ul>
                                     </div>
                                     <!-- /.navbar-collapse --> 

@@ -38,7 +38,7 @@
         <li><a href="./signIn.jsp">Login</a></li>
         <li><a href="./signUp.jsp">Account Registration</a> </li>
         <li><a href="./moreSearch.html">Advanced Search</a> </li>
-        <li><a>Help<a></li>
+        <li><a href="./help.jsp">Help<a></li>
       </ul>
     </div>
     <!-- /.navbar-collapse --> 
