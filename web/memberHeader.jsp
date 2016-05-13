@@ -45,7 +45,7 @@
                                 <li><a href="./holds.jsp">Holds</a> </li>
                                 <li><a href="./wishlistB.jsp">Wishlist</a> </li>
                                 <li><a href="./ratelist.jsp">My Rated Titles</a> </li>
-                                <li><a href="#">Recommended Books</a></li>
+                                <li><a href="./recommended.jsp">Recommended Books</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href=http://localhost:8080/308code/LogoutServlet>Sign out</a> </li>
                             </ul>

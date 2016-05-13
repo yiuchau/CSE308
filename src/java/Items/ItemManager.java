@@ -166,6 +166,24 @@ public class ItemManager {
         return returnMessage;
     }
     
+     public boolean addToRecommended(String ISBN,String checkoutType,String email){
+        String current=user.getUserName();
+        boolean success=false;
+        if(itemExist(ISBN,current,"Recommended")==false){
+            RecommendedList newItem=new RecommendedList();
+            newItem.setIsbn(ISBN);
+            newItem.setUserName(current);
+            Date currentDate=getCurrentDate();
+            newItem.setRecommendedTime(currentDate);
+            newItem.setCheckOutType(checkoutType);
+            newItem.setEmail(email);
+            em.getTransaction().begin();
+            em.persist(newItem);
+            em.getTransaction().commit();
+            success=true;
+        }
+        return success;
+     }
     public void removeFromWishList(String ISBN){
         String current=user.getUserName();
         WishlistKey wishlistKey=new WishlistKey(ISBN,current);
@@ -192,6 +210,12 @@ public class ItemManager {
         else if(table.equals("Holds")){
             HoldsKey holdsKey=new  HoldsKey(ISBN,userName);
             if(em.find(Items.Holds.class,holdsKey)!=null){
+                isPresent = true;
+            }
+        }
+        else if(table.equals("Recommended")){
+            RecommendedKey recommendedKey=new  RecommendedKey(ISBN,userName);
+            if(em.find(Items.RecommendedList.class,recommendedKey)!=null){
                 isPresent = true;
             }
         }
@@ -232,7 +256,6 @@ public class ItemManager {
             query = em.createQuery("SELECT c FROM CheckoutList c WHERE c.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
-
             for (CheckoutList checkoutItem : rs) {
                Item item = findItem(checkoutItem.getIsbn());
                 if (item.getBanned() == 0) {
@@ -240,7 +263,6 @@ public class ItemManager {
                 }
             }
             return retList;
-
         } 
         //All books in wishlist
         else if (category.equals("WishList")) {
@@ -254,7 +276,6 @@ public class ItemManager {
                 }
             }
             return retList;
-
         } 
         //currently available books in wishlist
         else if (category.equals("WishListA")) {
@@ -270,8 +291,8 @@ public class ItemManager {
                 }             
             }
             return retList;
-
-        } else if (category.equals("Holds")) {
+        } 
+        else if (category.equals("Holds")) {
             query = em.createQuery("SELECT h FROM Holds h WHERE h.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<Holds> rs = (List<Holds>) query.getResultList();
@@ -283,20 +304,21 @@ public class ItemManager {
             }
             System.out.println("Size: " + retList.size());
             return retList;
-
-        } else if (category.equals("Ratings")) {
-            query = em.createQuery("SELECT r FROM RateList r WHERE r.userName = ?1");
+        } 
+         else if (category.equals("Recommended")) {
+            query = em.createQuery("SELECT r FROM RecommendedList r WHERE r.userName = ?1");
             query.setParameter(1, user.getUserName());
-            List<RateList> rs = (List<RateList>) query.getResultList();
-            for (RateList rateItem : rs) {
-                Item item = findItem(rateItem.getIsbn());
+            List<RecommendedList> rs = (List<RecommendedList>) query.getResultList();
+            for (RecommendedList recommendedItem : rs) {
+                Item item = findItem(recommendedItem.getIsbn());
                 if (item.getBanned() == 0) {
                     retList.add(item);
                 }
             }
+            System.out.println("Size: " + retList.size());
             return retList;
-
-        } else {
+        } 
+        else {
             //TODO RECOMMENDATIONS
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.totalCopies DESC");
             query.setMaxResults(50);
@@ -367,13 +389,15 @@ public class ItemManager {
     }
 
     //update user information
-    public void updateUser(String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber) {
+    public void updateUser(String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod,String newMaturityLevel) {
         em.getTransaction().begin();
         user.setFirstName(newFName);
         user.setLastName(newLName);
         user.setEmail(newEmail);
         user.setPassword(newPassword);
         user.setPhoneNumber(newPhoneNumber);
+        user.setLendingPeriod(newLendingPeriod);
+        user.setMaturityLevel(newMaturityLevel);
         em.getTransaction().commit();
     }
 

@@ -36,6 +36,7 @@ public class bookServlet extends HttpServlet {
         String ISBN=request.getParameter("isbn");
         request.setAttribute("isbn", ISBN);
         String type=request.getParameter("type");
+        String option="";
         if(type.equals("viewSample")){
             request.getRequestDispatcher("./bookSample.jsp").forward(request, response);
         }
@@ -64,14 +65,23 @@ public class bookServlet extends HttpServlet {
                         request.setAttribute("successMessage", "Removed from wishlist");
                         break;   
                     case "placeHold":
-                        String option=request.getParameter("option");
+                        option=request.getParameter("option");
                         String message=itemManager.addToHoldsList(ISBN,option);
                         if("success".equals(message)){
                             request.setAttribute("successMessage", "Added to holds");
                         }
                         else{
                             request.setAttribute("errorMessage", message);
-                        }  
+                        } 
+                    case "recommend":
+                        option=request.getParameter("option");
+                        String email=request.getParameter("email");
+                        if(itemManager.addToRecommended(ISBN,option,email)){
+                            request.setAttribute("successMessage", "Added to recommended books");
+                        }
+                        else{
+                            request.setAttribute("errorMessage", "You've already recommended this book!");
+                        }
                     default:
                         break;
                 }
