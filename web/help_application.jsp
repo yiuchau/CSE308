@@ -4,8 +4,7 @@
 <!DOCTYPE html>
     <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%-- TESTING, DO NO REMOVE <jsp:include page="header.jsp" /> --%>
-    <jsp:include page="memberHeader.jsp" />
+    <%-- TESTING, DO NO REMOVE <jsp:include page="header.jsp" /> --%>  
     <html lang="en">
  
         </script><style>
@@ -206,6 +205,14 @@ img
     
         <head>
             <link rel="stylesheet" href="css/bootstrap.css">
+            <c:choose>
+            <c:when test="${itemManager.user==null}">
+                <jsp:include page="guestHeader.jsp" />
+            </c:when>    
+            <c:otherwise>
+                <jsp:include page="memberHeader.jsp" />
+            </c:otherwise>
+            </c:choose>
         </head>
         <body> 
             <div class="container">
