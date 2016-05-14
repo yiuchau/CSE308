@@ -24,6 +24,7 @@
                 
                 <div class="row text-center">   
                     <c:forEach items="${itemManager.getRateList(itemManager.user)}" var="item">
+                      
                         <div class="col-sm-3">
                             <div class="caption">
                                 <div class="thumbnail "> <img src="${itemManager.findItem(item.isbn).imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
@@ -35,6 +36,8 @@
                                 </div>
                             </div>
                         </div>
+                     
+                                
                     </c:forEach>
                 </div>
             </div>

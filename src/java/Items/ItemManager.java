@@ -375,10 +375,20 @@ public class ItemManager {
 
      public List<RateList> getRateList(User user){
         String userName=user.getUserName();
+        List<RateList> listreturn = new ArrayList();
         Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
-        List<RateList> list=(List<RateList>)query1.getResultList( );  
+        List<RateList> list=(List<RateList>)query1.getResultList( ); 
+        int counter = 0;
+        for (RateList rateItem : list) {
+               Item item = findItem(rateItem.getIsbn());
+                if (item.getBanned() == 0) {
+                    listreturn.add(list.get(counter));
+                }
+                counter = counter +1;
+            }
+        
         //need to check if book has been banned
-        return list;
+        return listreturn;
     } 
     
     //set banned=1
