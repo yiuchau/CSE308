@@ -339,9 +339,17 @@ public class ItemManager {
                     retList.add(item);
                 }
             }
-            System.out.println("Size: " + retList.size());
             return retList;
-        } 
+        }
+        else if(category.equals("AllRecommended")){
+            query = em.createQuery("SELECT DISTINCT(r.isbn) FROM RecommendedList r ");
+            List<String> rs = (List<String>)query.getResultList();
+            for(int i=0;i<rs.size();i++){
+                retList.add(findItem(rs.get(i)));
+            }
+            
+            return retList;
+        }
         else if(category.equals("BannedBooks")){
              query = em.createQuery("SELECT i FROM Item i WhERE i.banned=1");
              retList = (List<Item>) query.getResultList();
