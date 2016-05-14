@@ -148,6 +148,8 @@ Cedar complies with the U.S. – EU Safe Harbor Framework and the U.S. – Swiss
 
 <h3>CONTACT CEDAR</h3>
 If you have questions or concerns regarding this Privacy Policy, please contact Cedar via email at privacy@Cedar.com.
+<br>
+<br>
 
 <p class="text-center" >This Privacy Policy is effective as of April 2016.</p>
 
