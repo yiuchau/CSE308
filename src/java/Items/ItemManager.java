@@ -305,7 +305,7 @@ public class ItemManager {
             System.out.println("Size: " + retList.size());
             return retList;
         } 
-         else if (category.equals("Recommended")) {
+        else if (category.equals("Recommended")) {
             query = em.createQuery("SELECT r FROM RecommendedList r WHERE r.userName = ?1");
             query.setParameter(1, user.getUserName());
             List<RecommendedList> rs = (List<RecommendedList>) query.getResultList();
@@ -318,6 +318,11 @@ public class ItemManager {
             System.out.println("Size: " + retList.size());
             return retList;
         } 
+        else if(category.equals("BannedBooks")){
+             query = em.createQuery("SELECT i FROM Item i WhERE i.banned=1");
+             retList = (List<Item>) query.getResultList();
+             return retList;
+        }
         else {
             //TODO RECOMMENDATIONS
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.totalCopies DESC");
@@ -339,10 +344,12 @@ public class ItemManager {
      public List<RateList> getRateList(User user){
         String userName=user.getUserName();
         Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
-        List<RateList> list=(List<RateList>)query1.getResultList( );        
+        List<RateList> list=(List<RateList>)query1.getResultList( );  
+        //need to check if book has been banned
         return list;
     } 
-     
+    
+    //set banned=1
     public String banABook(String ISBN){
         String message;
         Item item=findItem(ISBN);
@@ -359,6 +366,21 @@ public class ItemManager {
                 em.getTransaction().commit();
                 message="success";
             }
+        }
+        return message;
+    }
+    //set banned=0
+    public String unbanABook(String ISBN){
+        String message;
+        Item item=findItem(ISBN);
+        if(item==null){
+            message="Failed. Please try again!";
+        }
+        else{
+            em.getTransaction().begin();
+            item.setBanned(0);
+            em.getTransaction().commit();
+            message="success";
         }
         return message;
     }

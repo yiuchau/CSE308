@@ -33,10 +33,10 @@ public class adminServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
-           String type=request.getParameter("type");
+            ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
+            String type=request.getParameter("type");
+            String ISBN=request.getParameter("isbn");
            if (type.equals("ban")){
-                String ISBN=request.getParameter("isbn");
                 String message=itemManager.banABook(ISBN);
                 if(message.equals("success")){
                     request.setAttribute("successMessage", message);
@@ -45,6 +45,16 @@ public class adminServlet extends HttpServlet {
                     request.setAttribute("errorMessage", message);
                 }
                 request.getRequestDispatcher("./banBook.jsp").forward(request, response);
+           }
+           else if(type.equals("unban")){
+                String message=itemManager.unbanABook(ISBN);
+                if(message.equals("success")){
+                    request.setAttribute("successMessage", message);
+                }
+                else{
+                    request.setAttribute("errorMessage", message);
+                }
+                request.getRequestDispatcher("./unbanBook.jsp").forward(request, response);
            }
         }
     }

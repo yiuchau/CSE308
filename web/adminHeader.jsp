@@ -38,7 +38,7 @@
             <ul class="nav navbar-nav ">
                 <li class="active"><a href="#">&nbsp;&nbsp;&nbsp;<span class="sr-only"></span></a></li>
                 <li class="active"><a href="./banBook.jsp">Ban a book<span class="sr-only"></span></a></li>
-                <li class="active"><a href="#">Unban a book<span class="sr-only"></span></a></li>
+                <li class="active"><a href="./unbanBook.jsp">Unban a book<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Modify book information<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Review book recommendations<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Buy book licenses<span class="sr-only"></span></a></li>
