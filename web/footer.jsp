@@ -10,20 +10,19 @@
           <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
             <div>
               <ul class="list-unstyled">
-                <li> <a>Services</a> </li>
-                <li> <a>Free Download</a> </li>
-                <li> <a>Learn a Language</a> </li>
-                <li> <a>User Guide</a> </li>
-                <li> <a>Books for Kids</a> </li>
+                <li> Services </li>
+                <li> Free Download </li>
+                <li> Learn a Language </li>
+                <li> User Guide </li>
+                <li> <a href="./privacyP.jsp" >Privacy Policy</a> </li>
               </ul>
             </div>
           </div>
           <div class="col-sm-4 col-md-4 col-lg-4  col-xs-6">
             <div>
               <ul class="list-unstyled">  
-                <li> <a><a href="sign/signUp.html">Sign Up</a></a> </li>
-                <li> <a><a href="sign/signIn.html">Login</a></a> </li>
-                <li> <a>Connect</a> </li>
+                <li> <a><a href="./signUp.jsp">Sign Up</a></a> </li>
+                <li> <a><a href="./signIn.jsp">Login</a></a> </li>               
                 <li> <a><a href="https://docs.google.com/forms/d/1-RB6dMhVFY9lYDFUXEmOwpRVBQZ4afaezy2wo9aE7oc/viewform">Contact Us</a></a> </li>
               </ul>
             </div>
@@ -31,10 +30,10 @@
           <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
             <div>
               	<a>Team Member</a>
-                <li> <a>Brian Lee</a> </li>
-                <li> <a>Yiu Chau Lin</a> </li>
-                <li> <a>Yue Zhao</a> </li>
-                <li> <a>Yi Xie</a> </li>
+                <li> Brian Lee </li>
+                <li> Yiu Chau Lin </li>
+                <li> Yue Zhao </li>
+                <li> Yi Xie </li>
               
             </div>
           </div>
