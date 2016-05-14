@@ -68,17 +68,27 @@ public class adminServlet extends HttpServlet {
            }
            else if(type.contains("purchase")){
                 int amount=Integer.parseInt(request.getParameter("amount"));
-                String message = null;
+                String message;
                 if(type.equals("purchaseRecommendation")){
                     message=itemManager.purchase(ISBN,amount,0); //0 indicates need to update status in recommened table
+                    if(message.equals("success")){
+                        request.setAttribute("successMessage", message);
+                    }
+                    else{
+                        request.setAttribute("errorMessage", message);
+                    }
+                    request.getRequestDispatcher("./reviewRecommendations.jsp").forward(request, response);
+               }
+               else{
+                    message=itemManager.purchase(ISBN,amount,1); //dont' need to update status in recommended table
+                    if(message.equals("success")){
+                        request.setAttribute("successMessage", message);
+                    }
+                    else{
+                        request.setAttribute("errorMessage", message);
+                    }
+                 request.getRequestDispatcher("./buyLicense.jsp").forward(request, response);
                 }
-                if(message.equals("success")){
-                    request.setAttribute("successMessage", message);
-                }
-                else{
-                    request.setAttribute("errorMessage", message);
-                }
-                request.getRequestDispatcher("./reviewRecommendations.jsp").forward(request, response);
            }
         }
     }
