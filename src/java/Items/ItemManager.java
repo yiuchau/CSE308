@@ -3,9 +3,15 @@ package Items;
 import Users.User;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -16,6 +22,7 @@ public class ItemManager {
     private static ItemManager singleton = null;
 
     private List<Item> itemCollection;
+  
     User user;
 
     //EntityManagerFactory emf;
@@ -118,7 +125,9 @@ public class ItemManager {
             newItem.setCheckoutTime(currentDate);
             Date dueDate=calculateDueDate(newItem.getCheckoutTime());
             newItem.setDueTime(dueDate);
+            Item itemToUpdate=findItem(ISBN);
             em.getTransaction().begin();
+            itemToUpdate.setBorrowedTimes(itemToUpdate.getBorrowedTimes()+1); //updtae borrowedTimes
             em.persist(newItem);
             em.getTransaction().commit();
             updateItemAvailableCopies(ISBN);
@@ -294,9 +303,8 @@ public class ItemManager {
     
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);
-        List<Item> retList = new ArrayList<Item>();
-        
-        Query query;
+        List<Item> retList = new ArrayList<>();
+        Query query = null;
         if (category.equals("MostPopular")) {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC");
             query.setMaxResults(50);
@@ -380,6 +388,10 @@ public class ItemManager {
              query = em.createQuery("SELECT i FROM Item i WhERE i.banned=1");
              retList = (List<Item>) query.getResultList();
              return retList;
+        }
+        else if(category.equals("bestSeller")){
+            query = em.createQuery("SELECT i FROM Item i WHERE i.borrowedTimes>0 ORDER BY i.borrowedTimes DESC");
+            query.setMaxResults(10);       
         }
         else {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.totalCopies DESC");
@@ -557,4 +569,6 @@ public class ItemManager {
         em.remove(user);
         em.getTransaction().commit();
     }
+    
+   
 }

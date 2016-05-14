@@ -43,7 +43,7 @@
                 <li class="active"><a href="./reviewRecommendations.jsp">Review book recommendations<span class="sr-only"></span></a></li>
                 <li class="active"><a href="./buyLicense.jsp">Buy book licenses<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Account management<span class="sr-only"></span></a></li>
-                <li class="active"><a href="#">Best seller list<span class="sr-only"></span></a></li>
+                <li class="active"><a href="./bestSeller.jsp">Best seller list<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">&nbsp;&nbsp;&nbsp;<span class="sr-only"></span></a></li>
         </ul>
         
