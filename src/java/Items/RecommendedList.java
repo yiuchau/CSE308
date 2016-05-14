@@ -31,6 +31,7 @@ public class RecommendedList implements Serializable {
     private Date recommendedTime;
     private String checkOutType; //email or automatic
     private String email;
+    private String status;//approved, dismiss or wait. default is wait
 
     public String getIsbn(){
         return isbn;
@@ -61,6 +62,12 @@ public class RecommendedList implements Serializable {
     }
     public void setEmail(String email){
         this.email=email;
+    }
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status=status;
     }
     
 }

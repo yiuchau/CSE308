@@ -34,6 +34,7 @@ public class ItemManager {
         }
         return singleton;
     }
+   
 
     public ItemManager() {
         itemCollection = new ArrayList<Item>();
@@ -177,6 +178,7 @@ public class ItemManager {
             newItem.setRecommendedTime(currentDate);
             newItem.setCheckOutType(checkoutType);
             newItem.setEmail(email);
+            newItem.setStatus("wait");
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();
@@ -265,6 +267,31 @@ public class ItemManager {
     }
     
     
+    public List<Item> basicSearch(String searchParameter) {
+        Query query = em.createQuery("SELECT i FROM Item i WHERE i.title LIKE ?1 OR i.author LIKE ?2");
+        searchParameter = '%' + searchParameter + '%';
+        query.setParameter(1, searchParameter);
+        query.setParameter(2, searchParameter);
+        
+        return search(query);
+    }
+    
+    public List<Item> search(Query query) {
+        List<Item> retList = new ArrayList<Item>();
+        
+        List<Item> rs = (List<Item>) query.getResultList();
+        for (Item newItem : rs) {
+            if (newItem.getBanned() == 0) {
+                   retList.add(newItem);
+                }
+            addItem(newItem);
+        }
+
+        System.out.println("Size: " + retList.size());
+        return retList;
+    }
+    
+    
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);
         List<Item> retList = new ArrayList<Item>();
@@ -326,7 +353,6 @@ public class ItemManager {
                     retList.add(item);
                 }
             }
-            System.out.println("Size: " + retList.size());
             return retList;
         } 
         else if (category.equals("Recommended")) {
@@ -342,12 +368,12 @@ public class ItemManager {
             return retList;
         }
         else if(category.equals("AllRecommended")){
-            query = em.createQuery("SELECT DISTINCT(r.isbn) FROM RecommendedList r ");
+            query = em.createQuery("SELECT DISTINCT(r.isbn) FROM RecommendedList r WhERE r.status=?1");
+            query.setParameter(1, "wait");
             List<String> rs = (List<String>)query.getResultList();
             for(int i=0;i<rs.size();i++){
                 retList.add(findItem(rs.get(i)));
             }
-            
             return retList;
         }
         else if(category.equals("BannedBooks")){
@@ -356,7 +382,6 @@ public class ItemManager {
              return retList;
         }
         else {
-            //TODO RECOMMENDATIONS
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.totalCopies DESC");
             query.setMaxResults(50);
         }
@@ -368,8 +393,6 @@ public class ItemManager {
                 }
             addItem(newItem);
         }
-
-        System.out.println("Size: " + retList.size());
         return retList;
     }
 
@@ -426,7 +449,51 @@ public class ItemManager {
         }
         return message;
     }
+    public String dismiss(String ISBN){
+        String message;
+        Item item=findItem(ISBN);
+        if(item==null){
+            message="Failed. Please try again!";
+        }
+        else{
+            Query query = em.createQuery("SELECT r FROM RecommendedList r WHERE r.isbn = ?1");
+            query.setParameter(1,ISBN);
+            List<RecommendedList> rs = (List<RecommendedList>) query.getResultList();
+            for(RecommendedList recommendedItem : rs){
+                em.getTransaction().begin();
+                recommendedItem.setStatus("dismiss"); //set status to dismiss
+                em.getTransaction().commit();
+            }
+            message="success";
+        }
+        return message;
+    }
+    public String purchase(String ISBN, int amount,int flag){
+        String message;
+        Item item=findItem(ISBN);
+        if(item==null){
+            message="The boook is currently not in our database.Please try another one!";
+        }
+        else{
+            em.getTransaction().begin();
+            item.setAvailableCopies(item.getAvailableCopies()+amount);
+            item.setTotalCopies(item.getTotalCopies()+amount);
+            if(flag==0){ //update status in recommended table
+                Query query = em.createQuery("SELECT r FROM RecommendedList r WHERE r.isbn = ?1");
+                query.setParameter(1,ISBN);
+                List<RecommendedList> rs = (List<RecommendedList>) query.getResultList();
+                for(RecommendedList recommendedItem : rs){
+                    recommendedItem.setStatus("approved"); //set status to approved
+                }
+            }
+            em.getTransaction().commit();
+            message="success";
+        }
+        return message;
+    }
      
+    
+    
     public String login(String username, String password) {
         String retValue;
         User user = em.find(Users.User.class, username);

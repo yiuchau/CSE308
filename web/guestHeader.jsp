@@ -28,12 +28,18 @@
           </ul>
         </li>
       </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+      
+                    <div class="col-sm-3 col-md-3 pull-right">
+                        <form class="navbar-form" action="./SearchResults.jsp" role="search">
+                            <div class="input-group">
+                                <input type="hidden" name="SearchType" value="basic">  
+                                <input type="text" class="form-control" placeholder="Search" name="SearchParameter" id="SearchParameter">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
       <ul class="nav navbar-nav navbar-right hidden-sm">
         <li><a href="./signIn.jsp">Login</a></li>
         <li><a href="./signUp.jsp">Account Registration</a> </li>

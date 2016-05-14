@@ -8,7 +8,7 @@
 <html>
     <head>
         <c:choose>
-            <c:when test="${itemManager.user==null}">
+            <c:when test="${itemManager.user == null}">
                 <jsp:include page="guestHeader.jsp" />
             </c:when>    
             <c:otherwise>
@@ -87,7 +87,7 @@
                                                                 <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus> 
                                                             <div class="options" >
                                                                 <br>
-                                                                <label>Please set the checkout type when this book becomes available:</label>
+                                                                <label>Please set the checkout type when this item becomes available:</label>
                                                                 <br>
                                                                     <input type="radio" name="option" value="email" checked>Email Notification <br>
                                                                 <br>
