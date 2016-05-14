@@ -47,7 +47,7 @@
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
                 </div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button></a>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
             </form>
         </div> <!-- /container -->
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
