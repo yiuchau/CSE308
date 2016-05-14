@@ -42,7 +42,7 @@ img
 
 #helpODHelpIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px 0px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px 0px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -52,12 +52,12 @@ img
 
 #helpODHelpIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -102px 0px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -102px 0px;
 }
 
 #helpMyHelpIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -2px -866px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -2px -866px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -67,12 +67,12 @@ img
 
 #helpMyHelpIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -105px -866px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -105px -866px;
 }
 
 #helpTourIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -106px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -106px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -82,13 +82,13 @@ img
 
 #helpTourIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -101px -106px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -101px -106px;
 }
 
 
 #helpDRCIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -215px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -215px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -98,11 +98,11 @@ img
 
 #helpDRCIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -102px -215px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -102px -215px;
 }
 #helpLibraryLendingIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -326px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -326px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -112,12 +112,12 @@ img
 
 #helpLibraryLendingIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -326px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -326px;
 }
 
 #helpSupportIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -436px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -436px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -127,12 +127,12 @@ img
 
 #helpSupportIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -436px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -436px;
 }
 
 #GetSoftwareIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -3px -1082px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -3px -1082px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -142,12 +142,12 @@ img
 
 #GetSoftwareIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1082px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1082px;
 }
 
 #recommendHelpIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -4px -1187px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -4px -1187px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -157,11 +157,11 @@ img
 
 #recommendHelpIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1187px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1187px;
 }
 #helpODReadIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/od-read-listen.png) no-repeat 0px 0px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/od-read-listen.png) no-repeat 0px 0px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -170,11 +170,11 @@ img
 }
 #helpMediaDoIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/MediaDoiconSprite.png) no-repeat -103px 0px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/MediaDoiconSprite.png) no-repeat -103px 0px;
 }
 #helpMediaDoIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/MediaDoiconSprite.png) no-repeat 0px 0px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/MediaDoiconSprite.png) no-repeat 0px 0px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -183,7 +183,7 @@ img
 }
 #helpOMCIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -650px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -650px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -192,7 +192,7 @@ img
 }
 #helpADEIcon a
 {
-	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -760px;
+	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -760px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -232,14 +232,14 @@ img
 	
                 </div>             
                 
-<!-- Cedar Read -->
+<!-- OverDrive Read -->
 <div class="helpresource">
 	<div id="helpODReadIcon">
-		<a target="_blank" href="http://help.Cedar.com/customer/portal/articles/1923948?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink"></a>
+		<a target="_blank" href="http://help.overdrive.com/customer/portal/articles/1923948?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink"></a>
 	</div>
 	<div class="helpcopy">
 		<div id="helpODReadHeading">
-			<p style="font-weight: bold; font-size: large"><span class="od-readMe"><a target="_blank" href="http://help.Cedar.com/customer/portal/articles/1481574?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink">Cedar Read</a></span><span class="mid-sentence"> and</span><span class="od-list"> <a target="_blank" href="http://help.Cedar.com/customer/portal/articles/1909467?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink">Cedar Listen</a></span></p>
+			<p style="font-weight: bold; font-size: large"><span class="od-readMe"><a target="_blank" href="http://help.overdrive.com/customer/portal/articles/1481574?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink">OverDrive Read</a></span><span class="mid-sentence"> and</span><span class="od-list"> <a target="_blank" href="http://help.overdrive.com/customer/portal/articles/1909467?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink">OverDrive Listen</a></span></p>
 		</div>
 		<div class="helpblurb"><em class="ODReadText">For <span class="od-readMe">eBooks</span><span class="mid-sentence"> and </span><span class="od-list">Audiobooks</span>. No app or software to install, just click <span class="od-readMe">'Read'</span><span class="mid-sentence"> or </span><span class="od-list">'Listen'</span> and start enjoying your book in your browser.</em></div>
 	</div>
@@ -248,11 +248,11 @@ img
 <!-- Media Do Reader -->
 <div class="helpresource">
 	<div id="helpMediaDoIcon">
-		<a target="_blank" href="http://help.Cedar.com/customer/portal/articles/1682037?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="MediaDolink"></a>
+		<a target="_blank" href="http://help.overdrive.com/customer/portal/articles/1682037?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="MediaDolink"></a>
 	</div>
 	<div class="helpcopy">
 		<div id="helpODReadHeading">
-			<p style="font-weight: bold; font-size: large"><a target="_blank" href="http://help.Cedar.com/customer/portal/articles/1682037?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink">Media Do Reader</a></p>
+			<p style="font-weight: bold; font-size: large"><a target="_blank" href="http://help.overdrive.com/customer/portal/articles/1682037?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" class="ODReadlink">Media Do Reader</a></p>
 		</div>
 		<div class="helpblurb"><em class="ODReadText">For Japanese language eBooks. No app or software to install, just click 'Read' and start reading in your browser.</em></div>
 	</div>
@@ -262,14 +262,14 @@ img
 
 <h4>Software Downloads</h4>
 
-<!-- Cedar  -->
+<!-- OverDrive  -->
 <div class="helpresource">
 	<div id="helpOMCIcon">
-		<a class="OMClink" href="http://app.Cedar.com/" target="_blank"></a>
+		<a class="OMClink" href="http://app.overdrive.com/" target="_blank"></a>
 	</div>
 	<div class="helpcopy">
 		<div id="helpOMCHeading">
-			<p style="font-weight: bold; font-size: large"><a class="OMClink" href="http://app.Cedar.com/" target="_blank">Cedar</a></p>
+			<p style="font-weight: bold; font-size: large"><a class="OMClink" href="http://app.overdrive.com/" target="_blank">OverDrive</a></p>
 		</div>
 		<div class="helpblurb"><em class="OMCtext">For Audiobooks</em></div>
 	</div>
