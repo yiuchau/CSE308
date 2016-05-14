@@ -29,6 +29,7 @@ public class EditAccountServlet extends HttpServlet {
                 newMaturityLevel=itemManager.getUser().getMaturityLevel();  //unchanged
             }
             itemManager.updateUser(newFName, newLName, newEmail, newPassword, newPhoneNumber,newLendingPeriod,newMaturityLevel);
+            itemManager.updateDueTime(itemManager.getUser().getUserName());
             request.getRequestDispatcher("/accountPage.jsp").forward(request, response);
 
     }

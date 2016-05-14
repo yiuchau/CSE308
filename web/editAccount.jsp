@@ -53,7 +53,7 @@
                     <label>New lending Period</label>
                     <select name="lendingPreiod">
                         <option value="None">-- Select --</option>
-                        <option value="5 minutes">5 Minutes</option>
+                        <option value="5 minutes">5 minutes</option>
                         <option value="3 days">3 days</option>
                         <option value="7 days">7 days</option>
                         <option value="10 days">10 days</option>

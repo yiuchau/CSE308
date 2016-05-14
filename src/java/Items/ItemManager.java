@@ -115,7 +115,7 @@ public class ItemManager {
             newItem.setUserName(current);
             Date currentDate=getCurrentDate();
             newItem.setCheckoutTime(currentDate);
-            Date dueDate=calculateDueDate();
+            Date dueDate=calculateDueDate(newItem.getCheckoutTime());
             newItem.setDueTime(dueDate);
             em.getTransaction().begin();
             em.persist(newItem);
@@ -229,17 +229,41 @@ public class ItemManager {
         return sqlTimestamp;
     }
     
-    public Date calculateDueDate(){
+    public Date calculateDueDate(Date checkoutTime){
         String period=user.getLendingPeriod();
         Calendar c = Calendar.getInstance();
-        c.setTime(new Date()); // Now use today date.
-        Date newDate = null;
+        c.setTime(checkoutTime); // use checkout Time
+        Date newDate;
         if(period.equals("3 days")){
             c.add(Calendar.DATE, 3); // Adding 3 days
-            newDate =c.getTime();
         }
+        else if(period.equals("7 days")){
+             c.add(Calendar.DATE, 7);
+        }
+        else if(period.equals("10 days")){
+             c.add(Calendar.DATE, 10);
+        }
+        else if (period.equals("5 minutes")){
+            c.add(Calendar.MINUTE, 5);
+        }
+        newDate =c.getTime();
         return newDate;
     }
+    
+    public void updateDueTime(String userName){
+        Query query = em.createQuery("SELECT c FROM CheckoutList c WHERE c.userName = ?1");
+        query.setParameter(1, userName);
+        List<CheckoutList> rs = (List<CheckoutList>) query.getResultList();
+        for (CheckoutList checkoutItem : rs) {
+            Item item = findItem(checkoutItem.getIsbn());
+            if (item.getBanned() == 0) {
+                em.getTransaction().begin();
+                checkoutItem.setDueTime(calculateDueDate(checkoutItem.getCheckoutTime()));
+                em.getTransaction().commit();
+            }
+        }
+    }
+    
     
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);

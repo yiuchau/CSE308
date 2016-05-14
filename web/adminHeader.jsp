@@ -40,7 +40,7 @@
                 <li class="active"><a href="./banBook.jsp">Ban a book<span class="sr-only"></span></a></li>
                 <li class="active"><a href="./unbanBook.jsp">Unban a book<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Modify book information<span class="sr-only"></span></a></li>
-                <li class="active"><a href="#">Review book recommendations<span class="sr-only"></span></a></li>
+                <li class="active"><a href="./reviewRecommendations.jsp">Review book recommendations<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Buy book licenses<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Account management<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">Best seller list<span class="sr-only"></span></a></li>
