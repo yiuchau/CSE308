@@ -36,7 +36,7 @@ public class adminServlet extends HttpServlet {
             ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
             String type=request.getParameter("type");
             String ISBN=request.getParameter("isbn");
-           if (type.equals("ban")){
+            if(type.equals("ban")){
                 String message=itemManager.banABook(ISBN);
                 if(message.equals("success")){
                     request.setAttribute("successMessage", message);
@@ -55,6 +55,30 @@ public class adminServlet extends HttpServlet {
                     request.setAttribute("errorMessage", message);
                 }
                 request.getRequestDispatcher("./unbanBook.jsp").forward(request, response);
+           }
+           else if (type.equals("dismissRecommendations")){
+                String message=itemManager.dismiss(ISBN);
+                if(message.equals("success")){
+                    request.setAttribute("successMessage", message);
+                }
+                else{
+                    request.setAttribute("errorMessage", message);
+                }
+                request.getRequestDispatcher("./reviewRecommendations.jsp").forward(request, response);
+           }
+           else if(type.contains("purchase")){
+                int amount=Integer.parseInt(request.getParameter("amount"));
+                String message = null;
+                if(type.equals("purchaseRecommendation")){
+                    message=itemManager.purchase(ISBN,amount,0); //0 indicates need to update status in recommened table
+                }
+                if(message.equals("success")){
+                    request.setAttribute("successMessage", message);
+                }
+                else{
+                    request.setAttribute("errorMessage", message);
+                }
+                request.getRequestDispatcher("./reviewRecommendations.jsp").forward(request, response);
            }
         }
     }

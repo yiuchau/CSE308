@@ -43,7 +43,7 @@ img
 
 #helpODHelpIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px 0px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px 0px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -53,12 +53,12 @@ img
 
 #helpODHelpIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -102px 0px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -102px 0px;
 }
 
 #helpMyHelpIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -2px -866px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -2px -866px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -68,12 +68,12 @@ img
 
 #helpMyHelpIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -105px -866px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -105px -866px;
 }
 
 #helpTourIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -106px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -106px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -83,13 +83,13 @@ img
 
 #helpTourIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -101px -106px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -101px -106px;
 }
 
 
 #helpDRCIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -215px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -215px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -99,11 +99,11 @@ img
 
 #helpDRCIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -102px -215px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -102px -215px;
 }
 #helpLibraryLendingIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -326px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -326px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -113,12 +113,12 @@ img
 
 #helpLibraryLendingIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -326px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -326px;
 }
 
 #helpSupportIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -436px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat 0px -436px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -128,12 +128,12 @@ img
 
 #helpSupportIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -436px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -103px -436px;
 }
 
 #GetSoftwareIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -3px -1082px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -3px -1082px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -143,12 +143,12 @@ img
 
 #GetSoftwareIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1082px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1082px;
 }
 
 #recommendHelpIcon a
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -4px -1187px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -4px -1187px;
 	border:				none;
 	float:					left;
 	height:					100px;
@@ -158,7 +158,7 @@ img
 
 #recommendHelpIcon a:hover
 {
-	background:		url(//libraryreserve.cdn.overdrive.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1187px;
+	background:		url(//libraryreserve.cdn.Cedar.com/210/50/1.46/Help_Sprites.png) no-repeat -107px -1187px;
 }
 
 </style>
@@ -203,24 +203,24 @@ img
 <li>Click the <b>Account Settings</b> link.</li>
 <li>Select your preferred lending period for each format.</li>
 </ol>
-<!--<img src="//libraryreserve.cdn.overdrive.com/210/50/1.46/changeLendingPeriods.jpg" title="How to change your lending period" alt="How to change your lending period" />-->
+<!--<img src="//libraryreserve.cdn.Cedar.com/210/50/1.46/changeLendingPeriods.jpg" title="How to change your lending period" alt="How to change your lending period" />-->
 
 
 
 <h3>Returning &amp; renewing</h3>
-<p class="first">Some titles can be returned before they expire. If you have not downloaded a title, you’ll be able to return it from your <strong>Checkouts</strong> page. If you download a title, its <b>Return Title</b> button will disappear from your <strong>Checkouts</strong> page, but you may be able to return it using <a href="http://help.overdrive.com/customer/portal/articles/1481263?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank" alt="How to return a title">these steps</a>. The option to renew a title will appear on your <strong>Checkouts</strong> page within 3 days of the title’s expiration date. Learn more about how to renew titles <a href="http://help.overdrive.com/customer/portal/articles/1481523?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank" alt="How to renew a title">here</a>.</p>
+<p class="first">Some titles can be returned before they expire. If you have not downloaded a title, you’ll be able to return it from your <strong>Checkouts</strong> page. If you download a title, its <b>Return Title</b> button will disappear from your <strong>Checkouts</strong> page, but you may be able to return it using <a href="http://help.Cedar.com/customer/portal/articles/1481263?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank" alt="How to return a title">these steps</a>. The option to renew a title will appear on your <strong>Checkouts</strong> page within 3 days of the title’s expiration date. Learn more about how to renew titles <a href="http://help.Cedar.com/customer/portal/articles/1481523?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank" alt="How to renew a title">here</a>.</p>
 
 
 
 <p class="helpHeading">Returning &amp; Renewing</p>
-<p class="first">Some titles can be returned before they expire. If you have not downloaded a title, you’ll be able to return it from your <strong>Checkouts</strong> page. If you download a title, its <b>Return Title,</b> button will disappear from your <strong>Checkouts</strong> page, but you may be able to return it using <a href="http://help.overdrive.com/customer/portal/articles/1481263?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank" alt="How to return a title">these steps</a>. You cannot renew titles, but you can borrow them again after they expire if they are still available.</p>
+<p class="first">Some titles can be returned before they expire. If you have not downloaded a title, you’ll be able to return it from your <strong>Checkouts</strong> page. If you download a title, its <b>Return Title,</b> button will disappear from your <strong>Checkouts</strong> page, but you may be able to return it using <a href="http://help.Cedar.com/customer/portal/articles/1481263?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank" alt="How to return a title">these steps</a>. You cannot renew titles, but you can borrow them again after they expire if they are still available.</p>
 
 
 <h3>Holds</h3>
-<p class="first">You can place up to 5 titles on hold at a time. You’ll receive an email notification when a title you placed on hold becomes available. Once the email is sent, you’ll have 3 days (72 hours) to borrow the title before your hold is cancelled.  Or, you can turn on <a href="http://help.overdrive.com/customer/portal/articles/1626175?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">automatic borrowing</a> to make sure you never miss a hold.  <span class="Nook-lending-policies" style="display: none;">Please note that you can't place holds on periodicals.</span></p>
+<p class="first">You can place up to 5 titles on hold at a time. You’ll receive an email notification when a title you placed on hold becomes available. Once the email is sent, you’ll have 3 days (72 hours) to borrow the title before your hold is cancelled.  Or, you can turn on <a href="http://help.Cedar.com/customer/portal/articles/1626175?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">automatic borrowing</a> to make sure you never miss a hold.  <span class="Nook-lending-policies" style="display: none;">Please note that you can't place holds on periodicals.</span></p>
 
 <h3>Suspending holds</h3>
-<p class="first">If you’re not ready for a hold to become available yet, you can temporarily suspend it by following <a href="http://help.overdrive.com/customer/portal/articles/1626174?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">these steps</a>. You can suspend each hold for a minimum of 7 days and a maximum of 90 days. Please note that you can’t suspend holds on <a href="http://help.overdrive.com/customer/portal/articles/1481523?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">renewed titles</a> or <a href="http://help.overdrive.com/customer/portal/articles/1964385?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">titles you’ve requested again</a>.</p>
+<p class="first">If you’re not ready for a hold to become available yet, you can temporarily suspend it by following <a href="http://help.Cedar.com/customer/portal/articles/1626174?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">these steps</a>. You can suspend each hold for a minimum of 7 days and a maximum of 90 days. Please note that you can’t suspend holds on <a href="http://help.Cedar.com/customer/portal/articles/1481523?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">renewed titles</a> or <a href="http://help.Cedar.com/customer/portal/articles/1964385?Sup=http://downloads.live-brary.com/Support.htm&amp;nextgen=true" target="_blank">titles you’ve requested again</a>.</p>
 
 <h3>How to cancel a hold</h3>
 <ol>
