@@ -343,6 +343,26 @@ public class ItemManager {
         return list;
     } 
      
+    public String banABook(String ISBN){
+        String message;
+        Item item=findItem(ISBN);
+        if(item==null){
+            message="Wrong ISBN. Please try again!";
+        }
+        else{
+            if(item.getBanned()==1){
+                message="You've already banned this book!";
+            }
+            else{
+                em.getTransaction().begin();
+                item.setBanned(1);
+                em.getTransaction().commit();
+                message="success";
+            }
+        }
+        return message;
+    }
+     
     public String login(String username, String password) {
         String retValue;
         User user = em.find(Users.User.class, username);

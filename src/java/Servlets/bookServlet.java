@@ -52,14 +52,16 @@ public class bookServlet extends HttpServlet {
                         }
                         else{
                             request.setAttribute("errorMessage", "You've already borrowed this book!");
-                        }   break;
+                        }   
+                        break;
                     case "addToWishList":
                         if(itemManager.addToWishList(ISBN)==true){
                             request.setAttribute("successMessage", "Added to wishlist");
                         }
                         else{
                             request.setAttribute("errorMessage", "This book is already in your wishlist!");
-                        }   break;
+                        }   
+                        break;
                     case "removeFromWishList":
                         itemManager.removeFromWishList(ISBN);
                         request.setAttribute("successMessage", "Removed from wishlist");
@@ -88,7 +90,6 @@ public class bookServlet extends HttpServlet {
                         break;
                 }
                 request.getRequestDispatcher("./bookPage.jsp?isbn="+ISBN).forward(request, response);
-                
             }
         }
        
