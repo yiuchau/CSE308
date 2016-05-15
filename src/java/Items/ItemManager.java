@@ -266,25 +266,36 @@ public class ItemManager {
         }
     }
     
-    
+    /*
     public List<Item> basicSearch(String searchParameter) {
         Query query = em.createQuery("SELECT i FROM Item i WHERE i.title LIKE ?1 OR i.author LIKE ?2");
+    
+                
         searchParameter = '%' + searchParameter + '%';
         query.setParameter(1, searchParameter);
         query.setParameter(2, searchParameter);
         
-        return search(query);
-    }
-    
-    public List<Item> search(Query query) {
         List<Item> retList = new ArrayList<Item>();
         
         List<Item> rs = (List<Item>) query.getResultList();
         for (Item newItem : rs) {
-            if (newItem.getBanned() == 0) {
-                   retList.add(newItem);
-                }
             addItem(newItem);
+            retList.add(newItem);
+        }
+
+        System.out.println("Size: " + retList.size());
+        return retList;
+    }*/
+    
+    public List<Item> search(String queryString) {
+        Query query = em.createQuery(queryString);
+        List<Item> retList = new ArrayList<Item>();
+        
+        List<Item> rs = (List<Item>) query.getResultList();
+        for (Item newItem : rs) {
+            addItem(newItem);
+            
+            retList.add(newItem);
         }
 
         System.out.println("Size: " + retList.size());
