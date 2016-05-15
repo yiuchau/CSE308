@@ -621,5 +621,77 @@ public class ItemManager {
         em.remove(userName);
         em.getTransaction().commit();
     }
+    
+    public void removeCheckOut(CheckoutList u){
+        em.getTransaction().begin();
+        em.remove(u);
+        em.getTransaction().commit();
+    }
+    
+    public void removeWish(WishList u){
+        em.getTransaction().begin();
+        em.remove(u);
+        em.getTransaction().commit();
+    }
+    
+    public void removeHolds(Holds u){
+        em.getTransaction().begin();
+        em.remove(u);
+        em.getTransaction().commit();
+    }
+    
+    public void removeRate(RateList u){
+        em.getTransaction().begin();
+        em.remove(u);
+        em.getTransaction().commit();
+    }
+    
+    public void removeRe(RecommendedList u){
+        em.getTransaction().begin();
+        em.remove(u);
+        em.getTransaction().commit();
+    }
+    
+    public List<CheckoutList> getCheckoutList(User user){
+        String userName=user.getUserName();
+        List<CheckoutList> listreturn = new ArrayList();
+        Query query1=em.createQuery("Select e " + "from  CheckoutList e " + "Where e.userName= '"+userName+"'");
+        listreturn =(List<CheckoutList>)query1.getResultList( ); 
+        return listreturn;
+    } 
+    
+    public List<WishList> getWishList(User user){
+        String userName=user.getUserName();
+        List<WishList> listreturn = new ArrayList();
+        Query query1=em.createQuery("Select e " + "from  WishList e " + "Where e.userName= '"+userName+"'");
+        listreturn =(List<WishList>)query1.getResultList( ); 
+        return listreturn;
+    } 
+    
+    public List<Holds> getHolds(User user){
+        String userName=user.getUserName();
+        List<Holds> listreturn = new ArrayList();
+        Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.userName= '"+userName+"'");
+        listreturn =(List<Holds>)query1.getResultList( ); 
+        return listreturn;
+    }
+    
+    public List<RateList> getAllRateList(User user){
+        String userName=user.getUserName();
+        List<RateList> listreturn = new ArrayList();
+        Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
+        listreturn=(List<RateList>)query1.getResultList( ); 
+        
+        return listreturn;
+    }
+    
+    public List<RecommendedList> getRecomList(User user){
+        String userName=user.getUserName();
+        List<RecommendedList> listreturn = new ArrayList();
+        Query query1=em.createQuery("Select e " + "from  RecommendedList e " + "Where e.userName= '"+userName+"'");
+        listreturn=(List<RecommendedList>)query1.getResultList( ); 
+        
+        return listreturn;
+    }
    
 }
