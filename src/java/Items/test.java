@@ -24,48 +24,9 @@ public class test {
         // File f1 = new File("test");
 //String path = f1.getAbsolutePath();
 //System.out.println(path);
-      try {
-
-	File fXmlFile = new File("../information.xml");
-        
-        File f1 = new File("Test.java");
-String path = f1.getAbsolutePath();
-
-	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	Document doc = dBuilder.parse(fXmlFile);
-			
-	//optional, but recommended
-	//read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-	doc.getDocumentElement().normalize();
-
-	System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-			
-	NodeList nList = doc.getElementsByTagName("book");
-			
-	System.out.println("----------------------------");
-
-	for (int temp = 0; temp < nList.getLength(); temp++) {
-
-		Node nNode = nList.item(temp);
-				
-		System.out.println("\nCurrent Element :" + nNode.getNodeName());
-				
-		if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-
-			Element eElement = (Element) nNode;
-
-			//System.out.println("Staff id : " + eElement.getAttribute("id"));
-			System.out.println("Title: " + eElement.getElementsByTagName("title").item(0).getTextContent());
-			System.out.println("ISBN : " + eElement.getElementsByTagName("isbn").item(0).getTextContent());
-			System.out.println("subject : " + eElement.getElementsByTagName("subject").item(0).getTextContent());
-			//System.out.println("Salary : " + eElement.getElementsByTagName("salary").item(0).getTextContent());
-
-		}
-	}
-    } catch (Exception e) {
-	e.printStackTrace();
-    }
+      System.out.print("eeee");
+        System.out.print("eeee\n");
+       
   }
 
 }

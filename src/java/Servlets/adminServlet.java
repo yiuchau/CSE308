@@ -110,7 +110,6 @@ public class adminServlet extends HttpServlet {
                     String returnMessage="";
                     for (int temp = 0; temp < nList.getLength(); temp++) {
                         Node nNode = nList.item(temp);
-                       
                         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                             Element eElement = (Element) nNode;
                             Item newItem=new Item();
@@ -130,7 +129,7 @@ public class adminServlet extends HttpServlet {
                             newItem.setType(Integer.parseInt(eElement.getElementsByTagName("type").item(0).getTextContent()));
                             newItem.setBanned(0);
                             newItem.setBorrowedTimes(0);
-                            returnMessage=returnMessage+itemManager.updateInformation(newItem);
+                            returnMessage=returnMessage+itemManager.updateInformation(newItem)+"<br>";
                             
                             
                         }
