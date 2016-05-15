@@ -90,6 +90,11 @@ public class adminServlet extends HttpServlet {
                  request.getRequestDispatcher("./buyLicense.jsp").forward(request, response);
                 }
            }
+           else if(type.equals("modifyInformation")){
+               String information=request.getParameter("information");
+               
+               
+           }
         }
     }
 
