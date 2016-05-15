@@ -566,11 +566,25 @@ public class ItemManager {
         return message;
     }
     
-     public boolean itemExist(int id) {
+    public boolean itemExist(int id) {
         Item i = em.find(Items.Item.class, id);
         return i != null;
     }
     
+    public String removeBook(String ISBN){
+        String returnMessage="";
+        Item item=findItem(ISBN);
+        if(item==null){
+            returnMessage="The book is not in our library.Please try another one!";
+        }
+        else{
+            em.getTransaction().begin();
+            em.remove(item);
+            em.getTransaction().commit();
+            returnMessage="success";
+        }
+        return returnMessage;
+    }
     
     public String login(String username, String password) {
         String retValue;
