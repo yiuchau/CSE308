@@ -40,6 +40,10 @@
         <servlet-name>signup_Manager</servlet-name>
         <servlet-class>Servlets.signup_Manager</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditHoldServlet</servlet-name>
+        <servlet-class>Servlets.EditHoldServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>signup_Manager</servlet-name>
         <url-pattern>/signup_Manager</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditHoldServlet</servlet-name>
+        <url-pattern>/EditHoldServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
