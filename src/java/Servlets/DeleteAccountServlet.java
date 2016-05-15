@@ -1,7 +1,13 @@
 package Servlets;
 
+import Items.CheckoutList;
+import Items.Holds;
 import Items.ItemManager;
+import Items.RateList;
+import Items.RecommendedList;
+import Items.WishList;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +19,38 @@ public class DeleteAccountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             ItemManager im = (ItemManager) request.getSession().getAttribute("itemManager");
+            
+            List<CheckoutList> listreturn =im.getCheckoutList(im.getUser());
+            int i =0;
+            //checkout
+            for( i=0 ; listreturn.size()> i; i++){
+                im.removeCheckOut(listreturn.get(i));
+            }
+            //wishlist
+            i=0;
+            List<WishList> listreturn2 =im.getWishList(im.getUser());
+            for( i=0 ; listreturn2.size()> i; i++){
+                im.removeWish(listreturn2.get(i));
+            }
+            //holds
+            i=0;
+            List<Holds> listreturn3 =im.getHolds(im.getUser());
+            for( i=0 ; listreturn3.size()> i; i++){
+                im.removeHolds(listreturn3.get(i));
+            }
+            //ratelist
+            i=0;
+            List<RateList> listreturn4 =im.getAllRateList(im.getUser());
+            for( i=0 ; listreturn4.size()> i; i++){
+                im.removeRate(listreturn4.get(i));
+            }
+            //recommended
+            i=0;
+            List<RecommendedList> listreturn5 =im.getRecomList(im.getUser());
+            for( i=0 ; listreturn5.size()> i; i++){
+                im.removeRe(listreturn5.get(i));
+            }
+                             
             im.removeUser(im.getUser().getUserName());
             request.getRequestDispatcher("/homePage.jsp").forward(request, response);
     }

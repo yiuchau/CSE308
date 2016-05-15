@@ -18,9 +18,7 @@
                 alert("Click OK to delete your account");
                 window.location = "http://localhost:8080/308code/DeleteAccountServlet";
             }
-             function linkAccount(){
-                alert("Click OK to link your account. Build later");
-            }
+            
             
         </script>
     </head>
@@ -30,8 +28,7 @@
         <h2 class="text-center">Account settings 
             <p>
                 <input type="button" value="Edit" onclick="editAccount()">
-                <input type="button" value="Delete Account" onclick="deleteAccount()">
-                <input type="button" value="LinkAccount" onclick="linkAccount()">
+                <input type="button" value="Delete Account" onclick="deleteAccount()">                
             </p>
         </h2>
         <div class="container"> 
