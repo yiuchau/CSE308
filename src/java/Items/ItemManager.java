@@ -516,6 +516,22 @@ public class ItemManager {
         return message;
     }
      
+    public String updateInformation(Item newItem){
+        String message="";
+        //add a new item
+        if(itemExist(newItem.getID())==false){
+            em.getTransaction().begin();
+            em.persist(newItem);
+            em.getTransaction().commit();
+            message=newItem.getTitle()+" added to library";
+        }
+        return message;
+    }
+    
+     public boolean itemExist(int id) {
+        Item i = em.find(Items.Item.class, id);
+        return i != null;
+    }
     
     
     public String login(String username, String password) {

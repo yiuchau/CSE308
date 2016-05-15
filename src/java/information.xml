@@ -1,8 +1,19 @@
 <?xml version="1.0"?>
 <information>
 	<book>
-	<title>Java Message Service</title>
-	<isbn>0596000685</isbn>
-	<subject>Java Message Service (JMS)</subject>
+            <id>95</id>
+            <title>Our Great Big Backyard</title>
+            <isbn>0062468359</isbn>
+            <authors> Laura Bush,Jenna Bush Hager</authors>
+            <publisher>HarperCollins</publisher>
+            <releaseDate>2016-05-10</releaseDate>
+            <pageCount>40</pageCount>
+            <categories>Juvenile Fiction</categories>
+            <description>To help commemorate the one hundredth anniversary of the National Park Service, #1 New York Times bestselling authors former First Lady Laura Bush and her daughter Jenna Bush Hager have created an exuberant picture book tribute to our national parks and the importance and fun of connecting with nature. Our Great Big Backyard follows Jane, whose plans of spending the summer playing video games with her friends are dashed when her parents announce that her family is going on a road trip to national parks around the country. Yet somewhere between the Everglades and Big Bend National Park, things begin to change. Jane starts paying attention to the magnificent sights and spends less time looking at her screen. The stunning views open up her imagination as she and her brother see everything that nature has to offer. And the more Jane discovers, the more she realizes how much there is to love about the outdoors—whether she’s in a national park across the country or right in her own backyard.
+            </description>
+            <totalCopies>5</totalCopies>
+            <availableCopies>5</availableCopies>
+            <imageURL>http://books.google.com/books/content?id=e6GcjgEACAAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;source=gbs_api</imageURL>
+            <type>0</type>
 	</book>
 </information>
