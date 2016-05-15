@@ -21,10 +21,16 @@ import java.io.File;
  */
 public class test {
     public static void main(String[] args){
-        
+        // File f1 = new File("test");
+//String path = f1.getAbsolutePath();
+//System.out.println(path);
       try {
 
-	File fXmlFile = new File("src/java/information.xml");
+	File fXmlFile = new File("../information.xml");
+        
+        File f1 = new File("Test.java");
+String path = f1.getAbsolutePath();
+
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	Document doc = dBuilder.parse(fXmlFile);

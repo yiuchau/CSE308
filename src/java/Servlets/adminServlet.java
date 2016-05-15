@@ -9,7 +9,9 @@ import Items.ItemManager;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URL;
 import javax.servlet.ServletException;
+import static javax.servlet.SessionTrackingMode.URL;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -102,7 +104,6 @@ public class adminServlet extends HttpServlet {
            }
            else if(type.equals("modifyInformation")){
                String fileName=request.getParameter("fileName");
-               
                 try {
                     File fXmlFile = new File(fileName);
                     DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -122,7 +123,9 @@ public class adminServlet extends HttpServlet {
                     }
                     request.getRequestDispatcher("./modifyInformation.jsp").forward(request, response);
                 } 
-                catch (ParserConfigurationException | SAXException | IOException | DOMException | ServletException e) {
+                catch (Exception e) {
+                    request.setAttribute("errorMessage", e);
+                    request.getRequestDispatcher("./modifyInformation.jsp").forward(request, response);
                 }
            }
         }
