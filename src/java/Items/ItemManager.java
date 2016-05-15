@@ -35,6 +35,7 @@ public class ItemManager {
         //emf.close();
     }
 
+    
     public static ItemManager getInstance() {
         if (singleton == null) {
             singleton = new ItemManager();
@@ -546,6 +547,11 @@ public class ItemManager {
         User u = em.find(Users.User.class, userName);
         return u != null;
     }
+    
+    public User findUser(String userName){
+        User u = em.find(Users.User.class, userName);
+        return u;
+    }
 
     public void signOut() {
         this.user = null;
@@ -561,6 +567,18 @@ public class ItemManager {
         user.setPhoneNumber(newPhoneNumber);
         user.setLendingPeriod(newLendingPeriod);
         user.setMaturityLevel(newMaturityLevel);
+        em.getTransaction().commit();
+    }
+    
+    public void updateUser2(User userupdated,String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod,String newMaturityLevel) {
+        em.getTransaction().begin();
+        userupdated.setFirstName(newFName);
+        userupdated.setLastName(newLName);
+        userupdated.setEmail(newEmail);
+        userupdated.setPassword(newPassword);
+        userupdated.setPhoneNumber(newPhoneNumber);
+        userupdated.setLendingPeriod(newLendingPeriod);
+        userupdated.setMaturityLevel(newMaturityLevel);
         em.getTransaction().commit();
     }
 
