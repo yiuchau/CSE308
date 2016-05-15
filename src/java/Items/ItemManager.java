@@ -523,7 +523,7 @@ public class ItemManager {
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();
-            message=newItem.getTitle()+" added to library";
+            message=newItem.getTitle()+" added to library\r\n";
         }
         return message;
     }
