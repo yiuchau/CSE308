@@ -1,8 +1,4 @@
-<%-- 
-    Document   : editAccount
-    Created on : Apr 20, 2016, 10:13:02 PM
-    Author     : yixxie
---%>
+
 
 <%@page import="Users.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -51,6 +47,13 @@
                 <td height="50">	
                     <label>New password</label>
                     <input type="password" value="${display.password}" id="customer_password" name="customerPassword" tabindex="1" >
+                </td>
+            </tr>
+            
+            <tr>
+                <td height="50">	
+                    <label>New role (1 user, 2 manager)</label>
+                    <input type="text" value="${display.role}" id="customer_role" name="customerole" tabindex="1" >
                 </td>
             </tr>
             <tr>
@@ -104,5 +107,6 @@
         </div>
         </form>
     </body>
-    <jsp:include page="footer.jsp" />
 </html>
+
+<jsp:include page="footer.jsp" />

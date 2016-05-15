@@ -10,6 +10,7 @@ import Users.User;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author zhaoy
  */
-public class ManagerAccountServlet extends HttpServlet {
+@WebServlet(name = "managerDeleteA", urlPatterns = {"/managerDeleteA"})
+public class managerDeleteA extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,29 +36,12 @@ public class ManagerAccountServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
-            String account = request.getParameter("account");
-            User updatedUser = itemManager.findUser(account);
-            
-            String newFName = request.getParameter("customerFName");
-            String newLName = request.getParameter("customerLName");
-            String newEmail = request.getParameter("customerEmail");
-            String newPassword = request.getParameter("customerPassword");
-            String newPhoneNumber = request.getParameter("customerphoneNumber");
-            String newLendingPeriod=request.getParameter("lendingPreiod");
-            String newMaturityLevel=request.getParameter("maturityLevel");
-            int newRole= Integer.parseInt(request.getParameter("customerole"));
-            if ("None".equals(newLendingPeriod)){
-                newLendingPeriod=updatedUser.getLendingPeriod(); //unchanged
-            }
-            if ("None".equals(newMaturityLevel)){
-                newMaturityLevel=updatedUser.getMaturityLevel();  //unchanged
-            }
-            itemManager.updateUser2(updatedUser,newFName, newLName, newEmail, newPassword, newPhoneNumber,newLendingPeriod,newMaturityLevel,newRole);
-            itemManager.updateDueTime(account);
-            
+            ItemManager im = (ItemManager) request.getSession().getAttribute("itemManager");
+            String Searchname = request.getParameter("name");
+            User newuser = im.findUser(Searchname);
+            im.deleteUser(newuser);
             request.getRequestDispatcher("/editUser.jsp").forward(request, response);
-        } 
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

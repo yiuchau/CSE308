@@ -570,7 +570,7 @@ public class ItemManager {
         em.getTransaction().commit();
     }
     
-    public void updateUser2(User userupdated,String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod,String newMaturityLevel) {
+    public void updateUser2(User userupdated,String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod,String newMaturityLevel, int role) {
         em.getTransaction().begin();
         userupdated.setFirstName(newFName);
         userupdated.setLastName(newLName);
@@ -579,6 +579,7 @@ public class ItemManager {
         userupdated.setPhoneNumber(newPhoneNumber);
         userupdated.setLendingPeriod(newLendingPeriod);
         userupdated.setMaturityLevel(newMaturityLevel);
+        userupdated.setRole(role);
         em.getTransaction().commit();
     }
 
@@ -588,5 +589,10 @@ public class ItemManager {
         em.getTransaction().commit();
     }
     
+    public void deleteUser(User userName) {
+        em.getTransaction().begin();
+        em.remove(userName);
+        em.getTransaction().commit();
+    }
    
 }

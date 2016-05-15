@@ -8,8 +8,9 @@
 <!DOCTYPE html>
      <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%-- TESTING, DO NO REMOVE <jsp:include page="header.jsp" /> --%>
-    <jsp:include page="adminHeader.jsp" />
+    
     <html lang="en">
+        <jsp:include page="adminHeader.jsp" />
         <head>
             <meta charset="UTF-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">

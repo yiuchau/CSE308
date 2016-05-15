@@ -5,17 +5,7 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <script>
-            function editAccount(){
-                alert("Click OK to edit user account");
-                window.location = "./editAccount_M.jsp";
-            }
-            function deleteAccount(){
-                alert("Click OK to delete user account");
-                window.location = "http://localhost:8080/308code/DeleteAccountServlet";
-            }          
-         </script>
+    <head>     
     </head>
     <jsp:include page="adminHeader.jsp" />
     <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
@@ -32,13 +22,22 @@
                                 <input type="hidden" name="name" value="${display.userName}">                                 
                                 <div class="input-group-btn">
                                      
-                                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    <button class="btn btn-default" type="submit">Update</button>
                                
                                 </div>
                             </div>
                 </form>
                 
-                <input type="button" value="Delete Account" onclick="deleteAccount()">
+                <form class="navbar-form" action="http://localhost:8080/308code/managerDeleteA" role="search">
+                            <div class="input-group">
+                                <input type="hidden" name="name" value="${display.userName}">                                 
+                                <div class="input-group-btn">
+                                     
+                                    <button class="btn btn-default" type="submit">Delet the Account</button>
+                               
+                                </div>
+                            </div>
+                </form>
                 
             </p>
         </h2>
@@ -71,7 +70,7 @@
                 </tr>
             </tbody>
             </table>
-        </div>
-    </body>
+        </div>    
+    </body> 
     <jsp:include page="footer.jsp" />
 </html>
