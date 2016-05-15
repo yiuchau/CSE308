@@ -305,7 +305,7 @@ public class ItemManager {
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);
         List<Item> retList = new ArrayList<>();
-        Query query = null;
+        Query query;
         if (category.equals("MostPopular")) {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC");
             query.setMaxResults(50);
