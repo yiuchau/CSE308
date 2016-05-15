@@ -5,25 +5,21 @@
  */
 package Servlets;
 
+import Items.Item;
 import Items.ItemManager;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.net.URL;
 import javax.servlet.ServletException;
-import static javax.servlet.SessionTrackingMode.URL;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 /**
  *
@@ -111,16 +107,35 @@ public class adminServlet extends HttpServlet {
                     Document doc = dBuilder.parse(fXmlFile);
                     doc.getDocumentElement().normalize();
                     NodeList nList = doc.getElementsByTagName("book");
+                    String returnMessage="";
                     for (int temp = 0; temp < nList.getLength(); temp++) {
                         Node nNode = nList.item(temp);
+                       
                         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                             Element eElement = (Element) nNode;
-                            request.setAttribute("title", eElement.getElementsByTagName("title").item(0).getTextContent());
-                            request.setAttribute("ISBN", eElement.getElementsByTagName("isbn").item(0).getTextContent());
-                            request.setAttribute("subject", eElement.getElementsByTagName("subject").item(0).getTextContent());
-			     
+                            Item newItem=new Item();
+                            newItem.setID(Integer.parseInt(eElement.getElementsByTagName("id").item(0).getTextContent()));
+                            newItem.setISBN(eElement.getElementsByTagName("isbn").item(0).getTextContent());
+                            newItem.setTitle(eElement.getElementsByTagName("title").item(0).getTextContent());
+                            newItem.setAuthor(eElement.getElementsByTagName("authors").item(0).getTextContent());
+                            newItem.setPublisher(eElement.getElementsByTagName("publisher").item(0).getTextContent());
+                            newItem.setReleaseDate(eElement.getElementsByTagName("releaseDate").item(0).getTextContent());
+                            newItem.setPageCount(eElement.getElementsByTagName("pageCount").item(0).getTextContent());
+                            newItem.setCategories(eElement.getElementsByTagName("categories").item(0).getTextContent());
+                            newItem.setDescription(eElement.getElementsByTagName("description").item(0).getTextContent());
+                            newItem.setImageURL(eElement.getElementsByTagName("imageURL").item(0).getTextContent());
+                            newItem.setAverageRating(0);
+                            newItem.setTotalCopies(Integer.parseInt(eElement.getElementsByTagName("totalCopies").item(0).getTextContent()));
+                            newItem.setAvailableCopies(Integer.parseInt(eElement.getElementsByTagName("availableCopies").item(0).getTextContent()));
+                            newItem.setType(Integer.parseInt(eElement.getElementsByTagName("type").item(0).getTextContent()));
+                            newItem.setBanned(0);
+                            newItem.setBorrowedTimes(0);
+                            returnMessage=returnMessage+itemManager.updateInformation(newItem);
+                            
+                            
                         }
                     }
+                    request.setAttribute("successMessage", returnMessage);
                     request.getRequestDispatcher("./modifyInformation.jsp").forward(request, response);
                 } 
                 catch (Exception e) {

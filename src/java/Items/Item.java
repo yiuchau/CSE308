@@ -27,7 +27,6 @@ public class Item implements Serializable {
     private String pageCount;   //if no pageCount available, "none" in database
     private String categories;
     private String description;
-    private String previewLink;
     private double averageRating; //default 0
     private int totalCopies;
     private int availableCopies;
@@ -92,12 +91,6 @@ public class Item implements Serializable {
     }
     public void setCategories(String categories){
         this.categories=categories;
-    }
-    public String getPreviewLink(){
-        return previewLink;
-    }
-    public void setPreviewLink(String previewLink){
-        this.previewLink=previewLink;
     }
     public double getAverageRating() {
         return averageRating;
