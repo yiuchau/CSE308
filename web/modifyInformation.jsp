@@ -20,10 +20,11 @@
             <div class="container">
                 <h1 align="center">Modify Book Information</h1>
                 <h2>Please enter xml file name:</h2>
-                <h3 align="center" style="color:#008000;">${successMessage}</h3>
-                <h3 align="center" style="color:#FF0000;">${errorMessage}</h3>
+                <h3 align="center" style="color:#008000;">${title}</h3>
+                <h3 align="center" style="color:#008000;">${ISBN}</h3>
+                <h3 align="center" style="color:#008000;">${subject}</h3>
                 <form method="post" action="./adminServlet?type=modifyInformation" class="ibm-row-form" method="POST">
-                     <input name="information" type="text" id="information" class="form-control" placeholder="xml file name" required autofocus>
+                     <input name="fileName" type="text" id="fileName" class="form-control" placeholder="xml file name(absolute path only)" required autofocus>
                     <div>&nbsp;</div>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Submit<br>
                 </form>

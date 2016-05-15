@@ -24,7 +24,7 @@ public class test {
         
       try {
 
-	File fXmlFile = new File("/Users/xieyi/Desktop/information.xml");
+	File fXmlFile = new File("src/java/information.xml");
 	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	Document doc = dBuilder.parse(fXmlFile);
