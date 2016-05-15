@@ -15,7 +15,14 @@
             rs = itemManager.findUser(request.getParameter("SearchParameter"));
             request.setAttribute("display", rs);
         %>
-        <h2 class="text-center">User Account Settings 
+        <h2 class="text-center">User Account Settings </h2>
+        
+        <% if(rs==null){ %>
+        
+              <h2 class="text-center" >There is no this account!</h2>
+              
+        <% } else { %>
+        <h2 class="text-center">
             <p>
                 <form class="navbar-form" action="./editAccount_M.jsp" role="search">
                             <div class="input-group">
@@ -71,6 +78,7 @@
             </tbody>
             </table>
         </div>    
+        <% } %>       
     </body> 
     <jsp:include page="footer.jsp" />
 </html>

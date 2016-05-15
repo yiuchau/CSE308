@@ -5,18 +5,11 @@
  */
 package Servlets;
 
-import Items.CheckoutList;
-import Items.Holds;
 import Items.ItemManager;
-import Items.RateList;
-import Items.RecommendedList;
-import Items.WishList;
 import Users.User;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,8 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author zhaoy
  */
-@WebServlet(name = "managerDeleteA", urlPatterns = {"/managerDeleteA"})
-public class managerDeleteA extends HttpServlet {
+public class signup_Manager extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,43 +34,35 @@ public class managerDeleteA extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            ItemManager im = (ItemManager) request.getSession().getAttribute("itemManager");
-            String Searchname = request.getParameter("name");
-            User newuser = im.findUser(Searchname);
-            List<CheckoutList> listreturn =im.getCheckoutList(newuser);
-            int i =0;
-            //checkout
-            for( i=0 ; listreturn.size()> i; i++){
-                im.removeCheckOut(listreturn.get(i));
+             User newUser = new User();
+            newUser.setFirstName(request.getParameter("fName"));
+            newUser.setLastName(request.getParameter("LName"));
+            newUser.setUserName(request.getParameter("UserID"));
+             newUser.setPassword(request.getParameter("password"));
+             newUser.setEmail(request.getParameter("email"));
+             newUser.setPhoneNumber(request.getParameter("phoneNumber"));
+             newUser.setLendingPeriod("3 days");//default value
+             String role = request.getParameter("role");
+            switch (role) {
+                case "member":
+                    newUser.setRole(1);
+                    break;
+                case "admin":
+                    newUser.setRole(2);
+                    break;
+                case "publisher":
+                    newUser.setRole(3);
+                    break;
             }
-            //wishlist
-            i=0;
-            List<WishList> listreturn2 =im.getWishList(newuser);
-            for( i=0 ; listreturn2.size()> i; i++){
-                im.removeWish(listreturn2.get(i));
-            }
-            //holds
-            i=0;
-            List<Holds> listreturn3 =im.getHolds(newuser);
-            for( i=0 ; listreturn3.size()> i; i++){
-                im.removeHolds(listreturn3.get(i));
-            }
-            //ratelist
-            i=0;
-            List<RateList> listreturn4 =im.getAllRateList(newuser);
-            for( i=0 ; listreturn4.size()> i; i++){
-                im.removeRate(listreturn4.get(i));
-            }
-            //recommended
-            i=0;
-            List<RecommendedList> listreturn5 =im.getRecomList(newuser);
-            for( i=0 ; listreturn5.size()> i; i++){
-                im.removeRe(listreturn5.get(i));
-            }
-            
-            
-            im.deleteUser(newuser);
+        ItemManager itemManager = new ItemManager();
+        // itemManager = (ItemManager) request.getSession().getAttribute("itemManager");
+
+        if (itemManager.register(newUser)) {
             request.getRequestDispatcher("/editUser.jsp").forward(request, response);
+        } else {
+            request.setAttribute("errorMessage", "Username exists or database error. Try again.\n");
+            request.getRequestDispatcher("./editUser.jsp").forward(request, response);
+        }
         }
     }
 
