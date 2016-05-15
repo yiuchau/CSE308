@@ -39,11 +39,17 @@
                 <li class="active"><a href="#">&nbsp;&nbsp;&nbsp;<span class="sr-only"></span></a></li>
                 <li class="active"><a href="./banBook.jsp">Ban a book<span class="sr-only"></span></a></li>
                 <li class="active"><a href="./unbanBook.jsp">Unban a book<span class="sr-only"></span></a></li>
-                <li class="active"><a href="#">Modify book information<span class="sr-only"></span></a></li>
+                <li class="active"><a href="./modifyInformation.jsp">Modify book information<span class="sr-only"></span></a></li>
                 <li class="active"><a href="./reviewRecommendations.jsp">Review book recommendations<span class="sr-only"></span></a></li>
-                <li class="active"><a href="#">Buy book licenses<span class="sr-only"></span></a></li>
-                <li class="active"><a href="#">Account management<span class="sr-only"></span></a></li>
-                <li class="active"><a href="#">Best seller list<span class="sr-only"></span></a></li>
+                <li class="active"><a href="./buyLicense.jsp">Buy book licenses<span class="sr-only"></span></a></li>                
+                <li class="dropdown active"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Account management<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="./signUp.jsp">Create A New User</a> </li>
+                        <li><a href="./editUser.jsp">Edit User Info </li>
+                        <li><a href="./accountPage.jsp">Update Own Info</a> </li>                               
+                     </ul>
+                </li>                          
+                <li class="active"><a href="./bestSeller.jsp">Best seller list<span class="sr-only"></span></a></li>
                 <li class="active"><a href="#">&nbsp;&nbsp;&nbsp;<span class="sr-only"></span></a></li>
         </ul>
         

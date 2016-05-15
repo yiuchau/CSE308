@@ -3,9 +3,15 @@ package Items;
 import Users.User;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PreDestroy;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -16,6 +22,7 @@ public class ItemManager {
     private static ItemManager singleton = null;
 
     private List<Item> itemCollection;
+  
     User user;
 
     //EntityManagerFactory emf;
@@ -28,6 +35,7 @@ public class ItemManager {
         //emf.close();
     }
 
+    
     public static ItemManager getInstance() {
         if (singleton == null) {
             singleton = new ItemManager();
@@ -118,7 +126,9 @@ public class ItemManager {
             newItem.setCheckoutTime(currentDate);
             Date dueDate=calculateDueDate(newItem.getCheckoutTime());
             newItem.setDueTime(dueDate);
+            Item itemToUpdate=findItem(ISBN);
             em.getTransaction().begin();
+            itemToUpdate.setBorrowedTimes(itemToUpdate.getBorrowedTimes()+1); //updtae borrowedTimes
             em.persist(newItem);
             em.getTransaction().commit();
             updateItemAvailableCopies(ISBN);
@@ -305,8 +315,7 @@ public class ItemManager {
     
     public List<Item> getCollection(String category) {
         System.out.println("Query: " + category);
-        List<Item> retList = new ArrayList<Item>();
-        
+        List<Item> retList = new ArrayList<>();
         Query query;
         if (category.equals("MostPopular")) {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.averageRating DESC");
@@ -392,6 +401,10 @@ public class ItemManager {
              retList = (List<Item>) query.getResultList();
              return retList;
         }
+        else if(category.equals("bestSeller")){
+            query = em.createQuery("SELECT i FROM Item i WHERE i.borrowedTimes>0 ORDER BY i.borrowedTimes DESC");
+            query.setMaxResults(10);       
+        }
         else {
             query = em.createQuery("SELECT i FROM Item i ORDER BY i.totalCopies DESC");
             query.setMaxResults(50);
@@ -409,10 +422,20 @@ public class ItemManager {
 
      public List<RateList> getRateList(User user){
         String userName=user.getUserName();
+        List<RateList> listreturn = new ArrayList();
         Query query1=em.createQuery("Select e " + "from  RateList e " + "Where e.userName= '"+userName+"'");
-        List<RateList> list=(List<RateList>)query1.getResultList( );  
+        List<RateList> list=(List<RateList>)query1.getResultList( ); 
+        int counter = 0;
+        for (RateList rateItem : list) {
+               Item item = findItem(rateItem.getIsbn());
+                if (item.getBanned() == 0) {
+                    listreturn.add(list.get(counter));
+                }
+                counter = counter +1;
+            }
+        
         //need to check if book has been banned
-        return list;
+        return listreturn;
     } 
     
     //set banned=1
@@ -535,6 +558,11 @@ public class ItemManager {
         User u = em.find(Users.User.class, userName);
         return u != null;
     }
+    
+    public User findUser(String userName){
+        User u = em.find(Users.User.class, userName);
+        return u;
+    }
 
     public void signOut() {
         this.user = null;
@@ -552,10 +580,30 @@ public class ItemManager {
         user.setMaturityLevel(newMaturityLevel);
         em.getTransaction().commit();
     }
+    
+    public void updateUser2(User userupdated,String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod,String newMaturityLevel, int role) {
+        em.getTransaction().begin();
+        userupdated.setFirstName(newFName);
+        userupdated.setLastName(newLName);
+        userupdated.setEmail(newEmail);
+        userupdated.setPassword(newPassword);
+        userupdated.setPhoneNumber(newPhoneNumber);
+        userupdated.setLendingPeriod(newLendingPeriod);
+        userupdated.setMaturityLevel(newMaturityLevel);
+        userupdated.setRole(role);
+        em.getTransaction().commit();
+    }
 
     public void removeUser(String userName) {
         em.getTransaction().begin();
         em.remove(user);
         em.getTransaction().commit();
     }
+    
+    public void deleteUser(User userName) {
+        em.getTransaction().begin();
+        em.remove(userName);
+        em.getTransaction().commit();
+    }
+   
 }

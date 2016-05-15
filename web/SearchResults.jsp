@@ -5,12 +5,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
-<jsp:include page="memberHeader.jsp"/>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session"/>
 <html>
     <head>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+        <c:choose>
+            <c:when test="${itemManager.user == null}">
+                <jsp:include page="guestHeader.jsp" />
+            </c:when>    
+            <c:otherwise>
+                <jsp:include page="memberHeader.jsp" />
+            </c:otherwise>
+        </c:choose>
         <title>Search Results</title>
     </head>
     <body>

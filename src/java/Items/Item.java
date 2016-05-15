@@ -34,6 +34,7 @@ public class Item implements Serializable {
     private String imageURL;
     private int type; //0 ebook, 1 audio, 2 movie 
     private int banned; //default:0 , banned:1
+    private int borrowedTimes;// default:0
       
     public Item() {
         
@@ -134,6 +135,11 @@ public class Item implements Serializable {
     public void setBanned(int banned){
         this.banned=banned;
     }
-       
+    public int getBorrowedTimes(){
+        return borrowedTimes;
+    }
+    public void setBorrowedTimes(int borrowedTimes){
+        this.borrowedTimes=borrowedTimes;
+    }
 }
 
