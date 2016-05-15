@@ -140,6 +140,16 @@ public class adminServlet extends HttpServlet {
                     request.getRequestDispatcher("./modifyInformation.jsp").forward(request, response);
                 }
            }
+           else if(type.equals("deleteBook")){
+                String message=itemManager.removeBook(ISBN);
+                if(message.equals("success")){
+                    request.setAttribute("successMessage", message);
+                }
+                else{
+                    request.setAttribute("errorMessage", message);
+                }
+                request.getRequestDispatcher("./modifyInformation.jsp").forward(request, response);
+           }
         }
     }
 

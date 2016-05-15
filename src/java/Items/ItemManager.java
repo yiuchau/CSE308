@@ -541,7 +541,7 @@ public class ItemManager {
                 em.getTransaction().begin();
                 itemToUpdate.setISBN(newItem.getISBN());
                 em.getTransaction().commit();
-                message=message+" Book ISBN updated, new ISBN: " +newItem.getISBN()+ " . ";
+                message=message+" Book ISBN updated, new ISBN: " +newItem.getISBN()+ "  ";
                
             }
             if(!itemToUpdate.getTitle().equals(newItem.getTitle())){
@@ -549,14 +549,14 @@ public class ItemManager {
                 em.getTransaction().begin();
                 itemToUpdate.setTitle(newItem.getTitle());
                 em.getTransaction().commit();
-                message=message+" Book Title updated, new Title: " +newItem.getTitle()+ " . ";
+                message=message+" Book Title updated, new Title: " +newItem.getTitle()+ "  ";
             }
             if(!itemToUpdate.getAuthor().equals(newItem.getAuthor())){
                 flag++;
                 em.getTransaction().begin();
                 itemToUpdate.setAuthor(newItem.getAuthor());
                 em.getTransaction().commit();
-                message=message+" Book Author updated, new Author: " +newItem.getAuthor()+ " . ";
+                message=message+" Book Author updated, new Author: " +newItem.getAuthor()+ "  ";
                
             }
             if(flag==0){
@@ -566,11 +566,25 @@ public class ItemManager {
         return message;
     }
     
-     public boolean itemExist(int id) {
+    public boolean itemExist(int id) {
         Item i = em.find(Items.Item.class, id);
         return i != null;
     }
     
+    public String removeBook(String ISBN){
+        String returnMessage="";
+        Item item=findItem(ISBN);
+        if(item==null){
+            returnMessage="The book is not in our library.Please try another one!";
+        }
+        else{
+            em.getTransaction().begin();
+            em.remove(item);
+            em.getTransaction().commit();
+            returnMessage="success";
+        }
+        return returnMessage;
+    }
     
     public String login(String username, String password) {
         String retValue;

@@ -22,6 +22,7 @@ public class SignUpServlet extends HttpServlet {
         newUser.setEmail(request.getParameter("email"));
         newUser.setPhoneNumber(request.getParameter("phoneNumber"));
         newUser.setLendingPeriod("3 days");//default value
+        newUser.setMaturityLevel("adult"); //defalut adult
         String role = request.getParameter("role");
         switch (role) {
             case "member":

@@ -75,9 +75,8 @@ public class managerDeleteA extends HttpServlet {
             for( i=0 ; listreturn5.size()> i; i++){
                 im.removeRe(listreturn5.get(i));
             }
-            
-            
             im.deleteUser(newuser);
+            request.setAttribute("successMessage", newuser.getUserName()+" account deleted!");
             request.getRequestDispatcher("/editUser.jsp").forward(request, response);
         }
     }

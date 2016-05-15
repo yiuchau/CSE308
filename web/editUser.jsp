@@ -20,7 +20,9 @@
         <body> 
             <div class="container">
                 <h1 align="center">Edit User Information</h1>
-                <h3> Please input the user account you want to edit </h3>
+                <h3 align="center" style="color:#008000;">${successMessage}</h3>
+                <h3 align="center" style="color:#FF0000;">${errorMessage}</h3>
+                <h3> Please input the userName you want to edit </h3>
                 <div>
                     <form class="navbar-form" action="./accountedit.jsp" role="search">
                             <div class="input-group">

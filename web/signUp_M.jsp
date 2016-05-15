@@ -39,7 +39,6 @@
                     <select name="role">
                         <option value="member">Member</option>
                         <option value="admin">Administrator</option>
-                        <option value="publisher">Publisher</option>
                     </select>
                 </div>                
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
