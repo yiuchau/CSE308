@@ -29,8 +29,17 @@ public class Holds implements Serializable {
     private String userName;
     @Temporal(TemporalType.TIMESTAMP)
     private Date placeHoldTime;
+    private Date suspendHold;
     private String checkOutType; //email or automatic
 
+    public Date getSuspendHold() {
+        return suspendHold;
+    }
+
+    public void setSuspendHold(Date suspendHold) {
+        this.suspendHold = suspendHold;
+    }   
+    
     public String getIsbn(){
         return isbn;
     }
