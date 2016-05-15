@@ -74,6 +74,11 @@ public class ItemManager {
         addItem(retItem);
         return retItem;
     }
+    
+    public Item findItemByID(int id){
+        Item i = em.find(Items.Item.class, id);
+        return i;
+    }
 
     public void addItem(Item newItem) {
         Iterator<Item> it = itemCollection.iterator();
@@ -518,12 +523,45 @@ public class ItemManager {
      
     public String updateInformation(Item newItem){
         String message="";
+        
         //add a new item
         if(itemExist(newItem.getID())==false){
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();
             message=newItem.getTitle()+" added to library\r\n";
+        }
+        //modify a book information(isbn/title/author)
+        else{
+            int flag=0; //number of fileds to be updated
+            int id=newItem.getID();
+            Item itemToUpdate=findItemByID(id);
+            if(!itemToUpdate.getISBN().equals(newItem.getISBN())){
+                flag++;
+                em.getTransaction().begin();
+                itemToUpdate.setISBN(newItem.getISBN());
+                em.getTransaction().commit();
+                message=message+" Book ISBN updated, new ISBN: " +newItem.getISBN()+ " . ";
+               
+            }
+            if(!itemToUpdate.getTitle().equals(newItem.getTitle())){
+                flag++;
+                em.getTransaction().begin();
+                itemToUpdate.setTitle(newItem.getTitle());
+                em.getTransaction().commit();
+                message=message+" Book Title updated, new Title: " +newItem.getTitle()+ " . ";
+            }
+            if(!itemToUpdate.getAuthor().equals(newItem.getAuthor())){
+                flag++;
+                em.getTransaction().begin();
+                itemToUpdate.setAuthor(newItem.getAuthor());
+                em.getTransaction().commit();
+                message=message+" Book Author updated, new Author: " +newItem.getAuthor()+ " . ";
+               
+            }
+            if(flag==0){
+                message="No changes made on book "+itemToUpdate.getTitle();
+            }
         }
         return message;
     }

@@ -130,8 +130,6 @@ public class adminServlet extends HttpServlet {
                             newItem.setBanned(0);
                             newItem.setBorrowedTimes(0);
                             returnMessage=returnMessage+itemManager.updateInformation(newItem)+"<br>";
-                            
-                            
                         }
                     }
                     request.setAttribute("successMessage", returnMessage);

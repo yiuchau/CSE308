@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <information>
-	<book>
+        <book>
             <id>95</id>
             <title>Our Great Big Backyard</title>
             <isbn>0062468359</isbn>
@@ -15,7 +15,7 @@
             <availableCopies>5</availableCopies>
             <imageURL>http://books.google.com/books/content?id=e6GcjgEACAAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;source=gbs_api</imageURL>
             <type>0</type>
-	</book>
+        </book>
         
         <book>
             <id>96</id>
@@ -32,9 +32,27 @@
             <availableCopies>8</availableCopies>
             <imageURL>http://books.google.com/books/content?id=SdRFPgAACAAJ&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;source=gbs_api</imageURL>
             <type>0</type>
-	</book>
+        </book>
         
         
         
+         <book>
+            <id>17</id>
+            <title>Party Time!!!</title>
+            <isbn>12345689</isbn>
+            <authors>Lauren Cecil,Scholastic, Inc. Staff</authors>
+            <publisher>Scholastic Inc.</publisher>
+            <releaseDate>2011</releaseDate>
+            <pageCount>24</pageCount>
+            <categories>Juvenile Fiction</categories>
+            <description>The Lalaloopsy girls are planning a friendship party, where every girl will contribute something special to the party, but Muttens Fluff 'n' Stuff feels left out because she cannot figure out how to help.</description>
+            <totalCopies>5</totalCopies>
+            <availableCopies>3</availableCopies>
+            <imageURL>http://books.google.com/books/content?id=EgpiuCSNAwEC&amp;printsec=frontcover&amp;img=1&amp;zoom=1&amp;edge=curl&amp;source=gbs_api</imageURL>
+            <type>0</type>
+        </book>
+        
+        
+       
         
 </information>
