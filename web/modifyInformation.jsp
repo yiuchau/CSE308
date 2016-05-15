@@ -19,7 +19,7 @@
         <body> 
             <div class="container">
                 <h1 align="center">Modify Book Information</h1>
-                <h2>Please upload xml update file:</h2>
+                <h2>Please enter xml update file name(absolute path only):</h2>
                 <h3 align="center" style="color:#008000;">${successMessage}</h3>
                 <h3 align="center" style="color:#FF0000;">${errorMessage}</h3>
                 <form method="post" action="./adminServlet?type=modifyInformation" class="ibm-row-form" method="POST">

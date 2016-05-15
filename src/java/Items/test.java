@@ -31,6 +31,9 @@ public class test {
         File f1 = new File("information.xml");
         System.out.println(f1.getAbsoluteFile());
 
+      System.out.print("eeee");
+        System.out.print("eeee\n");
+       
   }
 
 }
