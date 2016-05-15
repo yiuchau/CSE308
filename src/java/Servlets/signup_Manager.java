@@ -38,11 +38,12 @@ public class signup_Manager extends HttpServlet {
             newUser.setFirstName(request.getParameter("fName"));
             newUser.setLastName(request.getParameter("LName"));
             newUser.setUserName(request.getParameter("UserID"));
-             newUser.setPassword(request.getParameter("password"));
-             newUser.setEmail(request.getParameter("email"));
-             newUser.setPhoneNumber(request.getParameter("phoneNumber"));
-             newUser.setLendingPeriod("3 days");//default value
-             String role = request.getParameter("role");
+            newUser.setPassword(request.getParameter("password"));
+            newUser.setEmail(request.getParameter("email"));
+            newUser.setPhoneNumber(request.getParameter("phoneNumber"));
+            newUser.setLendingPeriod("3 days");//default value
+            newUser.setMaturityLevel("adult"); //defalut adult
+            String role = request.getParameter("role");
             switch (role) {
                 case "member":
                     newUser.setRole(1);
@@ -58,6 +59,7 @@ public class signup_Manager extends HttpServlet {
         // itemManager = (ItemManager) request.getSession().getAttribute("itemManager");
 
         if (itemManager.register(newUser)) {
+            request.setAttribute("successMessage", "New user added.\n");
             request.getRequestDispatcher("/editUser.jsp").forward(request, response);
         } else {
             request.setAttribute("errorMessage", "Username exists or database error. Try again.\n");

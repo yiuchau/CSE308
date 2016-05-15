@@ -54,7 +54,7 @@ public class ManagerAccountServlet extends HttpServlet {
             }
             itemManager.updateUser2(updatedUser,newFName, newLName, newEmail, newPassword, newPhoneNumber,newLendingPeriod,newMaturityLevel,newRole);
             itemManager.updateDueTime(account);
-            
+            request.setAttribute("successMessage",updatedUser.getUserName()+" account updated!" );
             request.getRequestDispatcher("/editUser.jsp").forward(request, response);
         } 
     }
