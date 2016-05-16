@@ -43,7 +43,7 @@ public class ItemManager {
         em.close();
         //emf.close();
     }
-
+    
     
     public static ItemManager getInstance() {
         if (singleton == null) {
@@ -708,6 +708,31 @@ public class ItemManager {
         user.setMaturityLevel(newMaturityLevel);
         em.getTransaction().commit();
     }
+    
+    public String updateHold(String email, Holds h, String type, String days) {
+        em.getTransaction().begin();
+        String m = "sucess";
+        if(!days.equals("")){
+           int days2 = Integer.parseInt(days);
+            Date today = new Date();
+            
+            //Date newday = new Date(today.getTime() + days2*(1000 * 60 * 60 * 24));      
+            Calendar c = Calendar.getInstance();
+            c.setTime(today); 
+            Date newDate;
+            c.add(Calendar.DATE, days2); // Adding 3 days
+            newDate =c.getTime();
+            h.setSuspendHold(newDate); 
+        }
+        h.setCheckOutType(type);
+        if(!email.equals("")){
+          user.setEmail(email);
+        }
+        em.getTransaction().commit();
+        return m;
+    }
+    
+    
     
     public void updateUser2(User userupdated,String newFName, String newLName, String newEmail, String newPassword, String newPhoneNumber,String newLendingPeriod,String newMaturityLevel, int role) {
         em.getTransaction().begin();
