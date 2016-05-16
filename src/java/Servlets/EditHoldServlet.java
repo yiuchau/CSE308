@@ -37,39 +37,34 @@ public class EditHoldServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
            ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
            String ISBN=request.getParameter("isbn");
-           String email = request.getParameter("SearchParameter");           
+           String page=request.getParameter("type");
+           if(page.equals("showEditPage")){
+               request.setAttribute("ISBN", ISBN);
+               request.getRequestDispatcher("./editHold.jsp").forward(request, response);   
+           }
+           else{
+           String email = request.getParameter("email");           
            String type=request.getParameter("option");
-           String days=request.getParameter("SearchParameter2");
+           String days=request.getParameter("days");
            String ifremove =request.getParameter("option2");
-           
            int i =0;
            List<Holds> list1 = itemManager.getHolds(itemManager.getUser());
            Holds change = new Holds();
-           String message="";
            for(i=0;i<list1.size();i++){
                 if(ISBN.equals(list1.get(i).getIsbn())){
                     change = list1.get(i);
                 }
             }
-           
            if(ifremove.equals("remove")){
-               
                itemManager.removeHolds(change);
                request.setAttribute("successMessage", "Remove hold");
                
            }else{
-               
-
                itemManager.updateHold(email,change,type,days);
                request.setAttribute("successMessage", "Updated holds");
-           }
-                     
-            
-          request.getRequestDispatcher("./holds.jsp").forward(request, response);
-            
-            
-            
-            
+           }            
+           request.getRequestDispatcher("./holds.jsp").forward(request, response);  
+           }          
         }
     }
 

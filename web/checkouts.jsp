@@ -8,6 +8,7 @@
 <%@page import="Items.ItemManager"%>
 <!DOCTYPE html>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
     <%-- TESTING, DO NO REMOVE <jsp:include page="header.jsp" /> --%>
     <jsp:include page="memberHeader.jsp" />
 

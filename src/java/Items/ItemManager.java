@@ -184,6 +184,7 @@ public class ItemManager {
             Date currentDate=getCurrentDate();
             newItem.setPlaceHoldTime(currentDate);
             newItem.setCheckOutType(checkoutType);
+            newItem.setSuspendHold(currentDate);
             em.getTransaction().begin();
             em.persist(newItem);
             em.getTransaction().commit();
@@ -709,19 +710,15 @@ public class ItemManager {
         em.getTransaction().commit();
     }
     
-    public String updateHold(String email, Holds h, String type, String days) {
+    public void updateHold(String email, Holds h, String type, String days) {
         em.getTransaction().begin();
-        String m = "sucess";
         if(!days.equals("")){
-           int days2 = Integer.parseInt(days);
+            int days2 = Integer.parseInt(days);  
             Date today = new Date();
-            
-            //Date newday = new Date(today.getTime() + days2*(1000 * 60 * 60 * 24));      
             Calendar c = Calendar.getInstance();
             c.setTime(today); 
-            Date newDate;
-            c.add(Calendar.DATE, days2); // Adding 3 days
-            newDate =c.getTime();
+            c.add(Calendar.DATE, days2); 
+            Date newDate =c.getTime();
             h.setSuspendHold(newDate); 
         }
         h.setCheckOutType(type);
@@ -729,7 +726,6 @@ public class ItemManager {
           user.setEmail(email);
         }
         em.getTransaction().commit();
-        return m;
     }
     
     
@@ -807,7 +803,7 @@ public class ItemManager {
     
     public List<Holds> getHolds(User user){
         String userName=user.getUserName();
-        List<Holds> listreturn = new ArrayList();
+        List<Holds> listreturn;
         Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.userName= '"+userName+"'");
         listreturn =(List<Holds>)query1.getResultList( ); 
         return listreturn;

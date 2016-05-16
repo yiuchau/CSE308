@@ -30,7 +30,7 @@ public class Holds implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date placeHoldTime;
     @Temporal(TemporalType.TIMESTAMP)
-    private Date suspendHold;
+    private Date suspendHold; //default is place hold time
     private String checkOutType; //email or automatic
 
     public Date getSuspendHold() {
