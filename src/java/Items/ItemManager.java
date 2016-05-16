@@ -1,6 +1,8 @@
 package Items;
 
 import Users.User;
+import com.sun.mail.smtp.SMTPTransport;
+import java.security.Security;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -12,7 +14,14 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import javax.annotation.PreDestroy;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
@@ -571,6 +580,56 @@ public class ItemManager {
         return i != null;
     }
     
+    
+    public void notifyUser(String ISBN,int amount) throws MessagingException{
+        //System.out.println("hhh");
+       Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1" );
+       query1.setParameter(1,ISBN);
+       List<Holds> returnList =(List<Holds>)query1.getResultList( );
+        if(returnList.isEmpty()==false){
+            query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1 ORDER BY e.placeHoldTime ASC" );
+            query1.setParameter(1,ISBN);
+            Item item=findItem(ISBN);
+            returnList =(List<Holds>)query1.getResultList( );
+            for(int i=0;i<amount;i++){
+                User u=findUser(returnList.get(i).getUserName());
+                send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",item.getTitle()+" is available now! ");
+            }
+        }
+    }
+    
+     public void send(final String username, final String password, String recipientEmail, String ccEmail, String title, String message) throws AddressException, MessagingException {
+        Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+        final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+        // Get a Properties object
+        Properties props = System.getProperties();
+        props.setProperty("mail.smtps.host", "smtp.gmail.com");
+        props.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
+        props.setProperty("mail.smtp.socketFactory.fallback", "false");
+        props.setProperty("mail.smtp.port", "465");
+        props.setProperty("mail.smtp.socketFactory.port", "465");
+        props.setProperty("mail.smtps.auth", "true");
+        props.put("mail.smtps.quitwait", "false");
+        Session session = Session.getInstance(props, null);
+        // -- Create a new message --
+        final MimeMessage msg = new MimeMessage(session);
+        // -- Set the FROM and TO fields --
+        msg.setFrom(new InternetAddress(username + "@gmail.com"));
+        msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipientEmail, false));
+        if (ccEmail.length() > 0) {
+            msg.setRecipients(Message.RecipientType.CC, InternetAddress.parse(ccEmail, false));
+        }
+        msg.setSubject(title);
+        msg.setText(message, "utf-8");
+        msg.setSentDate(new Date());
+        SMTPTransport t = (SMTPTransport)session.getTransport("smtps");
+        t.connect("smtp.gmail.com", username, password);
+        t.sendMessage(msg, msg.getAllRecipients());      
+        t.close();
+    }
+     
+     
+    //remove book from library
     public String removeBook(String ISBN){
         String returnMessage="";
         Item item=findItem(ISBN);
@@ -585,6 +644,7 @@ public class ItemManager {
         }
         return returnMessage;
     }
+    
     
     public String login(String username, String password) {
         String retValue;

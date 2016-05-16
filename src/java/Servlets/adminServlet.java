@@ -10,6 +10,9 @@ import Items.ItemManager;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -81,6 +84,7 @@ public class adminServlet extends HttpServlet {
                     message=itemManager.purchase(ISBN,amount,0); //0 indicates need to update status in recommened table
                     if(message.equals("success")){
                         request.setAttribute("successMessage", message);
+                        //itemManager.notifyUser(ISBN,amount);
                     }
                     else{
                         request.setAttribute("errorMessage", message);
@@ -90,12 +94,18 @@ public class adminServlet extends HttpServlet {
                else{
                     message=itemManager.purchase(ISBN,amount,1); //dont' need to update status in recommended table
                     if(message.equals("success")){
-                        request.setAttribute("successMessage", message);
+                        try {
+                            itemManager.notifyUser(ISBN,amount);
+                            request.setAttribute("successMessage", message);
+                        } catch (MessagingException ex) {
+                             request.setAttribute("errorMessage", ex);
+                            Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                     else{
                         request.setAttribute("errorMessage", message);
                     }
-                 request.getRequestDispatcher("./buyLicense.jsp").forward(request, response);
+                    request.getRequestDispatcher("./buyLicense.jsp").forward(request, response);
                 }
            }
            else if(type.equals("modifyInformation")){
