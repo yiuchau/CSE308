@@ -77,6 +77,14 @@ public class adminServlet extends HttpServlet {
                 }
                 request.getRequestDispatcher("./reviewRecommendations.jsp").forward(request, response);
            }
+           else if(type.equals("reviewRecommendations")){
+               Item i=itemManager.findItem(ISBN); //get the book from database
+               request.setAttribute("ISBN", ISBN);
+               request.setAttribute("imageURL", i.getImageURL());
+               request.setAttribute("title",i.getTitle());
+               request.getRequestDispatcher("./buyLicenses.jsp").forward(request, response);   
+               
+           }
            else if(type.contains("purchase")){
                 int amount=Integer.parseInt(request.getParameter("amount"));
                 String message;

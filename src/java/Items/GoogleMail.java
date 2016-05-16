@@ -70,6 +70,6 @@ public class GoogleMail {
         t.close();
     }
     public static void main(String[] args) throws MessagingException{ 
-    Send("308cedar","308cedar123","173683374@qq.com","173683374@qq.com","aaa","bbbb");
+        Send("308cedar","308cedar123","173683374@qq.com","173683374@qq.com","aaa","bbbb");
     }
 }
