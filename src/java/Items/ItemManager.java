@@ -320,8 +320,9 @@ public class ItemManager {
         List<Item> rs = (List<Item>) query.getResultList();
         for (Item newItem : rs) {
             addItem(newItem);
-            
-            retList.add(newItem);
+            if(newItem.getBanned()==0){
+                retList.add(newItem);
+            }
         }
 
         System.out.println("Size: " + retList.size());
@@ -582,11 +583,12 @@ public class ItemManager {
         return i != null;
     }
     
-    
+    //amount is how many copies admin purchases or just 1(user return the book)
     public void notifyUser(String ISBN,int amount) throws MessagingException{
         Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1" );
         query1.setParameter(1,ISBN);
         List<Holds> returnList =(List<Holds>)query1.getResultList( );
+        //check if the book is in holds
         if(returnList.isEmpty()==false){
             query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1 ORDER BY e.suspendHold ASC" );
             query1.setParameter(1,ISBN);
@@ -597,6 +599,19 @@ public class ItemManager {
                 User u=findUser(returnList.get(i).getUserName());
                 String body=item.getTitle()+" is available now! Visit our website to read the book!";
                 send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",body);
+            }
+        }
+        //check if the book is in recommendedList
+        else{
+            query1=em.createQuery("Select e " + "from  RecommendedList e " + "Where e.isbn= ?1" );
+            query1.setParameter(1,ISBN);
+            List<RecommendedList> reList =(List<RecommendedList>)query1.getResultList( );
+            if(reList.isEmpty()==false){
+                Item item=findItem(ISBN);
+                for(int i=0;i<reList.size();i++){
+                    String body=item.getTitle()+" is available now! Visit our website to read the book!";
+                    send("308cedar","308cedar123",reList.get(i).getEmail(),"",item.getTitle()+" is available now! ",body);
+                }
             }
         }
     }

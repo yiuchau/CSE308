@@ -83,8 +83,13 @@ public class adminServlet extends HttpServlet {
                 if(type.equals("purchaseRecommendation")){
                     message=itemManager.purchase(ISBN,amount,0); //0 indicates need to update status in recommened table
                     if(message.equals("success")){
-                        request.setAttribute("successMessage", message);
-                        //itemManager.notifyUser(ISBN,amount);
+                        try {
+                            itemManager.notifyUser(ISBN,amount);
+                            request.setAttribute("successMessage", message);
+                        } catch (MessagingException ex) {
+                            Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
+                            request.setAttribute("errorMessage", ex);
+                        }
                     }
                     else{
                         request.setAttribute("errorMessage", message);
@@ -98,7 +103,7 @@ public class adminServlet extends HttpServlet {
                             itemManager.notifyUser(ISBN,amount);
                             request.setAttribute("successMessage", message);
                         } catch (MessagingException ex) {
-                             request.setAttribute("errorMessage", ex);
+                            request.setAttribute("errorMessage", ex);
                             Logger.getLogger(adminServlet.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
