@@ -2,6 +2,7 @@ package Items;
 
 import Users.User;
 import com.sun.mail.smtp.SMTPTransport;
+import static java.lang.Integer.min;
 import java.security.Security;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -583,18 +584,19 @@ public class ItemManager {
     
     
     public void notifyUser(String ISBN,int amount) throws MessagingException{
-        //System.out.println("hhh");
-       Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1" );
-       query1.setParameter(1,ISBN);
-       List<Holds> returnList =(List<Holds>)query1.getResultList( );
+        Query query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1" );
+        query1.setParameter(1,ISBN);
+        List<Holds> returnList =(List<Holds>)query1.getResultList( );
         if(returnList.isEmpty()==false){
-            query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1 ORDER BY e.placeHoldTime ASC" );
+            query1=em.createQuery("Select e " + "from  Holds e " + "Where e.isbn= ?1 ORDER BY e.suspendHold ASC" );
             query1.setParameter(1,ISBN);
             Item item=findItem(ISBN);
             returnList =(List<Holds>)query1.getResultList( );
-            for(int i=0;i<amount;i++){
+            int number=min(amount,returnList.size());
+            for(int i=0;i<number;i++){
                 User u=findUser(returnList.get(i).getUserName());
-                send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",item.getTitle()+" is available now! ");
+                String body=item.getTitle()+" is available now! Visit our website to read the book!";
+                send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",body);
             }
         }
     }

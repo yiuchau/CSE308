@@ -35,7 +35,6 @@
                                     <font size="2">${item.title}</font>
                                     <br>
                                     <p><a href="./EditHoldServlet?type=showEditPage&isbn=${item.ISBN}" class="btn btn-primary" role="button"><span class="glyphicon glyphicon glyphicon-edit" aria-hidden="true"></span>Edit holds</a></p>
-                                
                                 </div>
                             </div>
                         </div>
