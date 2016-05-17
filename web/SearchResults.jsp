@@ -6,10 +6,12 @@
 <!DOCTYPE html>
 
 
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session"/>
 <html>
     <head>
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
@@ -30,7 +32,7 @@
                     sb.append(" AND i." + column + "='" + value + "'");
                 }
             }
-                    %>
+                                                                                                                                %>
         <%
 
             List<Item> rs = new ArrayList<Item>();
@@ -41,35 +43,40 @@
             StringBuilder sb = new StringBuilder();
 
             if (SearchType != null) {
-                
+
                 sb.append("SELECT i FROM Item i WHERE 1=1");
-                
+
                 if (SearchType.equals("basic")) {
                     //rs = itemManager.basicSearch(request.getParameter("SearchParameter"));
 
                     String searchParameter = request.getParameter("SearchParameter");
-                    searchParameter = '%' + searchParameter + '%';
-
-                    sb.append(" AND (i.title LIKE '" + searchParameter + "' OR i.author LIKE '" + searchParameter + "')");
+                    sb.append(" AND (i.title LIKE '%" + searchParameter + "%' OR i.author LIKE '%" + searchParameter + "%')");
                     session.setAttribute("mainQuery", sb.toString());
                 } else if (SearchType.equals("advanced")) {
                     //construct advanced query Title, ISBN, Author, Genre, Format, Publisher
                     String title = request.getParameter("title");
+                    if (title != null && !title.trim().equalsIgnoreCase("")) {
+                        sb.append(" AND i.title LIKE '%" + title + "%'");
+                    }
                     String author = request.getParameter("author");
+                    if (author != null && !author.trim().equalsIgnoreCase("")) {
+                        sb.append(" AND i.author LIKE '%" + author + "%'");
+                    }
+                    String publisher = request.getParameter("publisher");
+                    if (publisher != null && !publisher.trim().equalsIgnoreCase("")) {
+                        sb.append(" AND i.publisher LIKE '%" + publisher + "%'");
+                    }
+
+                    
                     String isbn = request.getParameter("isbn");
                     //String [] genre = request.getParameter("genre");
                     String format = request.getParameter("format");
-                    String publisher = request.getParameter("publisher");
-
-                    appendFilter(sb, "title", title);
-                    appendFilter(sb, "author", author);
+                    
                     appendFilter(sb, "type", format);
                     //genre filter
-                    appendFilter(sb, "publisher", publisher);
                     appendFilter(sb, "isbn", isbn);
 
                     session.setAttribute("mainQuery", sb.toString());
-
                 }
             } else {
                 //return most recent query
@@ -78,34 +85,23 @@
             }
 
             System.out.println("Main Query: " + request.getAttribute("mainQuery"));
-            
-            String availability;
-            
-            if (request.getParameter("availability") != null) {
 
-                availability = request.getParameter("availability");
-                
+            String availability = request.getParameter("availability");
+            if (availability != null) {
+
                 if (availability.equals("Available")) {
-                    /*for (Item i : rs) {
-                        if (i.getAvailableCopies() == 0) {
-                            rs.remove(i);
-                        }
-                    }*/
 
                     appendFilter(sb, "banned", "0");
                     sb.append(" AND i.availableCopies > '0'");
 
                 } else if (request.getParameter("availability").equals("Recommendable")) {
-                    /*for (Item i : rs) {
-                        if (i.getTotalCopies() != 0) {
-                            rs.remove(i);
-                        }
-                    }*/
+                    
                     appendFilter(sb, "totalCopies", "0");
                 }
-            } else 
+            } else {
                 availability = "All Titles";
-            
+            }
+
             request.setAttribute("availability", availability);
 
             String minRating = request.getParameter("minRating");
@@ -132,6 +128,34 @@
 
             //System.out.println("Availability is " + request.getAttribute("availability"));
             request.setAttribute("display", rs);
+
+            int currentPage;
+            int lastPage = rs.size() / 10 + ((rs.size() % 10 == 0) ? 0 : 1);
+            if (request.getParameter("currentPage") != null) {
+                currentPage = Integer.parseInt(request.getParameter("currentPage"));
+            } else {
+                currentPage = 1;
+            }
+
+            String newPage = request.getParameter("pageChange");
+            if (newPage != null) {
+                if (newPage.equals("First")) {
+                    currentPage = 1;
+                } else if (newPage.equals("Prev")) {
+                    currentPage = currentPage > 1 ? currentPage - 1 : 1;
+                } else if (newPage.equals("Next")) {
+                    currentPage = currentPage != lastPage ? currentPage + 1 : lastPage;
+                } else if (newPage.equals("Last")) {
+                    currentPage = lastPage;
+                }
+            }
+
+            request.setAttribute("currentPage", currentPage);
+            System.out.println("currentPage: " + currentPage);
+
+            String displayStyle = request.getParameter("displayStyle") == null ? "list" : request.getParameter("displayStyle");
+            System.out.println("displayStyle: " + displayStyle);
+            request.setAttribute("displayStyle", displayStyle);
         %>
         <div class="col-md-3">
             <div class="panel panel-success">
@@ -179,7 +203,9 @@
                             <option value="averageRating">Average Rating</option>
                             <option value="releaseDate">Release Date</option>
                         </select>
-                        <input type="submit"/>
+                        <br>
+
+                        <input type="submit" class="btn btn-info"/>
                     </form>
                 </div>
             </div>
@@ -189,35 +215,77 @@
                 <div class="panel-heading">
                     <h4 class="text-center"> ${availability} </h4>
                 </div>
-                <h4 class="text-center">${display.size()} results found.</h4>
-                <div class="list-group">
-                    <c:forEach items="${display}" var="item" begin="0" end="7">
-                        <div class="row">
-                            <div class="panel-body">
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <h5 class="text-center">${item.title}</h5>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="col-md-3">
-                                            <div class="thumbnail ">
-                                                <a href="./bookPage.jsp?isbn=${item.ISBN}"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
-                                            </div>
+                <h4 class="text-center">${display.size()} result(s) found.</h4>
+
+
+                <div class="panel-body">
+                    <c:choose>
+                        <c:when test="${displayStyle == 'grid'}">
+
+                            <c:forEach items="${display}" var="item" varStatus="myIndex" begin='<%= (currentPage - 1) * 10%>' end='<%= (currentPage - 1) * 10 + 9%>'>
+                                <div class="col-md-4">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h5 class="text-center">${myIndex.index + 1} - ${item.title}</h5>
                                         </div>
-                                        <div class="col-md-6">
-                                            <ul class="list-group">
-                                                <li class="list-group-item">ISBN: ${item.ISBN}</li>
-                                                <li class="list-group-item">Author: ${item.author}</li>
-                                                <li class="list-group-item">Rating: ${item.averageRating}</li>
-                                                <li class="list-group-item">Copies: ${item.availableCopies}</li>
-                                            </ul>
+                                        <div class="panel-body">
+                                            <div class="thumbnail "> <a href="./bookPage.jsp?isbn=${item.ISBN}"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                                                <div class="caption">
+                                                    Copies: ${item.availableCopies}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </c:forEach>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <c:forEach items="${display}" var="item" varStatus="myIndex" begin='<%= (currentPage - 1) * 10%>' end='<%= (currentPage - 1) * 10 + 9%>'>
+                                <div class="row">
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading">
+                                            <h5 class="text-center">${myIndex.index + 1} - ${item.title}</h5>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div class="col-md-3">
+                                                <div class="thumbnail ">
+                                                    <a href="./bookPage.jsp?isbn=${item.ISBN}"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item">ISBN: ${item.ISBN}</li>
+                                                    <li class="list-group-item">Author: ${item.author}</li>
+                                                    <li class="list-group-item">Rating: ${item.averageRating}</li>
+                                                    <li class="list-group-item">Copies: ${item.availableCopies}</li>
+                                                </ul>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
+                <div class="text-center">
+                    <form action="./SearchResults.jsp" method="Post">
+                        <input type="hidden" name="availability" value='${param.availability}'>
+                        <input type="hidden" name="minRating" value='${param.minRating}'>
+                        <input type="hidden" name="sort" value='${param.sort}'>
+                        <input type="hidden" name="format" value='${param.format}'>
+                        <input type="hidden" name="displayStyle" value='${param.displayStyle}'>
+                        <input type="hidden" name="currentPage" value='${currentPage}'>
+                        <div class="btn-group">
+                            <input type="submit" name="pageChange" class="btn btn-primary" value="First">
+                            <input type="submit" name="pageChange" class="btn btn-primary" value="Prev">
+                            <input type="submit" name="pageChange" class="btn btn-primary" value="Next">
+                            <input type="submit" name="pageChange" class="btn btn-primary" value="Last">
+                        </div>
+                        <br>
+                    </form>
+                </div>
+
             </div>
         </div>
     </body>

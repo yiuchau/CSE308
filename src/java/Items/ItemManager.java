@@ -59,7 +59,7 @@ public class ItemManager {
         //emf = Persistence.createEntityManagerFactory("308ProjectPU");
         em = EMF.createEntityManager();
     }
-
+    
     public List<Item> getItemCollection() {
         return this.itemCollection;
     }
@@ -327,6 +327,67 @@ public class ItemManager {
 
         System.out.println("Size: " + retList.size());
         return retList;
+    }
+    
+    
+    public double getRating(String ISBN) {
+        Query query = em.createQuery("SELECT r.rate FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");    
+        query.setParameter(1, user.getUserName());
+        query.setParameter(2, ISBN);
+        int rating = (int)(query.getSingleResult());
+        return rating;
+    }
+
+    
+    public List<Item> getUserCollection(String category, String sort) {
+        
+        System.out.println("Query: " + category + "Sorted by " + sort);
+        List<Item> retList = new ArrayList<>();
+        String queryString;
+        
+        Query query;
+        //all books in wishlist
+        if (category.equals("WishList")) {
+            queryString = "SELECT i FROM Item i WHERE EXISTS (SELECT w FROM WishList w WHERE w.userName = ?1 AND w.isbn = i.isbn)";
+        } 
+        //currently available books in wishlist (unbanned and >0 availableCopies
+        else if (category.equals("WishListA")) {
+            queryString = "SELECT i FROM Item i WHERE "
+                    + "i.availableCopies > '0' AND i.banned = '0' AND EXISTS (SELECT w FROM WishList w WHERE w.userName = ?1 AND w.isbn = i.isbn)";
+            
+        } 
+        else if (category.equals("Holds")) {
+            queryString = "SELECT i FROM Item i WHERE EXISTS (SELECT h FROM Holds h WHERE h.userName = ?1 AND h.isbn = i.isbn)";
+            
+        } 
+        else if (category.equals("Recommended")) {
+            //query = em.createQuery("SELECT r FROM RecommendedList r WHERE r.userName = ?1");
+            queryString = "SELECT i FROM Item i WHERE EXISTS (SELECT r FROM RecommendedList r WHERE r.userName = ?1 AND r.isbn = i.isbn)";
+        
+        } else if (category.equals("Rated")) {
+            //query = em.createQuery("SELECT r FROM RecommendedList r WHERE r.userName = ?1");
+            queryString = "SELECT i FROM Item i WHERE EXISTS (SELECT r FROM RateList r WHERE r.userName = ?1 AND r.isbn = i.isbn)";
+        
+        } else {
+            //default to checkout
+            queryString = "SELECT i FROM Item i WHERE EXISTS (SELECT c FROM CheckoutList c WHERE c.userName = ?1 AND c.isbn = i.isbn)";
+        } 
+        
+        if (sort != null && !sort.trim().equalsIgnoreCase("")) {
+            queryString += " ORDER BY i." + sort + "";
+        }
+        
+        query = em.createQuery(queryString);
+        query.setParameter(1, user.getUserName());
+        
+        
+        List<Item> rs = (List<Item>) query.getResultList();
+        for (Item newItem : rs) {
+            retList.add(newItem);
+            addItem(newItem);
+        }
+        return retList;
+        
     }
     
     
