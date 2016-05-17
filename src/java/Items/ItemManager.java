@@ -337,6 +337,21 @@ public class ItemManager {
         int rating = (int)(query.getSingleResult());
         return rating;
     }
+    
+    public void deleteRating(String ISBN) {
+        Query query = em.createQuery("SELECT r.rate FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");    
+        query.setParameter(1, user.getUserName());
+        query.setParameter(2, ISBN);
+        RateList rating = (RateList)query.getSingleResult();
+        removeRate(rating);
+    }
+    
+    public double getAverageRating(String ISBN) {
+        Query query = em.createQuery("SELECT AVG(rating) FROM RateList r WHERE r.isbn = ?1");    
+        query.setParameter(1, ISBN);
+        double rating = (double)(query.getSingleResult());
+        return rating;
+    }
 
     
     public List<Item> getUserCollection(String category, String sort) {
