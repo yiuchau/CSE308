@@ -40,13 +40,13 @@
                     <ul class="nav navbar-nav navbar-right hidden-sm">
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Hello, ${itemManager.user.userName} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="./accountPage.jsp">Account Settings</a> </li>
-                                <li><a href="./accountsummary.jsp">Account Summary</a> </li>
-                                <li><a href="./checkouts.jsp">Checkouts</a> </li>
-                                <li><a href="./holds.jsp">Holds</a> </li>
-                                <li><a href="./wishlistB.jsp">Wishlist</a> </li>
-                                <li><a href="./ratelist.jsp">My Rated Titles</a> </li>
-                                <li><a href="./recommended.jsp">Recommended Books</a></li>
+                                <li><a href="./UserCollection.jsp?"">Checkouts</a></li>
+                                <li><a href="./UserCollection.jsp?collection=Holds">Holds</a></li>
+                                <li><a href="./UserCollection.jsp?collection=WishList">WishList (All)</a></li>
+                                <li><a href="./UserCollection.jsp?collection=WishListA">WishList (Available)</a></li>
+                                <li><a href="./UserCollection.jsp?collection=Rated">Rated</a></li>
+                                <li><a href="./UserCollection.jsp?collection=Recommended">Recommended Titles</a></li>
+                                <li><a href="./accountPage.jsp">Account Settings</a></li>
                                  <% if(itemManager.getUser().getRole()==2){ %>
                                     <li><a href="./adminHomepage.jsp">Admin Home</a></li>
                                 <% } %>

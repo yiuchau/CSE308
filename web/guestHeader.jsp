@@ -30,9 +30,8 @@
       </ul>
       
                     <div class="col-sm-3 col-md-3 pull-right">
-                        <form class="navbar-form" action="./SearchResults.jsp" role="search">
-                            <div class="input-group">
-                                <input type="hidden" name="SearchType" value="basic">  
+                        <form class="navbar-form" action="./SearchResults.jsp?SearchType=basic" role="search">
+                            <div class="input-group"> 
                                 <input type="text" class="form-control" placeholder="Search" name="SearchParameter" id="SearchParameter">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
@@ -43,7 +42,7 @@
       <ul class="nav navbar-nav navbar-right hidden-sm">
         <li><a href="./signIn.jsp">Login</a></li>
         <li><a href="./signUp.jsp">Account Registration</a> </li>
-        <li><a href="./moreSearch.html">Advanced Search</a> </li>
+        <li><a href="./AdvancedSearch.jsp">Advanced Search</a> </li>
         <li><a href="./help.jsp">Help<a></li>
       </ul>
     </div>

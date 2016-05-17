@@ -50,28 +50,33 @@
                     //rs = itemManager.basicSearch(request.getParameter("SearchParameter"));
 
                     String searchParameter = request.getParameter("SearchParameter");
-                    searchParameter = '%' + searchParameter + '%';
-
-                    sb.append(" AND (i.title LIKE '" + searchParameter + "' OR i.author LIKE '" + searchParameter + "')");
+                    sb.append(" AND (i.title LIKE '%" + searchParameter + "%' OR i.author LIKE '%" + searchParameter + "%')");
                     session.setAttribute("mainQuery", sb.toString());
                 } else if (SearchType.equals("advanced")) {
                     //construct advanced query Title, ISBN, Author, Genre, Format, Publisher
                     String title = request.getParameter("title");
+                    if (title != null && !title.trim().equalsIgnoreCase("")) {
+                        sb.append(" AND i.title LIKE '%" + title + "%'");
+                    }
                     String author = request.getParameter("author");
+                    if (author != null && !author.trim().equalsIgnoreCase("")) {
+                        sb.append(" AND i.author LIKE '%" + author + "%'");
+                    }
+                    String publisher = request.getParameter("publisher");
+                    if (publisher != null && !publisher.trim().equalsIgnoreCase("")) {
+                        sb.append(" AND i.publisher LIKE '%" + publisher + "%'");
+                    }
+
+                    
                     String isbn = request.getParameter("isbn");
                     //String [] genre = request.getParameter("genre");
                     String format = request.getParameter("format");
-                    String publisher = request.getParameter("publisher");
-
-                    appendFilter(sb, "title", title);
-                    appendFilter(sb, "author", author);
+                    
                     appendFilter(sb, "type", format);
                     //genre filter
-                    appendFilter(sb, "publisher", publisher);
                     appendFilter(sb, "isbn", isbn);
 
                     session.setAttribute("mainQuery", sb.toString());
-
                 }
             } else {
                 //return most recent query
@@ -81,28 +86,16 @@
 
             System.out.println("Main Query: " + request.getAttribute("mainQuery"));
 
-            String availability;
-
-            if (request.getParameter("availability") != null) {
-
-                availability = request.getParameter("availability");
+            String availability = request.getParameter("availability");
+            if (availability != null) {
 
                 if (availability.equals("Available")) {
-                    /*for (Item i : rs) {
-                        if (i.getAvailableCopies() == 0) {
-                            rs.remove(i);
-                        }
-                    }*/
 
                     appendFilter(sb, "banned", "0");
                     sb.append(" AND i.availableCopies > '0'");
 
                 } else if (request.getParameter("availability").equals("Recommendable")) {
-                    /*for (Item i : rs) {
-                        if (i.getTotalCopies() != 0) {
-                            rs.remove(i);
-                        }
-                    }*/
+                    
                     appendFilter(sb, "totalCopies", "0");
                 }
             } else {
