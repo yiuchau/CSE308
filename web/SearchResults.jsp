@@ -32,7 +32,7 @@
                     sb.append(" AND i." + column + "='" + value + "'");
                 }
             }
-                                                                                                                                %>
+                                                                                                                                            %>
         <%
 
             List<Item> rs = new ArrayList<Item>();
@@ -67,11 +67,10 @@
                         sb.append(" AND i.publisher LIKE '%" + publisher + "%'");
                     }
 
-                    
                     String isbn = request.getParameter("isbn");
                     //String [] genre = request.getParameter("genre");
                     String format = request.getParameter("format");
-                    
+
                     appendFilter(sb, "type", format);
                     //genre filter
                     appendFilter(sb, "isbn", isbn);
@@ -95,7 +94,7 @@
                     sb.append(" AND i.availableCopies > '0'");
 
                 } else if (request.getParameter("availability").equals("Recommendable")) {
-                    
+
                     appendFilter(sb, "totalCopies", "0");
                 }
             } else {
@@ -113,8 +112,11 @@
 
             String format2 = request.getParameter("format");
             appendFilter(sb, "type", format2);
-
             System.out.println("Format Filter: " + format2);
+
+            String genre = request.getParameter("genre");
+            appendFilter(sb, "categories", genre);
+            System.out.println("Genre Filter: " + genre);
 
             String sort = request.getParameter("sort");
             if (sort != null && !sort.trim().equalsIgnoreCase("") && !sort.equals("relevance")) {
@@ -183,6 +185,14 @@
                             <option value="0">E-Book</option>
                             <option value="1">AudioBook</option>
                             <option value="2">Movie</option>
+                        </select>
+                        <br>
+                        <label for="format">Select Genre:</label>
+                        <select class="form-control" name="genre">
+                            <c:forEach items="${itemManager.genres}" var="genre">
+
+                                <option value="${genre}">${genre}</option>
+                            </c:forEach>
                         </select>
                         <br>
                         <label for="minRating">Select Min. Rating:</label>
@@ -274,6 +284,7 @@
                         <input type="hidden" name="minRating" value='${param.minRating}'>
                         <input type="hidden" name="sort" value='${param.sort}'>
                         <input type="hidden" name="format" value='${param.format}'>
+                        <input type="hidden" name="format" value='${param.genre}'>
                         <input type="hidden" name="displayStyle" value='${param.displayStyle}'>
                         <input type="hidden" name="currentPage" value='${currentPage}'>
                         <div class="btn-group">

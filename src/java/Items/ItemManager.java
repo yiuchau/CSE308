@@ -32,6 +32,7 @@ public class ItemManager {
     private static ItemManager singleton = null;
 
     private List<Item> itemCollection;
+    private List<String> genres;
   
     User user;
 
@@ -88,6 +89,16 @@ public class ItemManager {
     public Item findItemByID(int id){
         Item i = em.find(Items.Item.class, id);
         return i;
+    }
+    
+    public List<String> getGenres() {
+        if(genres == null) {
+            Query query = em.createQuery("SELECT DISTINCT i.categories FROM Item i");
+            genres = query.getResultList();
+        }
+  
+        System.out.println("Genres: " + genres.size());
+        return genres;
     }
 
     public void addItem(Item newItem) {

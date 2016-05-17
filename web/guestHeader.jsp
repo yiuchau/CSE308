@@ -1,4 +1,7 @@
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<jsp:useBean id="itemManager" class="Items.ItemManager" scope="session"/>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,21 +20,28 @@
     </div>
     
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav"> 
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Catalog<span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="./eBooks.jsp">EBooks</a> </li>
-            <li><a href="./audiobooks.jsp">Audiobooks</a> </li>
-            <li><a href="./videos.jsp">Videos</a> </li>
-            <li role="separator" class="divider"></li>
-            <li><a href="./moreTypePage.html">Genres</a> </li>
-          </ul>
-        </li>
-      </ul>
-      
+        <ul class="nav navbar-nav"> 
+                        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Catalog<span class="caret"></span></a>
+                            
+                                
+                            <ul class="dropdown-menu">
+                                
+                                <li><a href="./SearchResults.jsp?SearchType=advanced&format=0">EBook</a> </li>
+                                <li><a href="./SearchResults.jsp?SearchType=advanced&format=1">Audiobook</a> </li>
+                                <li><a href="./SearchResults.jsp?SearchType=advanced&format=2">Video</a> </li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="./Genres.jsp">Genres</a> </li>
+                                       
+                                
+                            </ul>
+                        </li>
+        </ul>
                     <div class="col-sm-3 col-md-3 pull-right">
-                        <form class="navbar-form" action="./SearchResults.jsp?SearchType=basic" role="search">
+                        
+                        <form class="navbar-form" action="./SearchResults.jsp" role="search">
                             <div class="input-group"> 
+                                
+                                <input type="hidden" name="SearchType" value="basic">  
                                 <input type="text" class="form-control" placeholder="Search" name="SearchParameter" id="SearchParameter">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>

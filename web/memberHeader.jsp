@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session"/>
 <html lang="en">
     <head>
@@ -18,11 +20,13 @@
                     <ul class="nav navbar-nav"> 
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">Catalog<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="./eBooks.jsp">eBook</a> </li>
-                                <li><a href="./audiobooks.jsp">Audiobook</a> </li>
-                                <li><a href="./videos.jsp">Video</a> </li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="./moreTypePage.html">More types</a> </li>
+                                <ul>
+                                    <li><a href="./SearchResults.jsp?SearchType=advanced&format=0">EBook</a> </li>
+                                    <li><a href="./SearchResults.jsp?SearchType=advanced&format=1">Audiobook</a> </li>
+                                    <li><a href="./SearchResults.jsp?SearchType=advanced&format=2">Video</a> </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="./Genres.jsp">Genres</a></li>
+                                </ul>
                             </ul>
                         </li>
                     </ul>
@@ -47,9 +51,9 @@
                                 <li><a href="./UserCollection.jsp?collection=Rated">Rated</a></li>
                                 <li><a href="./UserCollection.jsp?collection=Recommended">Recommended Titles</a></li>
                                 <li><a href="./accountPage.jsp">Account Settings</a></li>
-                                 <% if(itemManager.getUser().getRole()==2){ %>
-                                    <li><a href="./adminHomepage.jsp">Admin Home</a></li>
-                                <% } %>
+                                    <% if (itemManager.getUser().getRole() == 2) { %>
+                                <li><a href="./adminHomepage.jsp">Admin Home</a></li>
+                                    <% }%>
                                 <li role="separator" class="divider"></li>
                                 <li><a href=http://localhost:8080/308code/LogoutServlet>Sign out</a> </li>
                             </ul>
