@@ -6,9 +6,14 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+ <jsp:include page="memberHeader.jsp" />
+ <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
 <html>
     <head>
+        <script src="jquery/jquery.js"></script>
+        <script type="text/javascript" src='js/bootstrap.min.js'></script>
+        <link rel="stylesheet" href="css/bootstrap.css" />
+       
         <script>
             function editAccount() {
                 alert("Click OK to edit your account");
@@ -23,13 +28,8 @@
 
         </script>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-
+       
     </head>
-    <jsp:include page="memberHeader.jsp" />
-    <jsp:useBean id="itemManager" class="Items.ItemManager" scope="session" />
     <body>
         <div class="panel panel-primary">
             

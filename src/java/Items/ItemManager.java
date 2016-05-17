@@ -141,8 +141,8 @@ public class ItemManager {
         em.getTransaction().commit();
     }
 
-    public boolean addToCheckoutList(String ISBN){
-        String current=user.getUserName();
+    public boolean addToCheckoutList(String ISBN,String current){
+       // String current=user.getUserName();
         boolean success=false;
         if(itemExist(ISBN,current,"CheckoutList")==false){
             CheckoutList newItem=new CheckoutList();
@@ -683,7 +683,14 @@ public class ItemManager {
             returnList =(List<Holds>)query1.getResultList( );
             int number=min(amount,returnList.size());
             for(int i=0;i<number;i++){
-                User u=findUser(returnList.get(i).getUserName());
+                Holds h=returnList.get(i);
+                User u=findUser(h.getUserName());
+                String checkoutType=h.getCheckOutType();
+                //automatic checkout
+                if(checkoutType.equals("automatic")){
+                    addToCheckoutList(ISBN,u.getUserName());
+                }
+                //send emails to all the waiting users
                 String body=item.getTitle()+" is available now! Visit our website to read the book!";
                 send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",body);
             }

@@ -47,7 +47,7 @@ public class bookServlet extends HttpServlet {
             else{
                 switch (type) {
                     case "borrow":
-                        if(itemManager.addToCheckoutList(ISBN)==true){
+                        if(itemManager.addToCheckoutList(ISBN,itemManager.getUser().getUserName())==true){
                             request.setAttribute("successMessage", "Added to checkout list");
                         }
                         else{
