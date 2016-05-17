@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-$(document).ready(function submitRating(){
+function submitRating(){
     $(".ratingStars").children("#ratingStar").on("click", function(){
         var starAmount = $(this).attr("value");
         starAmount++;
@@ -14,20 +14,16 @@ $(document).ready(function submitRating(){
         $(".ratingStars").children("#ratingStar").off("click mouseover mouseleave");
 	alert($(this).attr("value") + " Stars!");
 	});
-});
+}
 
-$(document).ready(function showStars(){
+function showStars(){
     $(".ratingStars").children("#ratingStar").on("mouseover", function(){
         var starAmount = $(this).attr("value");
         starAmount++;
         for (var i = 1; i <starAmount; i++){
             $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
         }
-
 	});
-});
-
-$(document).ready(function removeStars() {
     $(".ratingStars").children("#ratingStar").on("mouseleave", function(){
         var starAmount = $(this).attr("value");
         starAmount++;
@@ -35,68 +31,55 @@ $(document).ready(function removeStars() {
             $(".ratingStars :nth-child(" + i + ")").attr("src","images/emptyStar.png");
         }
 	});
-});
-
-$(document).ready(function editRating(){
-    $(".editRating").click(function(){
-        $(".ratingStars").children("#ratingStar").on("mouseover", function(){
-        var starAmount = $(this).attr("value");
-        starAmount++;
-        for (var i = 1; i <starAmount; i++){
-            $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
-        }
-        });
-        
-        $(".ratingStars").children("#ratingStar").on("mouseleave", function(){
-        var starAmount = $(this).attr("value");
-        starAmount++;
-        for (var i = 1; i <starAmount; i++){
-            $(".ratingStars :nth-child(" + i + ")").attr("src","images/emptyStar.png");
-        }
-	});
-        
+}
+function editRating(){
+        $(".ratingStars").children("#ratingStar").attr("src","images/emptyStar.png");
+        showStars();
         $(".ratingStars").children("#ratingStar").on("click", function(){
+            $(".editRatingActive").toggleClass("editRating editRatingActive btn-danger btn-success");
             var starAmount = $(this).attr("value");
             starAmount++;
             for (var i = 1; i <starAmount; i++){
             $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
-            alert($(this).attr("value") + " Stars!");
         }
+        alert($(this).attr("value") + " Stars! 420" );
+        $(".ratingStars").children("#ratingStar").off("click mouseover mouseleave");
     });
-        
-        $(".ratingStars").children("#ratingStar").attr("src","images/emptyStar.png");
-        });  
-            
+}
+$(document).ready(function submitRatingListener(){
+    submitRating();
+    showStars();
 });
 
 
-$(document).ready(function removeRating(){
+$(document).ready(function editRatingListener(){
+/* Class name changes, but event handler still stuck on element even after class name change, 
+ * AND does not respond to "editRatingActive". I think the event handlers are just attached one time
+ * document is loaded or something like that.
+ * Probably can make a second button right on top of old one for temp fix but not sure
+ * how to do it legitimately so don't spam click Edit Rating and it will work fine.
+ */
+    $(".editRating").on("click", function(){
+        /* alert($(this).attr("class")); */
+        editRating();
+        $(".editRating").toggleClass("editRating editRatingActive btn-danger btn-success");
+        /*alert($(this).attr("class") ); */
+        });
+/*        
+    $(".editRatingActive").on("click", function(){
+        alert("editRatingActive" );
+            $(".editRating").on("click", function(){
+            $(".editRating").toggleClass("editRating editRatingActive btn-danger btn-success");
+        });
+        });
+*/  
+});
+
+
+$(document).ready(function removeRatingListener(){
     $(".removeRating").click(function(){
-        $(".ratingStars").children("#ratingStar").on("mouseover", function(){
-        var starAmount = $(this).attr("value");
-        starAmount++;
-        for (var i = 1; i <starAmount; i++){
-            $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
-        }
-        });
-        
-        $(".ratingStars").children("#ratingStar").on("mouseleave", function(){
-        var starAmount = $(this).attr("value");
-        starAmount++;
-        for (var i = 1; i <starAmount; i++){
-            $(".ratingStars :nth-child(" + i + ")").attr("src","images/emptyStar.png");
-        }
-	});
-        
-        $(".ratingStars").children("#ratingStar").on("click", function(){
-            var starAmount = $(this).attr("value");
-            starAmount++;
-            for (var i = 1; i <starAmount; i++){
-            $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
-        }
-            alert($(this).attr("value") + " Stars!");
-        });
-        $(".ratingStars").children("#ratingStar").attr("src","images/emptyStar.png");
-        });
-        
+    $(".ratingStars").children("#ratingStar").attr("src","images/emptyStar.png");
+    submitRating();
+    showStars();
+    });
 });
