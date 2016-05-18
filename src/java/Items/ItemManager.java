@@ -350,7 +350,7 @@ public class ItemManager {
     }
     
     public void deleteRating(String ISBN) {
-        Query query = em.createQuery("SELECT r.rate FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");    
+        Query query = em.createQuery("SELECT r FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");    
         query.setParameter(1, user.getUserName());
         query.setParameter(2, ISBN);
         RateList rating = (RateList)query.getSingleResult();
@@ -358,9 +358,10 @@ public class ItemManager {
     }
     
     public double getAverageRating(String ISBN) {
-        Query query = em.createQuery("SELECT AVG(rating) FROM RateList r WHERE r.isbn = ?1");    
+        Query query = em.createQuery("SELECT AVG(rate) FROM RateList r WHERE r.isbn = ?1");    
         query.setParameter(1, ISBN);
         double rating = (double)(query.getSingleResult());
+        System.out.println("Average Rating: " + rating);
         return rating;
     }
 
