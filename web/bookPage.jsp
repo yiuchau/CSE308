@@ -196,7 +196,10 @@
                             <a class="editRating btn btn-danger btn-block" role="button"><span  aria-hidden="true" >
                                 
                                 </span>Edit Rating</a>
+                                <form action="./ratingServlet" method="post">
                                 <a class="removeRating btn btn-default btn-block" role="button"><span  aria-hidden="true" ></span>Remove Rating</a>
+                                <input class="removeRating btn btn-default btn-block" role="button" value = "5" src="images/emptyStar.png" width="25" height=25" alt="Submit">
+                                </form>
 
                             </div>
                             </c:otherwise>
@@ -231,7 +234,7 @@
                                         <p class="list-group-item-text">Release Date</p></li>
 
                                     <li class="list-group-item">
-                                        <h4 class="list-group-item-heading"><%= (item.getAverageRating()) %> )</h4>
+                                        <h4 class="list-group-item-heading"><%= itemManager.getRating(item.getISBN()) %> </h4>
                                         <p class="list-group-item-text">Average Rating</p></li>
                                     
                                      <li class="list-group-item">
