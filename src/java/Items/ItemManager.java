@@ -372,14 +372,26 @@ public class ItemManager {
     }
     
     public double getAverageRating(String ISBN) {
-        try {
-        Query query = em.createQuery("SELECT AVG(r.rate) FROM RateList r WHERE r.isbn = ?1");    
+        
+        Query query = em.createQuery("SELECT COUNT(r),AVG(r.rate) FROM RateList r WHERE r.isbn = ?1");    
         query.setParameter(1, ISBN);
-        double averageRating = (double)(query.getSingleResult());
-        return averageRating;
-        } catch(NoResultException e) {
-        return 0.0;
-    }
+        List<Object []>rs = query.getResultList();
+        if((Long)(rs.get(0)[0]) == 0)
+            return 0.0;
+        return (double)(rs.get(0)[1]);
+        /*
+        query = em.createQuery("SELECT AVG(r.rate) FROM RateList r WHERE r.isbn = ?1");    
+        query.setParameter(1, ISBN);
+        List averageRating = query.getResultList();
+        return (double)averageRating.get(0);
+                   
+           /*
+        if(!averageRating.isEmpty())
+            return (double)averageRating.get(0);
+        else
+            return 0.0;
+*/
+ 
     }
 
     
