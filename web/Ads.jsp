@@ -15,7 +15,7 @@
             <li data-target="#carousel1" data-slide-to="2" class=""> </li>
           </ol>
           <div class="carousel-inner">
-            <div class="item active"> <img class="img-responsive" src="images/header3.jpg" alt="thumb">
+              <div class="item active"> <a href="./Genres.jsp">  <img class="img-responsive" src="images/header3.jpg" alt="thumb"> </a>
                 <div class="carousel-caption"> <h4>Welcome to Cedar Library!</h4> </div>
             </div>
             <div class="item"> <img class="img-responsive" src="images/ghibli-main_1.jpg" alt="thumb">

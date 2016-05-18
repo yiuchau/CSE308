@@ -43,6 +43,16 @@
                 <label>Publisher</label>
                 <input name="publisher" class="form-control" autofocus>
                 <br>
+                
+                        <label for="format">Select Genre:</label>
+                        <select class="form-control" name="genre">
+                            <option selected disabled hidden style='display: none' value=''></option>
+                            <c:forEach items="${itemManager.genres}" var="genre">
+
+                                <option value="${genre}">${genre}</option>
+                            </c:forEach>
+                        </select>
+                        <br>
                         <label for="type">Select Format:</label>
                         <select class="form-control" name="type">
                             <option selected="selected" value="0">All</option>
