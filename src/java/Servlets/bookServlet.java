@@ -8,6 +8,9 @@ package Servlets;
 import Items.ItemManager;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -86,6 +89,17 @@ public class bookServlet extends HttpServlet {
                             request.setAttribute("errorMessage", "You've already recommended this book!");
                         }
                         break;
+                    case "return":
+                        itemManager.removeCheckOut(itemManager.getCheckoutItem(ISBN,itemManager.getUser().getUserName()));
+                        try {
+                            itemManager.notifyUser(ISBN, 1);
+                            request.setAttribute("successMessage", "Returned the book");
+                        } catch (MessagingException ex) {
+                            Logger.getLogger(bookServlet.class.getName()).log(Level.SEVERE, null, ex);
+                            request.setAttribute("errorMessage", ex);
+                        }
+                        break;
+
                     default:
                         break;
                 }

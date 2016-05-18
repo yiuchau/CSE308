@@ -120,7 +120,7 @@
                                                    
                                                 <a href="./bookServlet?isbn=${item.ISBN}&type=viewSample" class="btn btn-primary" role="button">Read Checkout</a>
                                                 <a href="#" class="btn btn-primary" role="button"> Download</a>
-                                                <a href="#" class="btn btn-primary" role="button"> Return</a>
+                                                <a href="./bookServlet?isbn=${item.ISBN}&type=return" class="btn btn-primary" role="button"> Return</a>
                                                 </div>
                                             </c:otherwise>              
                                         </c:choose>

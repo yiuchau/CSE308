@@ -126,11 +126,18 @@ public class ItemManager {
     }
     
     //Decrease one each time(borrow book)
-     public void updateItemAvailableCopies(String ISBN) {
+     public void updateItemAvailableCopies(String ISBN,String type) {
         Item itemToUpdate = findItem(ISBN);
         em.getTransaction().begin();
         int currentNumber=itemToUpdate.getAvailableCopies();
-        itemToUpdate.setAvailableCopies(currentNumber-1);
+        //borrow book
+        if(type.equals("decrease")){
+            itemToUpdate.setAvailableCopies(currentNumber-1);
+        }
+        //return
+        else{
+            itemToUpdate.setAvailableCopies(currentNumber+1);
+        }
         em.getTransaction().commit();
     }
 
@@ -157,7 +164,7 @@ public class ItemManager {
             itemToUpdate.setBorrowedTimes(itemToUpdate.getBorrowedTimes()+1); //updtae borrowedTimes
             em.persist(newItem);
             em.getTransaction().commit();
-            updateItemAvailableCopies(ISBN);
+            updateItemAvailableCopies(ISBN,"decrease");
             success=true;
         }
         return success;
@@ -232,6 +239,10 @@ public class ItemManager {
         em.getTransaction().commit();
     }
     
+    public CheckoutList getCheckoutItem(String ISBN,String userName){
+        CheckoutKey checkoutKey=new CheckoutKey(ISBN,userName);
+         return em.find(Items.CheckoutList.class, checkoutKey);        
+    }
     public boolean itemExist(String ISBN,String userName,String table) {
         boolean isPresent = false;
         if(table.equals("CheckoutList")){
@@ -723,12 +734,14 @@ public class ItemManager {
                         addToCheckoutList(ISBN,u.getUserName());
                         //delete from holds
                         removeHolds(h);
+                    } 
+                    //TODO: hold the book for 3 days
+                    else{
+                        
                     }
                     //send emails to all the waiting users
                     String body=item.getTitle()+" is available now! Visit our website to read the book!";
                     send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",body);
-                    //TODO: hold the book for 3 days
-                
                 }
             }
         }
@@ -918,6 +931,7 @@ public class ItemManager {
         em.getTransaction().begin();
         em.remove(u);
         em.getTransaction().commit();
+        updateItemAvailableCopies(u.getIsbn(),"increase");
     }
     
     public void removeWish(WishList u){
