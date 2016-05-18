@@ -739,11 +739,21 @@ public class ItemManager {
             List<RecommendedList> reList =(List<RecommendedList>)query1.getResultList( );
             if(reList.isEmpty()==false){
                 Item item=findItem(ISBN);
+                //send email to all the users who recommended the book
                 for(int i=0;i<reList.size();i++){
                     String body=item.getTitle()+" is available now! Visit our website to read the book!";
                     send("308cedar","308cedar123",reList.get(i).getEmail(),"",item.getTitle()+" is available now! ",body);
                 }
-                
+                //automatic checkout
+                query1=em.createQuery("Select e " + "from  RecommendedList e " + "Where e.checkOutType= ?1 ORDER BY e.recommendedTime ASC" );
+                query1.setParameter(1,"automatic");
+                List<RecommendedList> automaticList =(List<RecommendedList>)query1.getResultList( );
+                int minimum=min(amount,automaticList.size());
+                for(int i=0;i<minimum;i++){
+                    RecommendedList r=automaticList.get(i);
+                    User u=findUser(r.getUserName());
+                    addToCheckoutList(ISBN,r.getUserName());
+                }
             }
         }
     }

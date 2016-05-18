@@ -72,9 +72,6 @@ public class GoogleMail {
     }
     public static void main(String[] args) throws MessagingException{ 
         //Send("308cedar","308cedar123","whenhowmar@gmail.com","","aaa","bbbb");
-        List list=null;
-        if(list.isEmpty()){
-            System.out.println("empty");
-        }
+      
     }
 }
