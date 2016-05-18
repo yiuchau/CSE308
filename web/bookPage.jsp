@@ -171,21 +171,16 @@
       
                                     </div>
                                 </div>
-                            <c:choose>
-                                <c:when test="${itemManager.user == null}">
-                                <div> </div>
-                                </c:when>
-                                    <c:otherwise>
-                            
+                                <c:if test="${itemManager.user != null}">
                             <p>
                             <form action="./ratingServlet" method="post">
                             <div class="ratingStars text-center">
                          
-                                <input type ="image" name= "rating" id="ratingStar" value = "1" src="images/emptyStar.png" width="25" height=25" alt="Submit">
-                                <input type ="image" name= "rating" id="ratingStar" value = "2" src="images/emptyStar.png" width="25" height=25" alt="Submit">
-                                <input type ="image" name= "rating" id="ratingStar" value = "3" src="images/emptyStar.png" width="25" height=25" alt="Submit">
-                                <input type ="image" name= "rating" id="ratingStar" value = "4" src="images/emptyStar.png" width="25" height=25" alt="Submit">
-                                <input type ="image" name= "rating" id="ratingStar" value = "5" src="images/emptyStar.png" width="25" height=25" alt="Submit">
+                                <input type ="image" name= "rating" id="ratingStar" value = "1" src="images/emptyStar.png" width="25" height="25" alt="Submit">
+                                <input type ="image" name= "rating" id="ratingStar" value = "2" src="images/emptyStar.png" width="25" height="25" alt="Submit">
+                                <input type ="image" name= "rating" id="ratingStar" value = "3" src="images/emptyStar.png" width="25" height="25" alt="Submit">
+                                <input type ="image" name= "rating" id="ratingStar" value = "4" src="images/emptyStar.png" width="25" height="25" alt="Submit">
+                                <input type ="image" name= "rating" id="ratingStar" value = "5" src="images/emptyStar.png" width="25" height="25" alt="Submit">
                                 <input type = "hidden" name = "currentBook" value = "<%= (item.getISBN())%>" />
                                 <input type = "hidden" name = "currentUser" value = "<%= itemManager.getUser()%>" />
                                 <input type = "hidden" name = "sneaky" value = "sneaky" />
@@ -210,8 +205,7 @@
                                 </form>
 
                             </div>
-                            </c:otherwise>
-                                </c:choose>
+                            </c:if>
                         </div>
                     </div>
                 
