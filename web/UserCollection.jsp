@@ -117,24 +117,8 @@
                                             </c:when>
                                             <c:otherwise>
                                                 <div class="btn-group">
-                                                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#bookSample" role="button"><span aria-hidden="true" ></span>Sample</a>
-                                                    <div class="modal fade" id="bookSample" role="dialog">
-                                                    <div class="modal-dialog modal-lg">
-                                                        <h1>Checkout</h1>
-
-                                        <!-- Modal content-->
-                                        <div class="modal-content">
-                                    
-                                            <div class="modal-body">
-                                                <iframe src="./bookServlet?isbn=${item.ISBN}&type=viewSample" width="700" height="580"></iframe>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-      
-                                    </div>
-                                </div>
+                                                   
+                                                <a href="./bookServlet?isbn=${item.ISBN}&type=viewSample" class="btn btn-primary" role="button">Read Checkout</a>
                                                 <a href="#" class="btn btn-primary" role="button"> Download</a>
                                                 <a href="#" class="btn btn-primary" role="button"> Return</a>
                                                 </div>
