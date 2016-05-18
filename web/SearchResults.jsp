@@ -121,6 +121,10 @@
             String sort = request.getParameter("sort");
             if (sort != null && !sort.trim().equalsIgnoreCase("") && !sort.equals("relevance")) {
                 sb.append(" ORDER BY i." + sort + "");
+                if(sort.equals("averageRating") || sort.equals("borrowedTimes") || sort.equals("releaseDate"))
+                    sb.append(" DESC");
+                
+            
             }
 
             System.out.println("Sort: " + sort);
@@ -198,10 +202,10 @@
                         <label for="minRating">Select Min. Rating:</label>
                         <select class="form-control" name="minRating">
                             <option selected="selected" value="0">All</option>
-                            <option value="1">1+</option>
-                            <option value="2">2+</option>
-                            <option value="3">3+</option>
-                            <option value="4">4+</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
                         </select>
                         <br>
 
@@ -212,6 +216,7 @@
                             <option value="author">Author</option>
                             <option value="averageRating">Average Rating</option>
                             <option value="releaseDate">Release Date</option>
+                            <option value="borrowedTimes">Popularity</option>
                         </select>
                         <br>
 
@@ -241,7 +246,7 @@
                                         <div class="panel-body">
                                             <div class="thumbnail "> <a href="./bookPage.jsp?isbn=${item.ISBN}"><img src="${item.imageURL}" style="width:120px;height:200px;" class="img-responsive"></a>
                                                 <div class="caption">
-                                                    Copies: ${item.availableCopies}
+                                                    <h2 class="text-center">Copies: ${item.availableCopies}></h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -266,7 +271,7 @@
                                                 <ul class="list-group">
                                                     <li class="list-group-item">ISBN: ${item.ISBN}</li>
                                                     <li class="list-group-item">Author: ${item.author}</li>
-                                                    <li class="list-group-item">Rating: ${item.averageRating}</li>
+                                                    <li class="list-group-item">Rating: ${itemManager.getAverageRating(item.getISBN())}</li>
                                                     <li class="list-group-item">Copies: ${item.availableCopies}</li>
                                                 </ul>
                                             </div>

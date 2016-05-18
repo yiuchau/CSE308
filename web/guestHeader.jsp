@@ -29,6 +29,11 @@
                                 <li><a href="./SearchResults.jsp?SearchType=advanced&format=0">EBook</a> </li>
                                 <li><a href="./SearchResults.jsp?SearchType=advanced&format=1">Audiobook</a> </li>
                                 <li><a href="./SearchResults.jsp?SearchType=advanced&format=2">Video</a> </li>
+                                
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="./SearchResults.jsp?SearchType=advanced&sort=releaseDate">New Releases</a> </li>
+                                    <li><a href="./SearchResults.jsp?SearchType=advanced&sort=borrowedTimes">Most Popular</a> </li>
+                                    <li><a href="./SearchResults.jsp?SearchType=advanced&sort=averageRating">Top Rated</a> </li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="./Genres.jsp">Genres</a> </li>
                                        
