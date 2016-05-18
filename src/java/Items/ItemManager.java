@@ -341,12 +341,26 @@ public class ItemManager {
     }
     
     
-    public double getRating(String ISBN) {
-        Query query = em.createQuery("SELECT r.rate FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");    
+    public int getRating(String ISBN) {
+     try{
+        Query query = em.createQuery("SELECT r.rate FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");
         query.setParameter(1, user.getUserName());
         query.setParameter(2, ISBN);
         int rating = (int)(query.getSingleResult());
         return rating;
+    } catch(NoResultException e) {
+        return 0;
+    }
+    }
+    
+    public void submitRating(String ISBN,User user,int ratingAmount) {
+        RateList newRating = new RateList();   
+        newRating.setIsbn(ISBN);
+        newRating.setUserName(user.getUserName());
+        newRating.setRate(ratingAmount);
+        em.getTransaction().begin();
+        em.persist(newRating);
+        em.getTransaction().commit();
     }
     
     public void deleteRating(String ISBN) {
@@ -358,11 +372,14 @@ public class ItemManager {
     }
     
     public double getAverageRating(String ISBN) {
-        Query query = em.createQuery("SELECT AVG(rate) FROM RateList r WHERE r.isbn = ?1");    
+        try {
+        Query query = em.createQuery("SELECT AVG(r.rate) AS rateAverage FROM ratelist r");    
         query.setParameter(1, ISBN);
-        double rating = (double)(query.getSingleResult());
-        System.out.println("Average Rating: " + rating);
-        return rating;
+        double averageRating = (double)(query.getSingleResult());
+        return averageRating;
+        } catch(NoResultException e) {
+        return 0.0;
+    }
     }
 
     
@@ -882,6 +899,12 @@ public class ItemManager {
     public void removeHolds(Holds u){
         em.getTransaction().begin();
         em.remove(u);
+        em.getTransaction().commit();
+    }
+    
+    public void submitRate(RateList u){
+        em.getTransaction().begin();
+        em.persist(u);
         em.getTransaction().commit();
     }
     
