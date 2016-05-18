@@ -4,7 +4,13 @@
  * and open the template in the editor.
  */
 
+var submitRatingTimeout;
+var showStarsTimeout;
+var editRatingTimeout;
+
 function submitRating(){
+    showStarsTimeout = window.setInterval(showStars,1000);
+    
     $(".ratingStars").children("#ratingStar").on("click", function(){
         var starAmount = $(this).attr("value");
         starAmount++;
@@ -13,7 +19,9 @@ function submitRating(){
         }
         $(".ratingStars").children("#ratingStar").off("click mouseover mouseleave");
 	alert($(this).attr("value") + " Stars!");
+        window.clearInterval(showStarsTimeout);
 	});
+        
 }
 
 function showStars(){
@@ -32,7 +40,15 @@ function showStars(){
         }
 	});
 }
+
+function staticStars(amount){
+        amount++;
+        for (var i = 1; i <amount; i++){
+            $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
+        }
+}
 function editRating(){
+        showStarsTimeout = window.setInterval(showStars,1000);
         $(".ratingStars").children("#ratingStar").attr("src","images/emptyStar.png");
         showStars();
         $(".ratingStars").children("#ratingStar").on("click", function(){
@@ -44,11 +60,13 @@ function editRating(){
         }
         alert($(this).attr("value") + " Stars! 420" );
         $(".ratingStars").children("#ratingStar").off("click mouseover mouseleave");
+        window.clearInterval(showStarsTimeout);
     });
 }
 $(document).ready(function submitRatingListener(){
-    submitRating();
-    showStars();
+    //submitRating();
+    //showStars();
+    //staticStars(2);
 });
 
 
