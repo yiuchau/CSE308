@@ -716,15 +716,20 @@ public class ItemManager {
                 Holds h=returnList.get(i);
                 User u=findUser(h.getUserName());
                 String checkoutType=h.getCheckOutType();
-                //automatic checkout
-                if(checkoutType.equals("automatic")){
-                    addToCheckoutList(ISBN,u.getUserName());
-                    //delete from holds
-                    removeHolds(h);
+                //only checkout or send email to user whose suspendDate is earlier than current date
+                if(getCurrentDate().after(h.getSuspendHold())){
+                    //automatic checkout
+                    if(checkoutType.equals("automatic")){
+                        addToCheckoutList(ISBN,u.getUserName());
+                        //delete from holds
+                        removeHolds(h);
+                    }
+                    //send emails to all the waiting users
+                    String body=item.getTitle()+" is available now! Visit our website to read the book!";
+                    send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",body);
+                    //TODO: hold the book for 3 days
+                
                 }
-                //send emails to all the waiting users
-                String body=item.getTitle()+" is available now! Visit our website to read the book!";
-                send("308cedar","308cedar123",u.getEmail(),"",item.getTitle()+" is available now! ",body);
             }
         }
         //check if the book is in recommendedList
@@ -734,9 +739,20 @@ public class ItemManager {
             List<RecommendedList> reList =(List<RecommendedList>)query1.getResultList( );
             if(reList.isEmpty()==false){
                 Item item=findItem(ISBN);
+                //send email to all the users who recommended the book
                 for(int i=0;i<reList.size();i++){
                     String body=item.getTitle()+" is available now! Visit our website to read the book!";
                     send("308cedar","308cedar123",reList.get(i).getEmail(),"",item.getTitle()+" is available now! ",body);
+                }
+                //automatic checkout
+                query1=em.createQuery("Select e " + "from  RecommendedList e " + "Where e.checkOutType= ?1 ORDER BY e.recommendedTime ASC" );
+                query1.setParameter(1,"automatic");
+                List<RecommendedList> automaticList =(List<RecommendedList>)query1.getResultList( );
+                int minimum=min(amount,automaticList.size());
+                for(int i=0;i<minimum;i++){
+                    RecommendedList r=automaticList.get(i);
+                    User u=findUser(r.getUserName());
+                    addToCheckoutList(ISBN,r.getUserName());
                 }
             }
         }

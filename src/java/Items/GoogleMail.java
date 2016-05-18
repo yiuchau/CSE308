@@ -12,6 +12,7 @@ package Items;
 import com.sun.mail.smtp.SMTPTransport;
 import java.security.Security;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -70,6 +71,7 @@ public class GoogleMail {
         t.close();
     }
     public static void main(String[] args) throws MessagingException{ 
-        Send("308cedar","308cedar123","whenhowmar@gmail.com","","aaa","bbbb");
+        //Send("308cedar","308cedar123","whenhowmar@gmail.com","","aaa","bbbb");
+      
     }
 }
