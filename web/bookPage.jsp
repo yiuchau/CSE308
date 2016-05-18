@@ -210,7 +210,7 @@
                                         <p class="list-group-item-text">Release Date</p></li>
 
                                     <li class="list-group-item">
-                                        <h4 class="list-group-item-heading"><%= (item.getAverageRating())%></h4>
+                                        <h4 class="list-group-item-heading"><%= (itemManager.getAverageRating(item.getISBN()))%></h4>
                                         <p class="list-group-item-text">Average Rating</p></li>
                                     
                                      <li class="list-group-item">
