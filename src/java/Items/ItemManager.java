@@ -372,7 +372,7 @@ public class ItemManager {
     }
     
     public double getAverageRating(String ISBN) {
-        try {   
+        try {
         Query query = em.createQuery("SELECT AVG(r.rate) FROM RateList r WHERE r.isbn = ?1");    
         query.setParameter(1, ISBN);
         double averageRating = (double)(query.getSingleResult());
@@ -707,6 +707,8 @@ public class ItemManager {
                 //automatic checkout
                 if(checkoutType.equals("automatic")){
                     addToCheckoutList(ISBN,u.getUserName());
+                    //delete from holds
+                    removeHolds(h);
                 }
                 //send emails to all the waiting users
                 String body=item.getTitle()+" is available now! Visit our website to read the book!";
