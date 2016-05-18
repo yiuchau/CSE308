@@ -353,7 +353,7 @@ public class ItemManager {
     }
     }
     
-    public void submitRating(String ISBN,User user,int ratingAmount) {
+    public void submitRating(String ISBN, User user, int ratingAmount) {
         RateList newRating = new RateList();   
         newRating.setIsbn(ISBN);
         newRating.setUserName(user.getUserName());
@@ -373,7 +373,7 @@ public class ItemManager {
     
     public double getAverageRating(String ISBN) {
         try {
-        Query query = em.createQuery("SELECT AVG(r.rate) AS rateAverage FROM ratelist r");    
+        Query query = em.createQuery("SELECT AVG(r.rate) FROM RateList r WHERE r.isbn = ?1");    
         query.setParameter(1, ISBN);
         double averageRating = (double)(query.getSingleResult());
         return averageRating;
