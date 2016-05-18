@@ -93,7 +93,7 @@
                                         <ul class="list-group">
                                             <li class="list-group-item">ISBN: ${item.ISBN}</li>
                                             <li class="list-group-item">Author: ${item.author}</li>
-                                            <li class="list-group-item">Rating: ${itemManager.getAverageRating(item.getISBN())}</li>
+                                            <li class="list-group-item">Rating: ${item.averageRating}</li>
                                             <li class="list-group-item">Available: ${item.availableCopies}</li>
                                         </ul>
                                         <c:choose>

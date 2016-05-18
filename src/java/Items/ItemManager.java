@@ -707,6 +707,8 @@ public class ItemManager {
                 //automatic checkout
                 if(checkoutType.equals("automatic")){
                     addToCheckoutList(ISBN,u.getUserName());
+                    //delete from holds
+                    removeHolds(h);
                 }
                 //send emails to all the waiting users
                 String body=item.getTitle()+" is available now! Visit our website to read the book!";
