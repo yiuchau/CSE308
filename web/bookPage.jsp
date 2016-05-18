@@ -108,10 +108,15 @@
                                 
                                 
                         <% } else { %>
-                            <% if(item.getAvailableCopies()!=0){ %>
+                            <% if(item.getAvailableCopies()!=0){
+                                    if(itemManager.itemExist(item.getISBN(), itemManager.getUser().getUserName(), "CheckoutList")) {
+                                %> 
+                                    <button class="btn btn-primary btn-block" disabled
+                                    ><span  aria-hidden="true" ></span>Borrowed</button>
+                            <% } else { %>
                                     <a href="./bookServlet?isbn=<%= (item.getISBN())%>&type=borrow" class="btn btn-primary btn-block" role="button"
                                        ><span  aria-hidden="true" ></span>Borrow</a>
-                            <% } else { %>
+                            <% }} else { %>
                                 
                                     <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#placeHold" role="button"><span  aria-hidden="true" ></span>Place Hold</a>
                                     <p>
