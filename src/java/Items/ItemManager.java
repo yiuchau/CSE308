@@ -342,17 +342,15 @@ public class ItemManager {
     
     
     public int getRating(String ISBN) {
+     try{
         Query query = em.createQuery("SELECT r.rate FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");
-        if (user == null){
-            return 0;
-        }
         query.setParameter(1, user.getUserName());
         query.setParameter(2, ISBN);
-        if (query.getSingleResult() == null){
-            return 0;
-        }
         int rating = (int)(query.getSingleResult());
         return rating;
+    } catch(NoResultException e) {
+        return 0;
+    }
     }
     
     public void submitRating(String ISBN,User user,int ratingAmount) {
@@ -366,7 +364,7 @@ public class ItemManager {
     }
     
     public void deleteRating(String ISBN) {
-        Query query = em.createQuery("SELECT r.rate FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");    
+        Query query = em.createQuery("SELECT r FROM RateList r WHERE r.userName = ?1 AND r.isbn = ?2");    
         query.setParameter(1, user.getUserName());
         query.setParameter(2, ISBN);
         RateList rating = (RateList)query.getSingleResult();
@@ -374,10 +372,14 @@ public class ItemManager {
     }
     
     public double getAverageRating(String ISBN) {
-        Query query = em.createQuery("SELECT AVG(rating) FROM RateList r WHERE r.isbn = ?1");    
+        try {
+        Query query = em.createQuery("SELECT AVG(r.rate) AS rateAverage FROM ratelist r");    
         query.setParameter(1, ISBN);
-        double rating = (double)(query.getSingleResult());
-        return rating;
+        double averageRating = (double)(query.getSingleResult());
+        return averageRating;
+        } catch(NoResultException e) {
+        return 0.0;
+    }
     }
 
     

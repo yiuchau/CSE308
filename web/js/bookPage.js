@@ -18,7 +18,6 @@ function submitRating(){
             $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
         }
         $(".ratingStars").children("#ratingStar").off("click mouseover mouseleave");
-	alert($(this).attr("value") + " Stars!");
         window.clearInterval(showStarsTimeout);
 	});
         
@@ -58,7 +57,6 @@ function editRating(){
             for (var i = 1; i <starAmount; i++){
             $(".ratingStars :nth-child(" + i + ")").attr("src","images/filledStar.png");
         }
-        alert($(this).attr("value") + " Stars! 420" );
         $(".ratingStars").children("#ratingStar").off("click mouseover mouseleave");
         window.clearInterval(showStarsTimeout);
     });

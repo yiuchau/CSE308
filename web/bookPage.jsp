@@ -181,13 +181,12 @@
                                 <input type ="image" name= "rating" id="ratingStar" value = "3" src="images/emptyStar.png" width="25" height=25" alt="Submit">
                                 <input type ="image" name= "rating" id="ratingStar" value = "4" src="images/emptyStar.png" width="25" height=25" alt="Submit">
                                 <input type ="image" name= "rating" id="ratingStar" value = "5" src="images/emptyStar.png" width="25" height=25" alt="Submit">
-                                <input type = "hidden" name = "currentBook" value = "<%item.getISBN(); %>" />
-                                <input type = "hidden" name = "currentUser" value = "<%itemManager.getUser();%>" />
+                                <input type = "hidden" name = "currentBook" value = "<%= (item.getISBN())%>" />
+                                <input type = "hidden" name = "currentUser" value = "<%= itemManager.getUser()%>" />
                                 </form>
                             <% if(itemManager.getRating(item.getISBN())!=0){ %>
-                      
-                                    
-                                    <script> staticStars(2);</script>
+             
+                                    <script> staticStars(<%= itemManager.getRating(item.getISBN()) %>);</script>
                             <% } else { %> 
                             <script> showStars();</script>
                                 
@@ -232,7 +231,7 @@
                                         <p class="list-group-item-text">Release Date</p></li>
 
                                     <li class="list-group-item">
-                                        <h4 class="list-group-item-heading"><%= (item.getAverageRating()) %> )%></h4>
+                                        <h4 class="list-group-item-heading"><%= (item.getAverageRating()) %> )</h4>
                                         <p class="list-group-item-text">Average Rating</p></li>
                                     
                                      <li class="list-group-item">

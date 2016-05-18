@@ -28,13 +28,18 @@ public class ratingServlet extends HttpServlet {
         ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
         
         User currentUser = itemManager.getUser();
-        String book= request.getParameter("currentBook");
+        String ISBN= request.getParameter("currentBook");
         String ratingAmountString= request.getParameter("rating");
-      
         int ratingAmount = Integer.parseInt(ratingAmountString);
-        itemManager.submitRating(book,currentUser,ratingAmount);
         
-        request.getRequestDispatcher("./bookPage.jsp").forward(request, response);
+        if (itemManager.getRating(ISBN) != 0){
+        itemManager.deleteRating(ISBN);
+        System.out.println("Deleted Rating");
+        }
+        
+        itemManager.submitRating(ISBN,currentUser,ratingAmount);
+        
+        request.getRequestDispatcher("./bookPage.jsp?isbn="+ISBN).forward(request, response);
        
     
 }
