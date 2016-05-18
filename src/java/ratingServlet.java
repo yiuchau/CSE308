@@ -26,15 +26,21 @@ public class ratingServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         ItemManager itemManager = (ItemManager)request.getSession().getAttribute("itemManager");
-        
+      
         User currentUser = itemManager.getUser();
         String ISBN= request.getParameter("currentBook");
+        String remove = request.getParameter("sneaky");
+        if (remove.equals("sneaky1")){
+            itemManager.deleteRating(ISBN);
+            request.getRequestDispatcher("./bookPage.jsp?isbn="+ISBN).forward(request, response);
+        }
+        
         String ratingAmountString= request.getParameter("rating");
         int ratingAmount = Integer.parseInt(ratingAmountString);
         
+        
         if (itemManager.getRating(ISBN) != 0){
         itemManager.deleteRating(ISBN);
-        System.out.println("Deleted Rating");
         }
         
         itemManager.submitRating(ISBN,currentUser,ratingAmount);

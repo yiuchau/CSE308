@@ -183,6 +183,7 @@
                                 <input type ="image" name= "rating" id="ratingStar" value = "5" src="images/emptyStar.png" width="25" height=25" alt="Submit">
                                 <input type = "hidden" name = "currentBook" value = "<%= (item.getISBN())%>" />
                                 <input type = "hidden" name = "currentUser" value = "<%= itemManager.getUser()%>" />
+                                <input type = "hidden" name = "sneaky" value = "sneaky" />
                                 </form>
                             <% if(itemManager.getRating(item.getISBN())!=0){ %>
              
@@ -196,7 +197,12 @@
                             <a class="editRating btn btn-danger btn-block" role="button"><span  aria-hidden="true" >
                                 
                                 </span>Edit Rating</a>
-                                <a class="removeRating btn btn-default btn-block" role="button"><span  aria-hidden="true" ></span>Remove Rating</a>
+                            <form action="./ratingServlet" method="post">
+                                    <input type = "hidden" name = "sneaky" value = "sneaky1" alt = "submit"/>
+                                    <input type = "hidden" name = "currentBook" value = "<%= (item.getISBN())%>" />
+                                    <input type = "hidden" name = "currentUser" value = "<%= itemManager.getUser()%>" />
+                                    <button class="btn btn-default btn-block" type="submit">Remove Rating</button>
+                                </form>
 
                             </div>
                             </c:otherwise>
@@ -231,7 +237,7 @@
                                         <p class="list-group-item-text">Release Date</p></li>
 
                                     <li class="list-group-item">
-                                        <h4 class="list-group-item-heading"><%= (item.getAverageRating())%></h4>
+                                        <h4 class="list-group-item-heading"><%= (itemManager.getAverageRating(item.getISBN()))%></h4>
                                         <p class="list-group-item-text">Average Rating</p></li>
                                     
                                      <li class="list-group-item">
