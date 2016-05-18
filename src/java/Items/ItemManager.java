@@ -373,7 +373,7 @@ public class ItemManager {
     
     public double getAverageRating(String ISBN) {
         try {
-        Query query = em.createQuery("SELECT AVG(r.rate) AS rateAverage FROM ratelist r");    
+        Query query = em.createQuery("SELECT AVG(rate) AS rateAverage FROM ratelist r");    
         query.setParameter(1, ISBN);
         double averageRating = (double)(query.getSingleResult());
         return averageRating;
