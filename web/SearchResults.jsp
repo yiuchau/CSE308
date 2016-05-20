@@ -184,8 +184,10 @@
                         </select>
                         <br>
                         <label for="format">Select Format:</label>
+                        
                         <select class="form-control" name="format">
-                            <option selected="selected" value="0">All</option>
+                            
+                            <option selected disabled hidden style='display: none' value=''>All</option>
                             <option value="0">E-Book</option>
                             <option value="1">AudioBook</option>
                             <option value="2">Movie</option>
@@ -193,6 +195,8 @@
                         <br>
                         <label for="format">Select Genre:</label>
                         <select class="form-control" name="genre">
+                            
+                            <option selected disabled hidden style='display: none' value=''>All</option>
                             <c:forEach items="${itemManager.genres}" var="genre">
 
                                 <option value="${genre}">${genre}</option>
